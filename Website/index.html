@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Go Green Card</title>
+        <link rel="stylesheet" href="style.css">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1">
+        Einbindung von Leaflet Karte
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script> -->
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+        <script src="https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.js"></script>
+        <script src="https://cdn.maptiler.com/mapbox-gl-leaflet/latest/leaflet-mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+        <link rel="stylesheet" href="https://cdn.maptiler.com/mapbox-gl-js/v1.5.1/mapbox-gl.css" />
+
+    </head>
+    <body>
+        <div id="top">
+            <div id="logo">GGC</div>
+            <div id="logo-name">Go Green Card</div>
+            <div id="navigation">
+                <a href="#about-us">Über Uns</a>
+                <a href="#service">Service</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+        </div>
+        <div id="main">
+            <div id="image">
+                <img src="Sonnenuntergang_FN.jpg" alt="Sonnenuntergang in Friedrichshafen">
+            </div>
+            <section id="about-us">
+                <h2>Über uns</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </section>
+                        <!-- Map bearbeiten-->
+            <!--<div id = "map"></div>
+            <script>
+                var map = L.map('map').setView([0,0],1);
+                // Design einbinden!
+                L.tileLayer('https://api.maptiler.com/maps/7cb934a9-aa04-4fb0-be4c-237813fb49a1/?key=U2x0furvInvhlvrbKFUV#13.8/47.65432/9.47567', {
+                    attribution:'<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+                }).addTo(map);
+            </script>-->
+                <div id="map"></div>
+                 <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
+                         <script>
+                    var map = L.map('map',{maxZoom:16}).setView([47.65432, 9.47567], 13.5 );
+                    var gl = L.mapboxGL({
+                     attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+                    style: 'https://api.maptiler.com/maps/e90d8c79-8140-4e0a-a52e-242620976cf2/style.json?key=U2x0furvInvhlvrbKFUV',
+                    
+                     }).addTo(map);
+                    
+                    var marker = L.marker([47.65432, 9.47567]).addTo(map);
+                    var markerOptions = {
+                        title: "Bio am See"
+
+                    }
+                    var marker = L.marker([47.652209, 9.478640], markerOptions).addTo(map);
+
+                    var marker = new L.Marker([47.6512, 9.4777]).on('click', markerOnClick).addTo(map);
+
+                    function markerOnClick(e) {
+                      alert("Koordinaten des Shops " + e.latlng);
+                    }
+
+                        </script>
+            <section id="service">
+                <h2>Service</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                <p>
+                    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </p>
+            </section>
+                <h2>Kontakt</h2>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                </p>
+            </section>
+            <section id="service"></section>
+            <section id="contact"></section>
+
+            <input id="userinput" type="text" placeholder="Leave a comment!">
+            <button id="enter">Enter</button>
+            <ul>
+
+            </ul>
+            <script type="text/javascript" src="script.js"></script>
+
+        </div>
+        <div id="footer">
+            Copyright 2020 | Go Green Card
+        </div>
+    </body>
+</html>
