@@ -342,7 +342,7 @@ Partial Class Form1
         Me.webView.Location = New System.Drawing.Point(54, 67)
         Me.webView.Name = "webView"
         Me.webView.Size = New System.Drawing.Size(541, 415)
-        Me.webView.Source = New System.Uri("C:\Users\simon\OneDrive\Dokumente\Meine Website Backup\index.html", System.UriKind.Absolute)
+        Me.webView.Source = New System.Uri("C:\Users\simon\source\repos\GoGreen\GoGreen\Website\index.html", System.UriKind.Absolute)
         Me.webView.TabIndex = 4
         Me.webView.UseWaitCursor = True
         Me.webView.ZoomFactor = 1.0R
