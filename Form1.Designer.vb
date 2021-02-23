@@ -42,11 +42,14 @@ Partial Class Form1
         Me.btnbla = New System.Windows.Forms.Button()
         Me.panelContent = New System.Windows.Forms.Panel()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
         Me.panelContent.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.webView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -301,7 +304,7 @@ Partial Class Form1
         '
         Me.btnbla.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnbla.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!)
-        Me.btnbla.Location = New System.Drawing.Point(245, 155)
+        Me.btnbla.Location = New System.Drawing.Point(6, 16)
         Me.btnbla.Name = "btnbla"
         Me.btnbla.Size = New System.Drawing.Size(32, 30)
         Me.btnbla.TabIndex = 2
@@ -310,6 +313,7 @@ Partial Class Form1
         '
         'panelContent
         '
+        Me.panelContent.Controls.Add(Me.webView)
         Me.panelContent.Controls.Add(Me.btnbla)
         Me.panelContent.Controls.Add(Me.PictureBoxMap)
         Me.panelContent.Dock = System.Windows.Forms.DockStyle.Fill
@@ -329,6 +333,20 @@ Partial Class Form1
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
+        'webView
+        '
+        Me.webView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.webView.CreationProperties = Nothing
+        Me.webView.Location = New System.Drawing.Point(54, 67)
+        Me.webView.Name = "webView"
+        Me.webView.Size = New System.Drawing.Size(541, 415)
+        Me.webView.Source = New System.Uri("C:\Users\simon\OneDrive\Dokumente\Meine Website Backup\index.html", System.UriKind.Absolute)
+        Me.webView.TabIndex = 4
+        Me.webView.UseWaitCursor = True
+        Me.webView.ZoomFactor = 1.0R
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -347,6 +365,7 @@ Partial Class Form1
         Me.panelGeschaefteSubmenu.ResumeLayout(False)
         Me.panelContent.ResumeLayout(False)
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.webView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -374,4 +393,6 @@ Partial Class Form1
     Friend WithEvents btnbla As Button
     Friend WithEvents panelContent As Panel
     Friend WithEvents PictureBoxMap As PictureBox
+    Friend WithEvents webView As Microsoft.Web.WebView2.WinForms.WebView2
+    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
 End Class
