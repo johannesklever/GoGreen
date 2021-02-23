@@ -5,37 +5,27 @@
         panelMeinBereichSubMenu.Visible = False
     End Sub
 
-    Private Sub btnGeschaefte_Click(sender As Object, e As EventArgs) Handles btnGeschaefte.Click
-
-        With panelGeschaefteSubmenu
+    Private Sub Toggle(ByVal panel As Panel) 'Übergabe des Panels
+        With panel
             If .Visible = False Then
                 .Visible = True
             Else
                 .Visible = False
             End If
         End With
+    End Sub
+
+    Private Sub btnGeschaefte_Click(sender As Object, e As EventArgs) Handles btnGeschaefte.Click
+
+        Toggle(panelGeschaefteSubmenu)
 
     End Sub
 
     Private Sub btnMeinBereich_Click(sender As Object, e As EventArgs) Handles btnMeinBereich.Click
 
-        With panelMeinBereichSubMenu
-            If .Visible = False Then
-                .Visible = True
-            Else
-                .Visible = False
-            End If
-        End With
+        Toggle(panelMeinBereichSubMenu)
 
     End Sub
-
-    'Sub ToggleSubmenu() Herrn Ruckdeschel fragen
-    '    If .Visible = False Then
-    '        .Visible = True
-    '    Else
-    '        .Visible = False
-    '    End If
-    'End Sub
 
 
     Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
@@ -63,6 +53,5 @@
         MsgBox(x & " " & y & " " & z)
 
     End Sub
-
 
 End Class
