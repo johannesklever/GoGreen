@@ -27,6 +27,7 @@ Partial Class Form1
         Me.Label_passwort = New System.Windows.Forms.Label()
         Me.TextBox_email = New System.Windows.Forms.TextBox()
         Me.TextBox_passwort = New System.Windows.Forms.TextBox()
+        Me.Button_Kontoanlegen = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button_Login
@@ -70,18 +71,28 @@ Partial Class Form1
         Me.TextBox_passwort.Size = New System.Drawing.Size(100, 31)
         Me.TextBox_passwort.TabIndex = 4
         '
+        'Button_Kontoanlegen
+        '
+        Me.Button_Kontoanlegen.Location = New System.Drawing.Point(460, 300)
+        Me.Button_Kontoanlegen.Name = "Button_Kontoanlegen"
+        Me.Button_Kontoanlegen.Size = New System.Drawing.Size(163, 52)
+        Me.Button_Kontoanlegen.TabIndex = 5
+        Me.Button_Kontoanlegen.Text = "Konto anlegen"
+        Me.Button_Kontoanlegen.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.Button_Kontoanlegen)
         Me.Controls.Add(Me.TextBox_passwort)
         Me.Controls.Add(Me.TextBox_email)
         Me.Controls.Add(Me.Label_passwort)
         Me.Controls.Add(Me.Label_email)
         Me.Controls.Add(Me.Button_Login)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "Landingpage"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -92,4 +103,5 @@ Partial Class Form1
     Friend WithEvents Label_passwort As Label
     Friend WithEvents TextBox_email As TextBox
     Friend WithEvents TextBox_passwort As TextBox
+    Friend WithEvents Button_Kontoanlegen As Button
 End Class

@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms
-Public Class Form1
+Public Class Form2
+
     Dim rs As ADODB.Recordset
     Dim rs_Bestellung As ADODB.Recordset
     Dim conn As ADODB.Connection
@@ -16,13 +17,6 @@ Public Class Form1
             'MsgBox("Datensätze gefunden: " & rs.RecordCount)
             If rs.RecordCount > 0 Then
                 rs.MoveFirst()
-
-                'Call Datenausgabe()
-
-                'Do While Not rs.EOF
-                '    'MsgBox(CStr(rs.Fields("Nachname").Value))
-                '    rs.MoveNext()
-                'Loop
             Else
                 MsgBox("Keine Daten gefunden!")
             End If
@@ -33,20 +27,8 @@ Public Class Form1
             MsgBox(ex.Message)
         End Try
     End Sub
+    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Registrieren.Click
+        rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
 
-    Private Sub Button_Login_Click(sender As Object, e As EventArgs) Handles Button_Login.Click
-
-        If CStr(rs.Fields("Benutzername").Value) = TextBox_email.Text And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
-            MsgBox("Angemeldet")
-        Else
-            MsgBox("Falsche Anmeldedaten")
-            TextBox_email.Clear()
-            TextBox_passwort.Clear()
-        End If
-    End Sub
-
-    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Kontoanlegen.Click
-        Me.Hide()
-        Form2.ShowDialog()
     End Sub
 End Class
