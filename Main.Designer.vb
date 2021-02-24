@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FormMain
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -41,15 +41,15 @@ Partial Class Form1
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.panelContent = New System.Windows.Forms.Panel()
+        Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
         Me.panelContent.SuspendLayout()
-        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.webView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -323,16 +323,6 @@ Partial Class Form1
         Me.panelContent.Size = New System.Drawing.Size(647, 553)
         Me.panelContent.TabIndex = 9
         '
-        'PictureBoxMap
-        '
-        Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBoxMap.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBoxMap.Name = "PictureBoxMap"
-        Me.PictureBoxMap.Size = New System.Drawing.Size(647, 553)
-        Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxMap.TabIndex = 0
-        Me.PictureBoxMap.TabStop = False
-        '
         'webView
         '
         Me.webView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -347,7 +337,17 @@ Partial Class Form1
         Me.webView.UseWaitCursor = True
         Me.webView.ZoomFactor = 1.0R
         '
-        'Form1
+        'PictureBoxMap
+        '
+        Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBoxMap.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBoxMap.Name = "PictureBoxMap"
+        Me.PictureBoxMap.Size = New System.Drawing.Size(647, 553)
+        Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxMap.TabIndex = 0
+        Me.PictureBoxMap.TabStop = False
+        '
+        'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -357,15 +357,15 @@ Partial Class Form1
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MinimumSize = New System.Drawing.Size(950, 600)
-        Me.Name = "Form1"
+        Me.Name = "FormMain"
         Me.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Text = "Form1"
+        Me.Text = "FormMain"
         Me.panelSideMenu.ResumeLayout(False)
         Me.panelMeinBereichSubMenu.ResumeLayout(False)
         Me.panelGeschaefteSubmenu.ResumeLayout(False)
         Me.panelContent.ResumeLayout(False)
-        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.webView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
