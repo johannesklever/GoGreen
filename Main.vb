@@ -35,6 +35,7 @@
             Loop
 
             'Treeview Geschäfte nach Stadtteilen
+            'D
             'Do While Not rsKategorie.EOF
             '    Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
             '    rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
