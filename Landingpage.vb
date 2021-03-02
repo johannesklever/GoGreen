@@ -60,25 +60,25 @@ Public Class Landingpage
         KID = rs_KID.Fields("MKID").Value + 1
 
         fieldsArray(0) = "Kunden_ID"
-        fieldsArray(1) = "Name"
-        fieldsArray(2) = "Geburtsdatum"
-        fieldsArray(3) = "Anschrift"
         fieldsArray(4) = "Benutzername"
+        'fieldsArray(2) = "Geburtsdatum"
+        'fieldsArray(3) = "Anschrift"
+        'fieldsArray(4) = "Benutzername"
         fieldsArray(5) = "Passwort"
 
         valuesArray(0) = KID
-        valuesArray(1) = ""
-        valuesArray(2) = ""
-        valuesArray(3) = ""
         valuesArray(4) = ""
+        'valuesArray(2) = ""
+        'valuesArray(3) = ""
+        'valuesArray(4) = ""
         valuesArray(5) = ""
 
         rs.AddNew(fieldsArray(0), valuesArray(0))
-        rs.AddNew(fieldsArray(1), valuesArray(1))
-        rs.AddNew(fieldsArray(2), valuesArray(2))
-        rs.AddNew(fieldsArray(3), valuesArray(3))
         rs.AddNew(fieldsArray(4), valuesArray(4))
         rs.AddNew(fieldsArray(5), valuesArray(5))
+        'rs.AddNew(fieldsArray(3), valuesArray(3))
+        'rs.AddNew(fieldsArray(4), valuesArray(4))
+        'rs.AddNew(fieldsArray(5), valuesArray(5))
 
         rs.Update()
 

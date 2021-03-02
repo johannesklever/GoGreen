@@ -31,10 +31,21 @@ Public Class Registrierung
     End Sub
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Registrieren.Click
 
-        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text Then
+        Call ValidatePassword()
+
+        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text And ValidatePassword() = True Then
             rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
             rs.Fields("Passwort").Value = TextBox_NeuesPasswort
+
+            MsgBox("Account erstellt")
+            Me.Hide()
+            Landingpage.ShowDialog()
+        Else
+            MsgBox("Min 8 Zeichen")
+            TextBox_NeuesPasswort.Clear()
+            TextBox_PasswortBestätigen.Clear()
         End If
+
 
 
     End Sub
@@ -42,12 +53,14 @@ Public Class Registrierung
     '    <System.Runtime.CompilerServices.Extension>
     '    Return Pwd.Length > 7 AndAlso Pwd Like "[A-Z]*#*"
     'End Function
-    Function ValidatePassword(ByVal pwd As String,
-    Optional ByVal minLength As Integer = 8,
-    Optional ByVal numUpper As Integer = 2,
-    Optional ByVal numLower As Integer = 2,
-    Optional ByVal numNumbers As Integer = 2,
-    Optional ByVal numSpecial As Integer = 2) As Boolean
+    Function ValidatePassword() As Boolean
+
+        Dim pwd As String = TextBox_NeuesPasswort.Text
+        Dim minLength As Integer = 8
+        Dim numUpper As Integer = 2
+        Dim numLower As Integer = 2
+        Dim numNumbers As Integer = 2
+        Dim numSpecial As Integer = 2
 
         ' Replace [A-Z] with \p{Lu}, to allow for Unicode uppercase letters.
         Dim upper As New System.Text.RegularExpressions.Regex("[A-Z]")
