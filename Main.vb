@@ -1,8 +1,43 @@
 ﻿Public Class FormMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
+
+        Dim rs As ADODB.Recordset
+        Dim rsGeschäfte As ADODB.Recordset
+        Dim conn As ADODB.Connection
+
+        rs = New ADODB.Recordset
+        rsGeschäfte = New ADODB.Recordset
+        Try
+            conn = New ADODB.Connection
+            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
+
+
+            rsGeschäfte.Open("SELECT * FROM Geschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+
+
+            'rs.Close()
+            'conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Dim i As Integer
+
+        For i = 0 To 3
+            Dim ndTop = TreeView1.Nodes.Add("Topnode " & i)
+            For ii = 0 To 2
+                Dim ndSub = ndTop.Nodes.Add("Subnode Level 1: " & i & ii)
+                For iii = 0 To 4
+                    ndSub.Nodes.Add("Subnode Level 2: " & i & ii & iii)
+                Next
+            Next
+        Next
+
     End Sub
 
     Private Sub Toggle(ByVal panel As Panel) 'Übergabe des Panels
@@ -53,5 +88,7 @@
         MsgBox(x & " " & y & " " & z)
 
     End Sub
+
+
 
 End Class

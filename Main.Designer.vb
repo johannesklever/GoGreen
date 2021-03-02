@@ -39,16 +39,23 @@ Partial Class FormMain
         Me.btnAlleGeschaefte = New System.Windows.Forms.Button()
         Me.btnGeschaefte = New System.Windows.Forms.Button()
         Me.panelLogo = New System.Windows.Forms.Panel()
-        Me.btnbla = New System.Windows.Forms.Button()
         Me.panelContent = New System.Windows.Forms.Panel()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.btnbla = New System.Windows.Forms.Button()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.TreeView1 = New System.Windows.Forms.TreeView()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
         Me.panelContent.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
         CType(Me.webView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -300,21 +307,9 @@ Partial Class FormMain
         Me.panelLogo.Size = New System.Drawing.Size(229, 100)
         Me.panelLogo.TabIndex = 0
         '
-        'btnbla
-        '
-        Me.btnbla.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnbla.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!)
-        Me.btnbla.Location = New System.Drawing.Point(6, 16)
-        Me.btnbla.Name = "btnbla"
-        Me.btnbla.Size = New System.Drawing.Size(32, 30)
-        Me.btnbla.TabIndex = 2
-        Me.btnbla.Text = "Bla"
-        Me.btnbla.UseVisualStyleBackColor = True
-        '
         'panelContent
         '
-        Me.panelContent.Controls.Add(Me.webView)
-        Me.panelContent.Controls.Add(Me.btnbla)
+        Me.panelContent.Controls.Add(Me.TabControl1)
         Me.panelContent.Controls.Add(Me.PictureBoxMap)
         Me.panelContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContent.Location = New System.Drawing.Point(285, 0)
@@ -323,19 +318,64 @@ Partial Class FormMain
         Me.panelContent.Size = New System.Drawing.Size(647, 553)
         Me.panelContent.TabIndex = 9
         '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Location = New System.Drawing.Point(0, 3)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(647, 550)
+        Me.TabControl1.TabIndex = 5
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.webView)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "TabPage1"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
         'webView
         '
         Me.webView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.webView.CreationProperties = Nothing
-        Me.webView.Location = New System.Drawing.Point(54, 67)
+        Me.webView.Location = New System.Drawing.Point(3, 13)
         Me.webView.Name = "webView"
-        Me.webView.Size = New System.Drawing.Size(541, 415)
+        Me.webView.Size = New System.Drawing.Size(621, 456)
         Me.webView.Source = New System.Uri("C:\Users\simon\source\repos\GoGreen\GoGreen\Website\index.html", System.UriKind.Absolute)
         Me.webView.TabIndex = 4
         Me.webView.UseWaitCursor = True
         Me.webView.ZoomFactor = 1.0R
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.TreeView1)
+        Me.TabPage2.Controls.Add(Me.btnbla)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'btnbla
+        '
+        Me.btnbla.Location = New System.Drawing.Point(521, 25)
+        Me.btnbla.Name = "btnbla"
+        Me.btnbla.Size = New System.Drawing.Size(75, 23)
+        Me.btnbla.TabIndex = 0
+        Me.btnbla.Text = "Button1"
+        Me.btnbla.UseVisualStyleBackColor = True
         '
         'PictureBoxMap
         '
@@ -346,6 +386,13 @@ Partial Class FormMain
         Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
+        '
+        'TreeView1
+        '
+        Me.TreeView1.Location = New System.Drawing.Point(49, 58)
+        Me.TreeView1.Name = "TreeView1"
+        Me.TreeView1.Size = New System.Drawing.Size(442, 368)
+        Me.TreeView1.TabIndex = 1
         '
         'FormMain
         '
@@ -364,7 +411,10 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.ResumeLayout(False)
         Me.panelGeschaefteSubmenu.ResumeLayout(False)
         Me.panelContent.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
         CType(Me.webView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -389,10 +439,13 @@ Partial Class FormMain
     Friend WithEvents btnFavorit As Button
     Friend WithEvents btnMeinBereich As Button
 
-
-    Friend WithEvents btnbla As Button
     Friend WithEvents panelContent As Panel
     Friend WithEvents PictureBoxMap As PictureBox
     Friend WithEvents webView As Microsoft.Web.WebView2.WinForms.WebView2
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents btnbla As Button
+    Friend WithEvents TreeView1 As TreeView
 End Class
