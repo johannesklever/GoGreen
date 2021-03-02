@@ -48,6 +48,9 @@ Partial Class FormMain
         Me.btnbla = New System.Windows.Forms.Button()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
+        Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
+        Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -358,6 +361,9 @@ Partial Class FormMain
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
+        Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteStadtteile)
+        Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachKategorien)
         Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteKategorien)
         Me.TabPage2.Controls.Add(Me.btnbla)
         Me.TabPage2.Location = New System.Drawing.Point(4, 29)
@@ -372,12 +378,12 @@ Partial Class FormMain
         '
         Me.TreeViewGeschäfteKategorien.Location = New System.Drawing.Point(49, 58)
         Me.TreeViewGeschäfteKategorien.Name = "TreeViewGeschäfteKategorien"
-        Me.TreeViewGeschäfteKategorien.Size = New System.Drawing.Size(442, 368)
+        Me.TreeViewGeschäfteKategorien.Size = New System.Drawing.Size(219, 368)
         Me.TreeViewGeschäfteKategorien.TabIndex = 1
         '
         'btnbla
         '
-        Me.btnbla.Location = New System.Drawing.Point(521, 25)
+        Me.btnbla.Location = New System.Drawing.Point(546, 29)
         Me.btnbla.Name = "btnbla"
         Me.btnbla.Size = New System.Drawing.Size(75, 23)
         Me.btnbla.TabIndex = 0
@@ -393,6 +399,31 @@ Partial Class FormMain
         Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
+        '
+        'LabelGeschäfteNachKategorien
+        '
+        Me.LabelGeschäfteNachKategorien.AutoSize = True
+        Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
+        Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
+        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(212, 20)
+        Me.LabelGeschäfteNachKategorien.TabIndex = 2
+        Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
+        '
+        'TreeViewGeschäfteStadtteile
+        '
+        Me.TreeViewGeschäfteStadtteile.Location = New System.Drawing.Point(320, 58)
+        Me.TreeViewGeschäfteStadtteile.Name = "TreeViewGeschäfteStadtteile"
+        Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
+        Me.TreeViewGeschäfteStadtteile.TabIndex = 3
+        '
+        'LabelGeschäfteNachStadtteilen
+        '
+        Me.LabelGeschäfteNachStadtteilen.AutoSize = True
+        Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(320, 30)
+        Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
+        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(211, 20)
+        Me.LabelGeschäfteNachStadtteilen.TabIndex = 4
+        Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
         '
         'FormMain
         '
@@ -415,6 +446,7 @@ Partial Class FormMain
         Me.TabPage1.ResumeLayout(False)
         CType(Me.webView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -448,4 +480,7 @@ Partial Class FormMain
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents btnbla As Button
     Friend WithEvents TreeViewGeschäfteKategorien As TreeView
+    Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
+    Friend WithEvents LabelGeschäfteNachKategorien As Label
+    Friend WithEvents LabelGeschäfteNachStadtteilen As Label
 End Class
