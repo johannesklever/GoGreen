@@ -1,6 +1,7 @@
 ﻿Public Class FormMain
     Dim rsGeschäfte As ADODB.Recordset
     Dim rsKategorie As ADODB.Recordset
+    Dim rsStadtteile As ADODB.Recordset
     Dim conn As ADODB.Connection
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -9,10 +10,11 @@
         panelMeinBereichSubMenu.Visible = False
         rsGeschäfte = New ADODB.Recordset
         rsKategorie = New ADODB.Recordset
+        rsStadtteile = New ADODB.Recordset
 
-        Try
+        'Try
 
-            conn = New ADODB.Connection
+        conn = New ADODB.Connection
             conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
             rsKategorie.Open("SELECT * FROM Kategorien",
@@ -35,27 +37,30 @@
             Loop
 
             'Treeview Geschäfte nach Stadtteilen
-            'D
-            'Do While Not rsKategorie.EOF
-            '    Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
-            '    rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
-            '            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            '    If rsGeschäfte.RecordCount > 0 Then
-            '        Do While Not rsGeschäfte.EOF
-            '            ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-            '            rsGeschäfte.MoveNext()
-            '        Loop
-            '    End If
-            '    rsGeschäfte.Close()
-            '    rsKategorie.MoveNext()
-            'Loop
+            rsStadtteile.Open("SELECT * FROM Stadtteile",
+                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+            Do While Not rsStadtteile.EOF
+            Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
+            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
+                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+                If rsGeschäfte.RecordCount > 0 Then
+                    Do While Not rsGeschäfte.EOF
+                        ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
+                        rsGeschäfte.MoveNext()
+                    Loop
+                End If
+                rsGeschäfte.Close()
+                rsStadtteile.MoveNext()
+            Loop
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
 
-        End Try
+        'End Try
 
     End Sub
 
