@@ -46,18 +46,18 @@ Partial Class Landingpage
         '
         Me.Label_email.AutoSize = True
         Me.Label_email.BackColor = System.Drawing.Color.Transparent
-        Me.Label_email.Location = New System.Drawing.Point(443, 78)
+        Me.Label_email.Location = New System.Drawing.Point(403, 78)
         Me.Label_email.Name = "Label_email"
-        Me.Label_email.Size = New System.Drawing.Size(79, 25)
+        Me.Label_email.Size = New System.Drawing.Size(151, 25)
         Me.Label_email.TabIndex = 1
-        Me.Label_email.Text = "E-Mail:"
+        Me.Label_email.Text = "Benutzername"
         '
         'Label_passwort
         '
         Me.Label_passwort.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label_passwort.AutoSize = True
         Me.Label_passwort.BackColor = System.Drawing.Color.Transparent
-        Me.Label_passwort.Location = New System.Drawing.Point(443, 178)
+        Me.Label_passwort.Location = New System.Drawing.Point(460, 181)
         Me.Label_passwort.Name = "Label_passwort"
         Me.Label_passwort.Size = New System.Drawing.Size(100, 25)
         Me.Label_passwort.TabIndex = 2

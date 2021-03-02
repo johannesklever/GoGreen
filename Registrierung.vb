@@ -31,13 +31,14 @@ Public Class Registrierung
     End Sub
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Registrieren.Click
 
-        Call ValidatePassword()
+        'Call ValidatePassword()
 
         If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text And ValidatePassword() = True Then
+            rs.MoveLast()
             rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
-            rs.Fields("Passwort").Value = TextBox_NeuesPasswort
-
-            MsgBox("Account erstellt")
+            rs.Fields("Passwort").Value = TextBox_NeuesPasswort.Text
+            rs.Update()
+            MsgBox("Account erfolgreich erstellt")
             Me.Hide()
             Landingpage.ShowDialog()
         Else

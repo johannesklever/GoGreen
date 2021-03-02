@@ -52,33 +52,29 @@ Public Class Landingpage
         Dim rs_KID As ADODB.Recordset
         rs_KID = New ADODB.Recordset
         Dim KID As Integer
-        Dim fieldsArray(5) As Object
-        Dim valuesArray(5) As Object
+        Dim fieldsArray(2) As Object
+        Dim valuesArray(2) As Object
 
         rs_KID.Open("SELECT MAX(Kunden_ID) AS MKID FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
         KID = rs_KID.Fields("MKID").Value + 1
 
         fieldsArray(0) = "Kunden_ID"
-        fieldsArray(4) = "Benutzername"
+        fieldsArray(1) = "Benutzername"
         'fieldsArray(2) = "Geburtsdatum"
         'fieldsArray(3) = "Anschrift"
         'fieldsArray(4) = "Benutzername"
-        fieldsArray(5) = "Passwort"
+        fieldsArray(2) = "Passwort"
 
         valuesArray(0) = KID
-        valuesArray(4) = ""
+        valuesArray(1) = ""
         'valuesArray(2) = ""
         'valuesArray(3) = ""
         'valuesArray(4) = ""
-        valuesArray(5) = ""
+        valuesArray(2) = ""
 
-        rs.AddNew(fieldsArray(0), valuesArray(0))
-        rs.AddNew(fieldsArray(4), valuesArray(4))
-        rs.AddNew(fieldsArray(5), valuesArray(5))
-        'rs.AddNew(fieldsArray(3), valuesArray(3))
-        'rs.AddNew(fieldsArray(4), valuesArray(4))
-        'rs.AddNew(fieldsArray(5), valuesArray(5))
+        rs.AddNew(fieldsArray, valuesArray)
+
 
         rs.Update()
 
