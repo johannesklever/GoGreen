@@ -21,12 +21,7 @@ Public Class Landingpage
             If rs.RecordCount > 0 Then
                 rs.MoveFirst()
 
-                'Call Datenausgabe()
 
-                'Do While Not rs.EOF
-                '    'MsgBox(CStr(rs.Fields("Nachname").Value))
-                '    rs.MoveNext()
-                'Loop
             Else
                 MsgBox("Keine Daten gefunden!")
             End If
@@ -53,8 +48,46 @@ Public Class Landingpage
     End Sub
 
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Kontoanlegen.Click
+
+        Dim rs_KID As ADODB.Recordset
+        rs_KID = New ADODB.Recordset
+        Dim KID As Integer
+        Dim fieldsArray(5) As Object
+        Dim valuesArray(5) As Object
+
+        rs_KID.Open("SELECT MAX(Kunden_ID) AS MKID FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+        KID = rs_KID.Fields("MKID").Value + 1
+
+        fieldsArray(0) = "Kunden_ID"
+        fieldsArray(4) = "Benutzername"
+        'fieldsArray(2) = "Geburtsdatum"
+        'fieldsArray(3) = "Anschrift"
+        'fieldsArray(4) = "Benutzername"
+        fieldsArray(5) = "Passwort"
+
+        valuesArray(0) = KID
+        valuesArray(4) = ""
+        'valuesArray(2) = ""
+        'valuesArray(3) = ""
+        'valuesArray(4) = ""
+        valuesArray(5) = ""
+
+        rs.AddNew(fieldsArray(0), valuesArray(0))
+        rs.AddNew(fieldsArray(4), valuesArray(4))
+        rs.AddNew(fieldsArray(5), valuesArray(5))
+        'rs.AddNew(fieldsArray(3), valuesArray(3))
+        'rs.AddNew(fieldsArray(4), valuesArray(4))
+        'rs.AddNew(fieldsArray(5), valuesArray(5))
+
+        rs.Update()
+
         Me.Hide()
         Registrierung.ShowDialog()
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class
 
