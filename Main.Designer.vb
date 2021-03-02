@@ -44,7 +44,7 @@ Partial Class FormMain
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TreeView1 = New System.Windows.Forms.TreeView()
+        Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
@@ -86,7 +86,7 @@ Partial Class FormMain
         Me.btnHelp.Location = New System.Drawing.Point(0, 608)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHelp.Size = New System.Drawing.Size(216, 45)
+        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
         Me.btnHelp.TabIndex = 8
         Me.btnHelp.Text = "Help"
         Me.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -101,7 +101,7 @@ Partial Class FormMain
         Me.btnAbout.Location = New System.Drawing.Point(0, 563)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnAbout.Size = New System.Drawing.Size(216, 45)
+        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
         Me.btnAbout.TabIndex = 6
         Me.btnAbout.Text = "About"
         Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -116,7 +116,7 @@ Partial Class FormMain
         Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
         Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
         Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(216, 45)
+        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
         Me.btnProgrammeinstellungen.TabIndex = 5
         Me.btnProgrammeinstellungen.Text = "Programmeinstellungen"
         Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -132,7 +132,7 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelMeinBereichSubMenu.Location = New System.Drawing.Point(0, 354)
         Me.panelMeinBereichSubMenu.Name = "panelMeinBereichSubMenu"
-        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(216, 164)
+        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(229, 164)
         Me.panelMeinBereichSubMenu.TabIndex = 4
         '
         'Button6
@@ -144,7 +144,7 @@ Partial Class FormMain
         Me.Button6.Location = New System.Drawing.Point(0, 120)
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(216, 40)
+        Me.Button6.Size = New System.Drawing.Size(229, 40)
         Me.Button6.TabIndex = 3
         Me.Button6.Text = "Button6"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -159,7 +159,7 @@ Partial Class FormMain
         Me.Button7.Location = New System.Drawing.Point(0, 80)
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(216, 40)
+        Me.Button7.Size = New System.Drawing.Size(229, 40)
         Me.Button7.TabIndex = 2
         Me.Button7.Text = "Button7"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -174,7 +174,7 @@ Partial Class FormMain
         Me.btnUserSettings.Location = New System.Drawing.Point(0, 40)
         Me.btnUserSettings.Name = "btnUserSettings"
         Me.btnUserSettings.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnUserSettings.Size = New System.Drawing.Size(216, 40)
+        Me.btnUserSettings.Size = New System.Drawing.Size(229, 40)
         Me.btnUserSettings.TabIndex = 1
         Me.btnUserSettings.Text = "User Settings"
         Me.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -189,7 +189,7 @@ Partial Class FormMain
         Me.btnFavorit.Location = New System.Drawing.Point(0, 0)
         Me.btnFavorit.Name = "btnFavorit"
         Me.btnFavorit.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnFavorit.Size = New System.Drawing.Size(216, 40)
+        Me.btnFavorit.Size = New System.Drawing.Size(229, 40)
         Me.btnFavorit.TabIndex = 0
         Me.btnFavorit.Text = "Favoriten"
         Me.btnFavorit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -204,7 +204,7 @@ Partial Class FormMain
         Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
         Me.btnMeinBereich.Name = "btnMeinBereich"
         Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnMeinBereich.Size = New System.Drawing.Size(216, 45)
+        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
         Me.btnMeinBereich.TabIndex = 3
         Me.btnMeinBereich.Text = "Mein Bereich"
         Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -220,7 +220,7 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
-        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(216, 164)
+        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(229, 164)
         Me.panelGeschaefteSubmenu.TabIndex = 2
         '
         'btnBekleidungslaeden
@@ -232,7 +232,7 @@ Partial Class FormMain
         Me.btnBekleidungslaeden.Location = New System.Drawing.Point(0, 120)
         Me.btnBekleidungslaeden.Name = "btnBekleidungslaeden"
         Me.btnBekleidungslaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(216, 40)
+        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(229, 40)
         Me.btnBekleidungslaeden.TabIndex = 3
         Me.btnBekleidungslaeden.Text = "Bekleidungsläden"
         Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -247,7 +247,7 @@ Partial Class FormMain
         Me.btnBauernhoefe.Location = New System.Drawing.Point(0, 80)
         Me.btnBauernhoefe.Name = "btnBauernhoefe"
         Me.btnBauernhoefe.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBauernhoefe.Size = New System.Drawing.Size(216, 40)
+        Me.btnBauernhoefe.Size = New System.Drawing.Size(229, 40)
         Me.btnBauernhoefe.TabIndex = 2
         Me.btnBauernhoefe.Text = "Bauernhöfe"
         Me.btnBauernhoefe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -262,7 +262,7 @@ Partial Class FormMain
         Me.btnBiolaeden.Location = New System.Drawing.Point(0, 40)
         Me.btnBiolaeden.Name = "btnBiolaeden"
         Me.btnBiolaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBiolaeden.Size = New System.Drawing.Size(216, 40)
+        Me.btnBiolaeden.Size = New System.Drawing.Size(229, 40)
         Me.btnBiolaeden.TabIndex = 1
         Me.btnBiolaeden.Text = "Bioläden"
         Me.btnBiolaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -277,7 +277,7 @@ Partial Class FormMain
         Me.btnAlleGeschaefte.Location = New System.Drawing.Point(0, 0)
         Me.btnAlleGeschaefte.Name = "btnAlleGeschaefte"
         Me.btnAlleGeschaefte.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnAlleGeschaefte.Size = New System.Drawing.Size(216, 40)
+        Me.btnAlleGeschaefte.Size = New System.Drawing.Size(229, 40)
         Me.btnAlleGeschaefte.TabIndex = 0
         Me.btnAlleGeschaefte.Text = "Zeig alle Geschäfte"
         Me.btnAlleGeschaefte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -293,7 +293,7 @@ Partial Class FormMain
         Me.btnGeschaefte.Location = New System.Drawing.Point(0, 100)
         Me.btnGeschaefte.Name = "btnGeschaefte"
         Me.btnGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnGeschaefte.Size = New System.Drawing.Size(216, 45)
+        Me.btnGeschaefte.Size = New System.Drawing.Size(229, 45)
         Me.btnGeschaefte.TabIndex = 1
         Me.btnGeschaefte.Text = "Geschäfte"
         Me.btnGeschaefte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -304,7 +304,7 @@ Partial Class FormMain
         Me.panelLogo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelLogo.Location = New System.Drawing.Point(0, 0)
         Me.panelLogo.Name = "panelLogo"
-        Me.panelLogo.Size = New System.Drawing.Size(216, 100)
+        Me.panelLogo.Size = New System.Drawing.Size(229, 100)
         Me.panelLogo.TabIndex = 0
         '
         'panelContent
@@ -334,10 +334,10 @@ Partial Class FormMain
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.webView)
-        Me.TabPage1.Location = New System.Drawing.Point(8, 45)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(631, 497)
+        Me.TabPage1.Size = New System.Drawing.Size(639, 517)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -358,22 +358,22 @@ Partial Class FormMain
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.TreeView1)
+        Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteKategorien)
         Me.TabPage2.Controls.Add(Me.btnbla)
-        Me.TabPage2.Location = New System.Drawing.Point(8, 45)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(631, 497)
+        Me.TabPage2.Size = New System.Drawing.Size(639, 517)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'TreeView1
+        'TreeViewGeschäfteKategorien
         '
-        Me.TreeView1.Location = New System.Drawing.Point(49, 58)
-        Me.TreeView1.Name = "TreeView1"
-        Me.TreeView1.Size = New System.Drawing.Size(442, 368)
-        Me.TreeView1.TabIndex = 1
+        Me.TreeViewGeschäfteKategorien.Location = New System.Drawing.Point(49, 58)
+        Me.TreeViewGeschäfteKategorien.Name = "TreeViewGeschäfteKategorien"
+        Me.TreeViewGeschäfteKategorien.Size = New System.Drawing.Size(442, 368)
+        Me.TreeViewGeschäfteKategorien.TabIndex = 1
         '
         'btnbla
         '
@@ -396,7 +396,7 @@ Partial Class FormMain
         '
         'FormMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(16.0!, 31.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(932, 553)
         Me.Controls.Add(Me.panelContent)
@@ -447,5 +447,5 @@ Partial Class FormMain
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents btnbla As Button
-    Friend WithEvents TreeView1 As TreeView
+    Friend WithEvents TreeViewGeschäfteKategorien As TreeView
 End Class
