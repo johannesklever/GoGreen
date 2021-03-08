@@ -11,6 +11,7 @@ Public Class Registrierung
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rs = New ADODB.Recordset
         rs_Bestellung = New ADODB.Recordset
+
         Try
             conn = New ADODB.Connection
             conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
@@ -28,12 +29,14 @@ Public Class Registrierung
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+
     End Sub
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Registrieren.Click
 
         'Call ValidatePassword()
 
-        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text And ValidatePassword() = True Then
+        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text Then
             rs.MoveLast()
             rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
             rs.Fields("Passwort").Value = TextBox_NeuesPasswort.Text

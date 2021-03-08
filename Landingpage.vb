@@ -1,4 +1,7 @@
 ﻿Imports System.Windows.Forms
+Public Module Test123
+    Public TestVar As String
+End Module
 
 Public Class Landingpage
 
@@ -8,6 +11,9 @@ Public Class Landingpage
     Dim rs_Bestellung As ADODB.Recordset
     Dim conn As ADODB.Connection
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+
         rs = New ADODB.Recordset
         rs_Bestellung = New ADODB.Recordset
         Try
@@ -38,12 +44,13 @@ Public Class Landingpage
             Me.Hide()
             'MsgBox("Angemeldet")
             FormMain.ShowDialog()
-
+            Test123.TestVar = "3"                      'CStr(rs.Fields("Benutzername").Value)
         Else
             MsgBox("Falsche Anmeldedaten")
             TextBox_email.Clear()
             TextBox_passwort.Clear()
         End If
+
     End Sub
 
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Kontoanlegen.Click
@@ -81,8 +88,5 @@ Public Class Landingpage
         Registrierung.ShowDialog()
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
-
-    End Sub
 End Class
 

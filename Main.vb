@@ -5,7 +5,7 @@
     Dim conn As ADODB.Connection
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Dim TestVar2 As String
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
         rsGeschäfte = New ADODB.Recordset
@@ -61,6 +61,8 @@
         '    MsgBox(ex.Message)
 
         'End Try
+        TestVar2 = Test123.TestVar
+        MsgBox(TestVar2)
 
     End Sub
 
