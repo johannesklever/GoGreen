@@ -21,7 +21,6 @@ Public Class Landingpage
             If rs.RecordCount > 0 Then
                 rs.MoveFirst()
 
-
             Else
                 MsgBox("Keine Daten gefunden!")
             End If
@@ -37,9 +36,9 @@ Public Class Landingpage
 
         If CStr(rs.Fields("Benutzername").Value) = TextBox_email.Text And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
             Me.Hide()
-            MsgBox("Angemeldet")
-
+            'MsgBox("Angemeldet")
             FormMain.ShowDialog()
+
         Else
             MsgBox("Falsche Anmeldedaten")
             TextBox_email.Clear()
