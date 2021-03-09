@@ -1,6 +1,6 @@
 ﻿Imports System.Windows.Forms
-Public Module Test123
-    Public TestVar As String
+Public Module Übergabe
+    Public LoggedUserID As Integer
 End Module
 
 Public Class Landingpage
@@ -15,7 +15,7 @@ Public Class Landingpage
 
 
         rs = New ADODB.Recordset
-        rs_Bestellung = New ADODB.Recordset
+        'rs_Bestellung = New ADODB.Recordset
         Try
             conn = New ADODB.Connection
             conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
@@ -39,12 +39,21 @@ Public Class Landingpage
     End Sub
 
     Private Sub Button_Login_Click(sender As Object, e As EventArgs) Handles Button_Login.Click
-
+        Dim Benutzername As String
+        'MoveFirst
+        'RsFind Benutzername 
+        'Passwort überprüfen 
+        'Wenn benutzer nicht gefunden wird, dann der Variablen
         If CStr(rs.Fields("Benutzername").Value) = TextBox_email.Text And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
+            Benutzername = TextBox_email.Text
+            'rs.Move()
+            'rs.MoveFirst()
+            'rs.Find(Benutzername)
+            Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
             Me.Hide()
             'MsgBox("Angemeldet")
             FormMain.ShowDialog()
-            Test123.TestVar = "3"                      'CStr(rs.Fields("Benutzername").Value)
+            'CStr(rs.Fields("Benutzername").Value)
         Else
             MsgBox("Falsche Anmeldedaten")
             TextBox_email.Clear()
@@ -80,8 +89,6 @@ Public Class Landingpage
         valuesArray(2) = ""
 
         rs.AddNew(fieldsArray, valuesArray)
-
-
         rs.Update()
 
         Me.Hide()

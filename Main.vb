@@ -5,7 +5,6 @@
     Dim conn As ADODB.Connection
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim TestVar2 As String
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
         rsGeschäfte = New ADODB.Recordset
@@ -15,54 +14,54 @@
         'Try
 
         conn = New ADODB.Connection
-            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
+        conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-            rsKategorie.Open("SELECT * FROM Kategorien",
+        rsKategorie.Open("SELECT * FROM Kategorien",
+                conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+        'Treeview Geschäfte nach Kategorien
+        Do While Not rsKategorie.EOF
+            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
+            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
                     conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            'Treeview Geschäfte nach Kategorien
-            Do While Not rsKategorie.EOF
-                Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
-                rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
-                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            If rsGeschäfte.RecordCount > 0 Then
+                Do While Not rsGeschäfte.EOF
+                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
+                    rsGeschäfte.MoveNext()
+                Loop
+            End If
+            rsGeschäfte.Close()
+            rsKategorie.MoveNext()
+        Loop
 
-                If rsGeschäfte.RecordCount > 0 Then
-                    Do While Not rsGeschäfte.EOF
-                        ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                        rsGeschäfte.MoveNext()
-                    Loop
-                End If
-                rsGeschäfte.Close()
-                rsKategorie.MoveNext()
-            Loop
+        'Treeview Geschäfte nach Stadtteilen
 
-            'Treeview Geschäfte nach Stadtteilen
+        rsStadtteile.Open("SELECT * FROM Stadtteile",
+                conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            rsStadtteile.Open("SELECT * FROM Stadtteile",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
-            Do While Not rsStadtteile.EOF
+        Do While Not rsStadtteile.EOF
             Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
             rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
                         conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-                If rsGeschäfte.RecordCount > 0 Then
-                    Do While Not rsGeschäfte.EOF
-                        ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                        rsGeschäfte.MoveNext()
-                    Loop
-                End If
-                rsGeschäfte.Close()
-                rsStadtteile.MoveNext()
-            Loop
+            If rsGeschäfte.RecordCount > 0 Then
+                Do While Not rsGeschäfte.EOF
+                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
+                    rsGeschäfte.MoveNext()
+                Loop
+            End If
+            rsGeschäfte.Close()
+            rsStadtteile.MoveNext()
+        Loop
 
 
         'Catch ex As Exception
         '    MsgBox(ex.Message)
 
         'End Try
-        TestVar2 = Test123.TestVar
-        MsgBox(TestVar2)
+
+        MsgBox(Übergabe.LoggedUserID)
 
     End Sub
 
