@@ -114,5 +114,12 @@
 
     End Sub
 
+    Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click
+        Me.TabControl1.SelectedTab = TabPageUser()
 
+    End Sub
+
+    Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
+        Me.TabControl1.SelectedTab = TabPageFavoriten()
+    End Sub
 End Class

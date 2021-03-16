@@ -11,9 +11,6 @@ Public Class Landingpage
     Dim rs_Bestellung As ADODB.Recordset
     Dim conn As ADODB.Connection
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-
         rs = New ADODB.Recordset
         'rs_Bestellung = New ADODB.Recordset
         Try
@@ -50,18 +47,16 @@ Public Class Landingpage
         rs.Find("Benutzername LIKE '" & Textbox_email.Text & "'")
         Benutzername = TextBox_email.Text
         If Not rs.EOF Then
-            MsgBox(Benutzername)
+            'MsgBox(Benutzername)
             BenutzernameSuche = True
+        Else
+            BenutzernameSuche = False
         End If
 
 
         If BenutzernameSuche = True And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
-            'rs.Move()
-            'rs.MoveFirst()
-            'rs.Find(Benutzername)
             Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
             Me.Hide()
-            'MsgBox("Angemeldet")
             FormMain.ShowDialog()
             'CStr(rs.Fields("Benutzername").Value)
         Else

@@ -44,13 +44,15 @@ Partial Class FormMain
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
+        Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
+        Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
-        Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
-        Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
+        Me.TabPageUser = New System.Windows.Forms.TabPage()
+        Me.TabPageFavoriten = New System.Windows.Forms.TabPage()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -89,7 +91,7 @@ Partial Class FormMain
         Me.btnHelp.Location = New System.Drawing.Point(0, 608)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
+        Me.btnHelp.Size = New System.Drawing.Size(216, 45)
         Me.btnHelp.TabIndex = 8
         Me.btnHelp.Text = "Help"
         Me.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -104,7 +106,7 @@ Partial Class FormMain
         Me.btnAbout.Location = New System.Drawing.Point(0, 563)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
+        Me.btnAbout.Size = New System.Drawing.Size(216, 45)
         Me.btnAbout.TabIndex = 6
         Me.btnAbout.Text = "About"
         Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -119,7 +121,7 @@ Partial Class FormMain
         Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
         Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
         Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
+        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(216, 45)
         Me.btnProgrammeinstellungen.TabIndex = 5
         Me.btnProgrammeinstellungen.Text = "Programmeinstellungen"
         Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -135,7 +137,7 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelMeinBereichSubMenu.Location = New System.Drawing.Point(0, 354)
         Me.panelMeinBereichSubMenu.Name = "panelMeinBereichSubMenu"
-        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(216, 164)
         Me.panelMeinBereichSubMenu.TabIndex = 4
         '
         'Button6
@@ -147,7 +149,7 @@ Partial Class FormMain
         Me.Button6.Location = New System.Drawing.Point(0, 120)
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(229, 40)
+        Me.Button6.Size = New System.Drawing.Size(216, 40)
         Me.Button6.TabIndex = 3
         Me.Button6.Text = "Button6"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -162,7 +164,7 @@ Partial Class FormMain
         Me.Button7.Location = New System.Drawing.Point(0, 80)
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(229, 40)
+        Me.Button7.Size = New System.Drawing.Size(216, 40)
         Me.Button7.TabIndex = 2
         Me.Button7.Text = "Button7"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -177,7 +179,7 @@ Partial Class FormMain
         Me.btnUserSettings.Location = New System.Drawing.Point(0, 40)
         Me.btnUserSettings.Name = "btnUserSettings"
         Me.btnUserSettings.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnUserSettings.Size = New System.Drawing.Size(229, 40)
+        Me.btnUserSettings.Size = New System.Drawing.Size(216, 40)
         Me.btnUserSettings.TabIndex = 1
         Me.btnUserSettings.Text = "User Settings"
         Me.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -192,7 +194,7 @@ Partial Class FormMain
         Me.btnFavorit.Location = New System.Drawing.Point(0, 0)
         Me.btnFavorit.Name = "btnFavorit"
         Me.btnFavorit.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnFavorit.Size = New System.Drawing.Size(229, 40)
+        Me.btnFavorit.Size = New System.Drawing.Size(216, 40)
         Me.btnFavorit.TabIndex = 0
         Me.btnFavorit.Text = "Favoriten"
         Me.btnFavorit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -207,7 +209,7 @@ Partial Class FormMain
         Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
         Me.btnMeinBereich.Name = "btnMeinBereich"
         Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
+        Me.btnMeinBereich.Size = New System.Drawing.Size(216, 45)
         Me.btnMeinBereich.TabIndex = 3
         Me.btnMeinBereich.Text = "Mein Bereich"
         Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -223,7 +225,7 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
-        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(216, 164)
         Me.panelGeschaefteSubmenu.TabIndex = 2
         '
         'btnBekleidungslaeden
@@ -235,7 +237,7 @@ Partial Class FormMain
         Me.btnBekleidungslaeden.Location = New System.Drawing.Point(0, 120)
         Me.btnBekleidungslaeden.Name = "btnBekleidungslaeden"
         Me.btnBekleidungslaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(229, 40)
+        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(216, 40)
         Me.btnBekleidungslaeden.TabIndex = 3
         Me.btnBekleidungslaeden.Text = "Bekleidungsläden"
         Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -250,7 +252,7 @@ Partial Class FormMain
         Me.btnBauernhoefe.Location = New System.Drawing.Point(0, 80)
         Me.btnBauernhoefe.Name = "btnBauernhoefe"
         Me.btnBauernhoefe.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBauernhoefe.Size = New System.Drawing.Size(229, 40)
+        Me.btnBauernhoefe.Size = New System.Drawing.Size(216, 40)
         Me.btnBauernhoefe.TabIndex = 2
         Me.btnBauernhoefe.Text = "Bauernhöfe"
         Me.btnBauernhoefe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -265,7 +267,7 @@ Partial Class FormMain
         Me.btnBiolaeden.Location = New System.Drawing.Point(0, 40)
         Me.btnBiolaeden.Name = "btnBiolaeden"
         Me.btnBiolaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBiolaeden.Size = New System.Drawing.Size(229, 40)
+        Me.btnBiolaeden.Size = New System.Drawing.Size(216, 40)
         Me.btnBiolaeden.TabIndex = 1
         Me.btnBiolaeden.Text = "Bioläden"
         Me.btnBiolaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -280,7 +282,7 @@ Partial Class FormMain
         Me.btnAlleGeschaefte.Location = New System.Drawing.Point(0, 0)
         Me.btnAlleGeschaefte.Name = "btnAlleGeschaefte"
         Me.btnAlleGeschaefte.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnAlleGeschaefte.Size = New System.Drawing.Size(229, 40)
+        Me.btnAlleGeschaefte.Size = New System.Drawing.Size(216, 40)
         Me.btnAlleGeschaefte.TabIndex = 0
         Me.btnAlleGeschaefte.Text = "Zeig alle Geschäfte"
         Me.btnAlleGeschaefte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -296,7 +298,7 @@ Partial Class FormMain
         Me.btnGeschaefte.Location = New System.Drawing.Point(0, 100)
         Me.btnGeschaefte.Name = "btnGeschaefte"
         Me.btnGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnGeschaefte.Size = New System.Drawing.Size(229, 45)
+        Me.btnGeschaefte.Size = New System.Drawing.Size(216, 45)
         Me.btnGeschaefte.TabIndex = 1
         Me.btnGeschaefte.Text = "Geschäfte"
         Me.btnGeschaefte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -307,7 +309,7 @@ Partial Class FormMain
         Me.panelLogo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelLogo.Location = New System.Drawing.Point(0, 0)
         Me.panelLogo.Name = "panelLogo"
-        Me.panelLogo.Size = New System.Drawing.Size(229, 100)
+        Me.panelLogo.Size = New System.Drawing.Size(216, 100)
         Me.panelLogo.TabIndex = 0
         '
         'panelContent
@@ -326,8 +328,10 @@ Partial Class FormMain
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPageUser)
+        Me.TabControl1.Controls.Add(Me.TabPageFavoriten)
         Me.TabControl1.Location = New System.Drawing.Point(0, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -337,10 +341,10 @@ Partial Class FormMain
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.webView)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage1.Location = New System.Drawing.Point(8, 45)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage1.Size = New System.Drawing.Size(631, 497)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -366,13 +370,38 @@ Partial Class FormMain
         Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachKategorien)
         Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteKategorien)
         Me.TabPage2.Controls.Add(Me.btnbla)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage2.Location = New System.Drawing.Point(8, 45)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage2.Size = New System.Drawing.Size(631, 497)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'LabelGeschäfteNachStadtteilen
+        '
+        Me.LabelGeschäfteNachStadtteilen.AutoSize = True
+        Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(320, 30)
+        Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
+        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(341, 31)
+        Me.LabelGeschäfteNachStadtteilen.TabIndex = 4
+        Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
+        '
+        'TreeViewGeschäfteStadtteile
+        '
+        Me.TreeViewGeschäfteStadtteile.Location = New System.Drawing.Point(320, 58)
+        Me.TreeViewGeschäfteStadtteile.Name = "TreeViewGeschäfteStadtteile"
+        Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
+        Me.TreeViewGeschäfteStadtteile.TabIndex = 3
+        '
+        'LabelGeschäfteNachKategorien
+        '
+        Me.LabelGeschäfteNachKategorien.AutoSize = True
+        Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
+        Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
+        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(343, 31)
+        Me.LabelGeschäfteNachKategorien.TabIndex = 2
+        Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
         '
         'TreeViewGeschäfteKategorien
         '
@@ -400,34 +429,27 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'LabelGeschäfteNachKategorien
+        'TabPageUser
         '
-        Me.LabelGeschäfteNachKategorien.AutoSize = True
-        Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
-        Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
-        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(212, 20)
-        Me.LabelGeschäfteNachKategorien.TabIndex = 2
-        Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
+        Me.TabPageUser.Location = New System.Drawing.Point(8, 45)
+        Me.TabPageUser.Name = "TabPageUser"
+        Me.TabPageUser.Size = New System.Drawing.Size(631, 497)
+        Me.TabPageUser.TabIndex = 2
+        Me.TabPageUser.Text = "User"
+        Me.TabPageUser.UseVisualStyleBackColor = True
         '
-        'TreeViewGeschäfteStadtteile
+        'TabPageFavoriten
         '
-        Me.TreeViewGeschäfteStadtteile.Location = New System.Drawing.Point(320, 58)
-        Me.TreeViewGeschäfteStadtteile.Name = "TreeViewGeschäfteStadtteile"
-        Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
-        Me.TreeViewGeschäfteStadtteile.TabIndex = 3
-        '
-        'LabelGeschäfteNachStadtteilen
-        '
-        Me.LabelGeschäfteNachStadtteilen.AutoSize = True
-        Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(320, 30)
-        Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
-        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(211, 20)
-        Me.LabelGeschäfteNachStadtteilen.TabIndex = 4
-        Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
+        Me.TabPageFavoriten.Location = New System.Drawing.Point(8, 45)
+        Me.TabPageFavoriten.Name = "TabPageFavoriten"
+        Me.TabPageFavoriten.Size = New System.Drawing.Size(631, 497)
+        Me.TabPageFavoriten.TabIndex = 3
+        Me.TabPageFavoriten.Text = "Favoriten"
+        Me.TabPageFavoriten.UseVisualStyleBackColor = True
         '
         'FormMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(16.0!, 31.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(932, 553)
         Me.Controls.Add(Me.panelContent)
@@ -483,4 +505,6 @@ Partial Class FormMain
     Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
     Friend WithEvents LabelGeschäfteNachKategorien As Label
     Friend WithEvents LabelGeschäfteNachStadtteilen As Label
+    Friend WithEvents TabPageUser As TabPage
+    Friend WithEvents TabPageFavoriten As TabPage
 End Class
