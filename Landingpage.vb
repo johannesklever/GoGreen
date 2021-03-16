@@ -40,12 +40,22 @@ Public Class Landingpage
 
     Private Sub Button_Login_Click(sender As Object, e As EventArgs) Handles Button_Login.Click
         Dim Benutzername As String
+        Dim BenutzernameSuche As Boolean
+
         'MoveFirst
         'RsFind Benutzername 
         'Passwort überprüfen 
         'Wenn benutzer nicht gefunden wird, dann der Variablen
-        If CStr(rs.Fields("Benutzername").Value) = TextBox_email.Text And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
-            Benutzername = TextBox_email.Text
+        rs.MoveFirst()
+        rs.Find("Benutzername LIKE '" & Textbox_email.Text & "'")
+        Benutzername = TextBox_email.Text
+        If Not rs.EOF Then
+            MsgBox(Benutzername)
+            BenutzernameSuche = True
+        End If
+
+
+        If BenutzernameSuche = True And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
             'rs.Move()
             'rs.MoveFirst()
             'rs.Find(Benutzername)
