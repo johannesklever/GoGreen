@@ -33,7 +33,7 @@ Public Class Registrierung
 
         'Call ValidatePassword()
 
-        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text And ValidatePassword() = True Then
+        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text Then  'And ValidatePassword() = True
             rs.MoveLast()
             rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
             rs.Fields("Passwort").Value = TextBox_NeuesPasswort.Text

@@ -33,21 +33,21 @@ Public Class Landingpage
         End Try
     End Sub
 
-    Private Sub Button_Login_Click(sender As Object, e As EventArgs) Handles Button_Login.Click
+    Private Sub Button_Login_Click(sender As Object, e As EventArgs) Handles buttonLogin.Click
 
-        If CStr(rs.Fields("Benutzername").Value) = TextBox_email.Text And CStr(rs.Fields("Passwort").Value) = TextBox_passwort.Text Then
+        If CStr(rs.Fields("Benutzername").Value) = textBoxEmail.Text And CStr(rs.Fields("Passwort").Value) = textBoxPasswort.Text Then
             Me.Hide()
             MsgBox("Angemeldet")
 
             FormMain.ShowDialog()
         Else
             MsgBox("Falsche Anmeldedaten")
-            TextBox_email.Clear()
-            TextBox_passwort.Clear()
+            textBoxEmail.Clear()
+            textBoxPasswort.Clear()
         End If
     End Sub
 
-    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Kontoanlegen.Click
+    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles buttonKontoanlegen.Click
 
         Dim rs_KID As ADODB.Recordset
         rs_KID = New ADODB.Recordset
