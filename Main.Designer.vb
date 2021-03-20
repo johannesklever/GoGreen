@@ -35,8 +35,8 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu = New System.Windows.Forms.Panel()
         Me.btnBekleidungslaeden = New System.Windows.Forms.Button()
         Me.btnBauernhoefe = New System.Windows.Forms.Button()
-        Me.btnBiolaeden = New System.Windows.Forms.Button()
-        Me.btnAlleGeschaefte = New System.Windows.Forms.Button()
+        Me.btnSideMenuStadtteile = New System.Windows.Forms.Button()
+        Me.btnSideMenuKategorien = New System.Windows.Forms.Button()
         Me.btnGeschaefte = New System.Windows.Forms.Button()
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.panelContent = New System.Windows.Forms.Panel()
@@ -44,13 +44,21 @@ Partial Class FormMain
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.webView = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.textBoxShopEinzelansichtOeffnungszeit = New System.Windows.Forms.TextBox()
+        Me.textBoxShopEinzelansichtAdresse = New System.Windows.Forms.TextBox()
+        Me.textBoxShopEinzelansichtTelefonnummer = New System.Windows.Forms.TextBox()
+        Me.textBoxShopEinzelansichtKategorie = New System.Windows.Forms.TextBox()
+        Me.textBoxShopEinzelansichtBezeichnung = New System.Windows.Forms.TextBox()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
+        Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
-        Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
-        Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -59,6 +67,8 @@ Partial Class FormMain
         Me.TabPage1.SuspendLayout()
         CType(Me.webView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.TabPage4.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -218,8 +228,8 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.panelGeschaefteSubmenu.Controls.Add(Me.btnBekleidungslaeden)
         Me.panelGeschaefteSubmenu.Controls.Add(Me.btnBauernhoefe)
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnBiolaeden)
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnAlleGeschaefte)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnSideMenuStadtteile)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnSideMenuKategorien)
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
@@ -256,35 +266,35 @@ Partial Class FormMain
         Me.btnBauernhoefe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBauernhoefe.UseVisualStyleBackColor = True
         '
-        'btnBiolaeden
+        'btnSideMenuStadtteile
         '
-        Me.btnBiolaeden.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnBiolaeden.FlatAppearance.BorderSize = 0
-        Me.btnBiolaeden.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBiolaeden.ForeColor = System.Drawing.Color.LightGray
-        Me.btnBiolaeden.Location = New System.Drawing.Point(0, 40)
-        Me.btnBiolaeden.Name = "btnBiolaeden"
-        Me.btnBiolaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBiolaeden.Size = New System.Drawing.Size(229, 40)
-        Me.btnBiolaeden.TabIndex = 1
-        Me.btnBiolaeden.Text = "Bioläden"
-        Me.btnBiolaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBiolaeden.UseVisualStyleBackColor = True
+        Me.btnSideMenuStadtteile.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnSideMenuStadtteile.FlatAppearance.BorderSize = 0
+        Me.btnSideMenuStadtteile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSideMenuStadtteile.ForeColor = System.Drawing.Color.LightGray
+        Me.btnSideMenuStadtteile.Location = New System.Drawing.Point(0, 40)
+        Me.btnSideMenuStadtteile.Name = "btnSideMenuStadtteile"
+        Me.btnSideMenuStadtteile.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnSideMenuStadtteile.Size = New System.Drawing.Size(229, 40)
+        Me.btnSideMenuStadtteile.TabIndex = 1
+        Me.btnSideMenuStadtteile.Text = "Stadtteile"
+        Me.btnSideMenuStadtteile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSideMenuStadtteile.UseVisualStyleBackColor = True
         '
-        'btnAlleGeschaefte
+        'btnSideMenuKategorien
         '
-        Me.btnAlleGeschaefte.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnAlleGeschaefte.FlatAppearance.BorderSize = 0
-        Me.btnAlleGeschaefte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAlleGeschaefte.ForeColor = System.Drawing.Color.LightGray
-        Me.btnAlleGeschaefte.Location = New System.Drawing.Point(0, 0)
-        Me.btnAlleGeschaefte.Name = "btnAlleGeschaefte"
-        Me.btnAlleGeschaefte.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnAlleGeschaefte.Size = New System.Drawing.Size(229, 40)
-        Me.btnAlleGeschaefte.TabIndex = 0
-        Me.btnAlleGeschaefte.Text = "Zeig alle Geschäfte"
-        Me.btnAlleGeschaefte.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAlleGeschaefte.UseVisualStyleBackColor = True
+        Me.btnSideMenuKategorien.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnSideMenuKategorien.FlatAppearance.BorderSize = 0
+        Me.btnSideMenuKategorien.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSideMenuKategorien.ForeColor = System.Drawing.Color.LightGray
+        Me.btnSideMenuKategorien.Location = New System.Drawing.Point(0, 0)
+        Me.btnSideMenuKategorien.Name = "btnSideMenuKategorien"
+        Me.btnSideMenuKategorien.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnSideMenuKategorien.Size = New System.Drawing.Size(229, 40)
+        Me.btnSideMenuKategorien.TabIndex = 0
+        Me.btnSideMenuKategorien.Text = "Kategorien"
+        Me.btnSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnSideMenuKategorien.UseVisualStyleBackColor = True
         '
         'btnGeschaefte
         '
@@ -328,6 +338,8 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Location = New System.Drawing.Point(0, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -336,6 +348,7 @@ Partial Class FormMain
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.webView)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
@@ -361,8 +374,6 @@ Partial Class FormMain
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
-        Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteStadtteile)
         Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachKategorien)
         Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteKategorien)
         Me.TabPage2.Controls.Add(Me.btnbla)
@@ -373,6 +384,15 @@ Partial Class FormMain
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'LabelGeschäfteNachKategorien
+        '
+        Me.LabelGeschäfteNachKategorien.AutoSize = True
+        Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
+        Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
+        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(212, 20)
+        Me.LabelGeschäfteNachKategorien.TabIndex = 2
+        Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
         '
         'TreeViewGeschäfteKategorien
         '
@@ -390,6 +410,84 @@ Partial Class FormMain
         Me.btnbla.Text = "Button1"
         Me.btnbla.UseVisualStyleBackColor = True
         '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "TabPage3"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'textBoxShopEinzelansichtOeffnungszeit
+        '
+        Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(228, 425)
+        Me.textBoxShopEinzelansichtOeffnungszeit.Name = "textBoxShopEinzelansichtOeffnungszeit"
+        Me.textBoxShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtOeffnungszeit.TabIndex = 4
+        '
+        'textBoxShopEinzelansichtAdresse
+        '
+        Me.textBoxShopEinzelansichtAdresse.Location = New System.Drawing.Point(15, 425)
+        Me.textBoxShopEinzelansichtAdresse.Name = "textBoxShopEinzelansichtAdresse"
+        Me.textBoxShopEinzelansichtAdresse.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtAdresse.TabIndex = 3
+        '
+        'textBoxShopEinzelansichtTelefonnummer
+        '
+        Me.textBoxShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(443, 425)
+        Me.textBoxShopEinzelansichtTelefonnummer.Name = "textBoxShopEinzelansichtTelefonnummer"
+        Me.textBoxShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtTelefonnummer.TabIndex = 2
+        '
+        'textBoxShopEinzelansichtKategorie
+        '
+        Me.textBoxShopEinzelansichtKategorie.Location = New System.Drawing.Point(394, 143)
+        Me.textBoxShopEinzelansichtKategorie.Name = "textBoxShopEinzelansichtKategorie"
+        Me.textBoxShopEinzelansichtKategorie.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtKategorie.TabIndex = 1
+        '
+        'textBoxShopEinzelansichtBezeichnung
+        '
+        Me.textBoxShopEinzelansichtBezeichnung.Location = New System.Drawing.Point(394, 68)
+        Me.textBoxShopEinzelansichtBezeichnung.Name = "textBoxShopEinzelansichtBezeichnung"
+        Me.textBoxShopEinzelansichtBezeichnung.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtBezeichnung.TabIndex = 0
+        '
+        'TabPage4
+        '
+        Me.TabPage4.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
+        Me.TabPage4.Controls.Add(Me.TreeViewGeschäfteStadtteile)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage4.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "TabPage4"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'LabelGeschäfteNachStadtteilen
+        '
+        Me.LabelGeschäfteNachStadtteilen.AutoSize = True
+        Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(49, 25)
+        Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
+        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(211, 20)
+        Me.LabelGeschäfteNachStadtteilen.TabIndex = 6
+        Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
+        '
+        'TreeViewGeschäfteStadtteile
+        '
+        Me.TreeViewGeschäfteStadtteile.Location = New System.Drawing.Point(49, 58)
+        Me.TreeViewGeschäfteStadtteile.Name = "TreeViewGeschäfteStadtteile"
+        Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
+        Me.TreeViewGeschäfteStadtteile.TabIndex = 5
+        '
         'PictureBoxMap
         '
         Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
@@ -400,30 +498,14 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'LabelGeschäfteNachKategorien
+        'Button1
         '
-        Me.LabelGeschäfteNachKategorien.AutoSize = True
-        Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
-        Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
-        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(212, 20)
-        Me.LabelGeschäfteNachKategorien.TabIndex = 2
-        Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
-        '
-        'TreeViewGeschäfteStadtteile
-        '
-        Me.TreeViewGeschäfteStadtteile.Location = New System.Drawing.Point(320, 58)
-        Me.TreeViewGeschäfteStadtteile.Name = "TreeViewGeschäfteStadtteile"
-        Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
-        Me.TreeViewGeschäfteStadtteile.TabIndex = 3
-        '
-        'LabelGeschäfteNachStadtteilen
-        '
-        Me.LabelGeschäfteNachStadtteilen.AutoSize = True
-        Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(320, 30)
-        Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
-        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(211, 20)
-        Me.LabelGeschäfteNachStadtteilen.TabIndex = 4
-        Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
+        Me.Button1.Location = New System.Drawing.Point(329, 486)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 5
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -447,6 +529,10 @@ Partial Class FormMain
         CType(Me.webView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
+        Me.TabPage4.ResumeLayout(False)
+        Me.TabPage4.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -454,12 +540,12 @@ Partial Class FormMain
 
     Friend WithEvents panelSideMenu As Panel
     Friend WithEvents panelGeschaefteSubmenu As Panel
-    Friend WithEvents btnAlleGeschaefte As Button
+    Friend WithEvents btnSideMenuKategorien As Button
     Friend WithEvents btnGeschaefte As Button
     Friend WithEvents panelLogo As Panel
     Friend WithEvents btnBekleidungslaeden As Button
     Friend WithEvents btnBauernhoefe As Button
-    Friend WithEvents btnBiolaeden As Button
+    Friend WithEvents btnSideMenuStadtteile As Button
 
     Friend WithEvents btnHelp As Button
     Friend WithEvents btnAbout As Button
@@ -480,7 +566,15 @@ Partial Class FormMain
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents btnbla As Button
     Friend WithEvents TreeViewGeschäfteKategorien As TreeView
-    Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
     Friend WithEvents LabelGeschäfteNachKategorien As Label
+    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents textBoxShopEinzelansichtBezeichnung As TextBox
+    Friend WithEvents textBoxShopEinzelansichtOeffnungszeit As TextBox
+    Friend WithEvents textBoxShopEinzelansichtAdresse As TextBox
+    Friend WithEvents textBoxShopEinzelansichtTelefonnummer As TextBox
+    Friend WithEvents textBoxShopEinzelansichtKategorie As TextBox
+    Friend WithEvents TabPage4 As TabPage
     Friend WithEvents LabelGeschäfteNachStadtteilen As Label
+    Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
+    Friend WithEvents Button1 As Button
 End Class

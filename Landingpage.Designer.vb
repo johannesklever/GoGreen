@@ -23,68 +23,74 @@ Partial Class Landingpage
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Landingpage))
-        Me.Button_Login = New System.Windows.Forms.Button()
-        Me.Label_email = New System.Windows.Forms.Label()
-        Me.Label_passwort = New System.Windows.Forms.Label()
-        Me.TextBox_email = New System.Windows.Forms.TextBox()
-        Me.TextBox_passwort = New System.Windows.Forms.TextBox()
-        Me.Button_Kontoanlegen = New System.Windows.Forms.Button()
+        Me.buttonLogin = New System.Windows.Forms.Button()
+        Me.labelEmail = New System.Windows.Forms.Label()
+        Me.labelPasswort = New System.Windows.Forms.Label()
+        Me.textBoxEmail = New System.Windows.Forms.TextBox()
+        Me.textBoxPasswort = New System.Windows.Forms.TextBox()
+        Me.buttonKontoanlegen = New System.Windows.Forms.Button()
         Me.PictureBox_LPFn = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox_LPFn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button_Login
+        'buttonLogin
         '
-        Me.Button_Login.Location = New System.Drawing.Point(660, 300)
-        Me.Button_Login.Name = "Button_Login"
-        Me.Button_Login.Size = New System.Drawing.Size(98, 52)
-        Me.Button_Login.TabIndex = 0
-        Me.Button_Login.Text = "Login"
-        Me.Button_Login.UseVisualStyleBackColor = True
+        Me.buttonLogin.Location = New System.Drawing.Point(440, 192)
+        Me.buttonLogin.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.buttonLogin.Name = "buttonLogin"
+        Me.buttonLogin.Size = New System.Drawing.Size(65, 33)
+        Me.buttonLogin.TabIndex = 0
+        Me.buttonLogin.Text = "Login"
+        Me.buttonLogin.UseVisualStyleBackColor = True
         '
-        'Label_email
+        'labelEmail
         '
-        Me.Label_email.AutoSize = True
-        Me.Label_email.BackColor = System.Drawing.Color.Transparent
-        Me.Label_email.Location = New System.Drawing.Point(403, 78)
-        Me.Label_email.Name = "Label_email"
-        Me.Label_email.Size = New System.Drawing.Size(151, 25)
-        Me.Label_email.TabIndex = 1
-        Me.Label_email.Text = "Benutzername"
+        Me.labelEmail.AutoSize = True
+        Me.labelEmail.BackColor = System.Drawing.Color.Transparent
+        Me.labelEmail.Location = New System.Drawing.Point(269, 50)
+        Me.labelEmail.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.labelEmail.Name = "labelEmail"
+        Me.labelEmail.Size = New System.Drawing.Size(100, 17)
+        Me.labelEmail.TabIndex = 1
+        Me.labelEmail.Text = "Benutzername"
         '
-        'Label_passwort
+        'labelPasswort
         '
-        Me.Label_passwort.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label_passwort.AutoSize = True
-        Me.Label_passwort.BackColor = System.Drawing.Color.Transparent
-        Me.Label_passwort.Location = New System.Drawing.Point(460, 181)
-        Me.Label_passwort.Name = "Label_passwort"
-        Me.Label_passwort.Size = New System.Drawing.Size(100, 25)
-        Me.Label_passwort.TabIndex = 2
-        Me.Label_passwort.Text = "Passwort"
+        Me.labelPasswort.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.labelPasswort.AutoSize = True
+        Me.labelPasswort.BackColor = System.Drawing.Color.Transparent
+        Me.labelPasswort.Location = New System.Drawing.Point(307, 116)
+        Me.labelPasswort.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.labelPasswort.Name = "labelPasswort"
+        Me.labelPasswort.Size = New System.Drawing.Size(65, 17)
+        Me.labelPasswort.TabIndex = 2
+        Me.labelPasswort.Text = "Passwort"
         '
-        'TextBox_email
+        'textBoxEmail
         '
-        Me.TextBox_email.Location = New System.Drawing.Point(573, 78)
-        Me.TextBox_email.Name = "TextBox_email"
-        Me.TextBox_email.Size = New System.Drawing.Size(100, 31)
-        Me.TextBox_email.TabIndex = 3
+        Me.textBoxEmail.Location = New System.Drawing.Point(382, 50)
+        Me.textBoxEmail.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.textBoxEmail.Name = "textBoxEmail"
+        Me.textBoxEmail.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxEmail.TabIndex = 3
         '
-        'TextBox_passwort
+        'textBoxPasswort
         '
-        Me.TextBox_passwort.Location = New System.Drawing.Point(573, 178)
-        Me.TextBox_passwort.Name = "TextBox_passwort"
-        Me.TextBox_passwort.Size = New System.Drawing.Size(100, 31)
-        Me.TextBox_passwort.TabIndex = 4
+        Me.textBoxPasswort.Location = New System.Drawing.Point(382, 114)
+        Me.textBoxPasswort.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.textBoxPasswort.Name = "textBoxPasswort"
+        Me.textBoxPasswort.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxPasswort.TabIndex = 4
         '
-        'Button_Kontoanlegen
+        'buttonKontoanlegen
         '
-        Me.Button_Kontoanlegen.Location = New System.Drawing.Point(441, 300)
-        Me.Button_Kontoanlegen.Name = "Button_Kontoanlegen"
-        Me.Button_Kontoanlegen.Size = New System.Drawing.Size(182, 52)
-        Me.Button_Kontoanlegen.TabIndex = 5
-        Me.Button_Kontoanlegen.Text = "Konto anlegen"
-        Me.Button_Kontoanlegen.UseVisualStyleBackColor = True
+        Me.buttonKontoanlegen.Location = New System.Drawing.Point(294, 192)
+        Me.buttonKontoanlegen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.buttonKontoanlegen.Name = "buttonKontoanlegen"
+        Me.buttonKontoanlegen.Size = New System.Drawing.Size(121, 33)
+        Me.buttonKontoanlegen.TabIndex = 5
+        Me.buttonKontoanlegen.Text = "Konto anlegen"
+        Me.buttonKontoanlegen.UseVisualStyleBackColor = True
         '
         'PictureBox_LPFn
         '
@@ -94,25 +100,27 @@ Partial Class Landingpage
         Me.PictureBox_LPFn.BackgroundImage = CType(resources.GetObject("PictureBox_LPFn.BackgroundImage"), System.Drawing.Image)
         Me.PictureBox_LPFn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox_LPFn.InitialImage = Nothing
-        Me.PictureBox_LPFn.Location = New System.Drawing.Point(-3, -1)
+        Me.PictureBox_LPFn.Location = New System.Drawing.Point(-2, -1)
+        Me.PictureBox_LPFn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.PictureBox_LPFn.Name = "PictureBox_LPFn"
-        Me.PictureBox_LPFn.Size = New System.Drawing.Size(802, 452)
+        Me.PictureBox_LPFn.Size = New System.Drawing.Size(535, 289)
         Me.PictureBox_LPFn.TabIndex = 6
         Me.PictureBox_LPFn.TabStop = False
         '
         'Landingpage
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button_Kontoanlegen)
-        Me.Controls.Add(Me.TextBox_passwort)
-        Me.Controls.Add(Me.TextBox_email)
-        Me.Controls.Add(Me.Label_passwort)
-        Me.Controls.Add(Me.Label_email)
-        Me.Controls.Add(Me.Button_Login)
+        Me.ClientSize = New System.Drawing.Size(533, 288)
+        Me.Controls.Add(Me.buttonKontoanlegen)
+        Me.Controls.Add(Me.textBoxPasswort)
+        Me.Controls.Add(Me.textBoxEmail)
+        Me.Controls.Add(Me.labelPasswort)
+        Me.Controls.Add(Me.labelEmail)
+        Me.Controls.Add(Me.buttonLogin)
         Me.Controls.Add(Me.PictureBox_LPFn)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Landingpage"
         Me.Text = "Landingpage"
         CType(Me.PictureBox_LPFn, System.ComponentModel.ISupportInitialize).EndInit()
@@ -121,12 +129,12 @@ Partial Class Landingpage
 
     End Sub
 
-    Friend WithEvents Button_Login As Button
-    Friend WithEvents Label_email As Label
-    Friend WithEvents Label_passwort As Label
-    Friend WithEvents TextBox_email As TextBox
-    Friend WithEvents TextBox_passwort As TextBox
-    Friend WithEvents Button_Kontoanlegen As Button
+    Friend WithEvents buttonLogin As Button
+    Friend WithEvents labelEmail As Label
+    Friend WithEvents labelPasswort As Label
+    Friend WithEvents textBoxEmail As TextBox
+    Friend WithEvents textBoxPasswort As TextBox
+    Friend WithEvents buttonKontoanlegen As Button
     Friend WithEvents PictureBox_LPFn As PictureBox
 End Class
 

@@ -1,11 +1,13 @@
 ﻿Public Class FormMain
-    Dim rsGeschäfte As ADODB.Recordset
+
     Dim rsKategorie As ADODB.Recordset
     Dim rsStadtteile As ADODB.Recordset
     Dim conn As ADODB.Connection
+    Dim rsGeschaefte As ADODB.Recordset
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Dim rsGeschäfte As ADODB.Recordset
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
         rsGeschäfte = New ADODB.Recordset
@@ -15,46 +17,46 @@
         'Try
 
         conn = New ADODB.Connection
-            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
+        conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-            rsKategorie.Open("SELECT * FROM Kategorien",
+        rsKategorie.Open("SELECT * FROM Kategorien",
                     conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            'Treeview Geschäfte nach Kategorien
-            Do While Not rsKategorie.EOF
-                Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
-                rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
+        'Treeview Geschäfte nach Kategorien
+        Do While Not rsKategorie.EOF
+            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
+            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
                         conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-                If rsGeschäfte.RecordCount > 0 Then
-                    Do While Not rsGeschäfte.EOF
-                        ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                        rsGeschäfte.MoveNext()
-                    Loop
-                End If
-                rsGeschäfte.Close()
-                rsKategorie.MoveNext()
-            Loop
+            If rsGeschäfte.RecordCount > 0 Then
+                Do While Not rsGeschäfte.EOF
+                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
+                    rsGeschäfte.MoveNext()
+                Loop
+            End If
+            rsGeschäfte.Close()
+            rsKategorie.MoveNext()
+        Loop
 
-            'Treeview Geschäfte nach Stadtteilen
+        'Treeview Geschäfte nach Stadtteilen
 
-            rsStadtteile.Open("SELECT * FROM Stadtteile",
+        rsStadtteile.Open("SELECT * FROM Stadtteile",
                     conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            Do While Not rsStadtteile.EOF
+        Do While Not rsStadtteile.EOF
             Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
             rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
                         conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-                If rsGeschäfte.RecordCount > 0 Then
-                    Do While Not rsGeschäfte.EOF
-                        ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                        rsGeschäfte.MoveNext()
-                    Loop
-                End If
-                rsGeschäfte.Close()
-                rsStadtteile.MoveNext()
-            Loop
+            If rsGeschäfte.RecordCount > 0 Then
+                Do While Not rsGeschäfte.EOF
+                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
+                    rsGeschäfte.MoveNext()
+                Loop
+            End If
+            rsGeschäfte.Close()
+            rsStadtteile.MoveNext()
+        Loop
 
 
         'Catch ex As Exception
@@ -76,7 +78,7 @@
 
     Private Sub btnGeschaefte_Click(sender As Object, e As EventArgs) Handles btnGeschaefte.Click
 
-        Toggle(panelGeschaefteSubmenu)
+        Toggle(panelGeschaefteSubmenu)  'das Panel wird aufgedeckt oder versteckt, sodass Untermenü sichtbar ist oder nicht
 
     End Sub
 
@@ -86,32 +88,82 @@
 
     End Sub
 
+    Private Sub btnSideMenuKategorien_Click(sender As Object, e As EventArgs) Handles btnSideMenuKategorien.Click
 
-    Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
+        TabControl1.SelectedIndex = 1
 
-        btnbla.Visible = False
+    End Sub
+
+    Private Sub btnSideMenuStadtteile_Click(sender As Object, e As EventArgs) Handles btnSideMenuStadtteile.Click
+
+        TabControl1.SelectedIndex = 3
 
     End Sub
 
-    Private Sub Form1_ResizeEnd(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeEnd
+    Private Sub TreeViewGeschäfteKategorien_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeViewGeschäfteKategorien.AfterSelect
 
-        Dim x As Integer
-        Dim y As Integer
-        Dim z As Integer
-        Dim actualHeight As Integer
+        Dim geschaeftsBezeichnung As String
+        rsGeschaefte = New ADODB.Recordset
 
+        conn = New ADODB.Connection
+        conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-
-        x = PictureBoxMap.ClientSize.Width
-        y = PictureBoxMap.ClientSize.Width * 467 / 987
-        btnbla.Visible = True
-        z = btnbla.Location.Y
+        rsGeschaefte.Open("SELECT * FROM Geschäfte",
+                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
 
+        geschaeftsBezeichnung = TreeViewGeschäfteKategorien.SelectedNode.Text
 
-        MsgBox(x & " " & y & " " & z)
+        rsGeschaefte.MoveFirst()
+        rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+
+        If rsGeschaefte.EOF Then
+
+        Else
+            TabControl1.SelectedIndex = 2
+            textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+        End If
+
+        'MsgBox(rsGeschaefte.Fields("Bezeichnung").Value)
+
+        'If geschaeftsBezeichnung > 0 Then
+        '    rsGeschäfte.MoveFirst()
+        '    rsGeschäfte.Find("Geschäfts_ID = " & geschaeftsBezeichnung)
+
+        '    If rsGeschäfte.EOF Then
+        '        MsgBox("nichts gefunden")
+        '        rsGeschäfte.MoveLast()
+        '    End If
+
 
     End Sub
+
+
+    'Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
+
+    '    btnbla.Visible = False
+
+    'End Sub
+
+    'Private Sub Form1_ResizeEnd(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeEnd
+
+    '    Dim x As Integer
+    '    Dim y As Integer
+    '    Dim z As Integer
+    '    Dim actualHeight As Integer
+
+
+
+    '    x = PictureBoxMap.ClientSize.Width
+    '    y = PictureBoxMap.ClientSize.Width * 467 / 987
+    '    btnbla.Visible = True
+    '    z = btnbla.Location.Y
+
+
+
+    '    MsgBox(x & " " & y & " " & z)
+
+    'End Sub
 
 
 End Class
