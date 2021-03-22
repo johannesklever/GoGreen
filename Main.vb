@@ -1,6 +1,6 @@
 ﻿Public Class FormMain
 
-    Dim rsKategorie As ADODB.Recordset
+    Dim rsKategorien As ADODB.Recordset
     Dim rsStadtteile As ADODB.Recordset
     Dim conn As ADODB.Connection
     Dim rsGeschaefte As ADODB.Recordset
@@ -11,7 +11,7 @@
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
         rsGeschäfte = New ADODB.Recordset
-        rsKategorie = New ADODB.Recordset
+        rsKategorien = New ADODB.Recordset
         rsStadtteile = New ADODB.Recordset
 
         'Try
@@ -19,13 +19,13 @@
         conn = New ADODB.Connection
         conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-        rsKategorie.Open("SELECT * FROM Kategorien",
+        rsKategorien.Open("SELECT * FROM Kategorien",
                     conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
         'Treeview Geschäfte nach Kategorien
-        Do While Not rsKategorie.EOF
-            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorie.Fields("Kat_Bezeichnung").Value)
-            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorie.Fields("Kategorie_ID").Value,
+        Do While Not rsKategorien.EOF
+            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
+            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorien.Fields("Kategorie_ID").Value,
                         conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
             If rsGeschäfte.RecordCount > 0 Then
@@ -35,7 +35,7 @@
                 Loop
             End If
             rsGeschäfte.Close()
-            rsKategorie.MoveNext()
+            rsKategorien.MoveNext()
         Loop
 
         'Treeview Geschäfte nach Stadtteilen
@@ -102,8 +102,21 @@
 
     Private Sub TreeViewGeschäfteKategorien_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeViewGeschäfteKategorien.AfterSelect
 
+        TreeViewZuGeschaeftseinzelansichtsseite(TreeViewGeschäfteKategorien)
+
+    End Sub
+
+    Private Sub TreeViewGeschäfteStadtteile_AfterSelect(sender As Object, e As TreeViewEventArgs) Handles TreeViewGeschäfteStadtteile.AfterSelect
+
+        TreeViewZuGeschaeftseinzelansichtsseite(TreeViewGeschäfteStadtteile)
+
+    End Sub
+
+    Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
         Dim geschaeftsBezeichnung As String
+        Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         rsGeschaefte = New ADODB.Recordset
+
 
         conn = New ADODB.Connection
         conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
@@ -112,31 +125,28 @@
                     conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
 
-        geschaeftsBezeichnung = TreeViewGeschäfteKategorien.SelectedNode.Text
+        geschaeftsBezeichnung = treeView.SelectedNode.Text
 
         rsGeschaefte.MoveFirst()
         rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
 
-        If rsGeschaefte.EOF Then
 
-        Else
+        If Not rsGeschaefte.EOF Then
             TabControl1.SelectedIndex = 2
             textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+
+            'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
+            rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
+                                                conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
+            textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
+            textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
+            textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
+        Else
         End If
-
-        'MsgBox(rsGeschaefte.Fields("Bezeichnung").Value)
-
-        'If geschaeftsBezeichnung > 0 Then
-        '    rsGeschäfte.MoveFirst()
-        '    rsGeschäfte.Find("Geschäfts_ID = " & geschaeftsBezeichnung)
-
-        '    If rsGeschäfte.EOF Then
-        '        MsgBox("nichts gefunden")
-        '        rsGeschäfte.MoveLast()
-        '    End If
-
-
     End Sub
+
+    'bla
 
 
     'Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
