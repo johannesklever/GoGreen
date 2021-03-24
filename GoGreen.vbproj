@@ -179,6 +179,9 @@
   <ItemGroup>
     <None Include="bin\Debug\Icons\outline_settings_suggest_white_18dp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\GeschäfteBilder\Fehlerbild.jfif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="packages\Microsoft.Web.WebView2.1.0.705.50\build\Microsoft.Web.WebView2.targets" Condition="Exists('packages\Microsoft.Web.WebView2.1.0.705.50\build\Microsoft.Web.WebView2.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
