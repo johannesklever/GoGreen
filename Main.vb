@@ -117,33 +117,40 @@
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         rsGeschaefte = New ADODB.Recordset
 
+        Try
+            conn = New ADODB.Connection
+            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-        conn = New ADODB.Connection
-        conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
-
-        rsGeschaefte.Open("SELECT * FROM Geschäfte",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
-
-        geschaeftsBezeichnung = treeView.SelectedNode.Text
-
-        rsGeschaefte.MoveFirst()
-        rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+            rsGeschaefte.Open("SELECT * FROM Geschäfte",
+                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
 
-        If Not rsGeschaefte.EOF Then
-            TabControl1.SelectedIndex = 2
-            textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+            geschaeftsBezeichnung = treeView.SelectedNode.Text
 
-            'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
-            rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
-                                                conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-            textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
-            textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
-            textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
-            textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
-        Else
-        End If
+            rsGeschaefte.MoveFirst()
+            rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+
+
+            If Not rsGeschaefte.EOF Then
+                TabControl1.SelectedIndex = 2
+                textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+
+                'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
+                rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
+                                                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+                textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
+                textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
+                textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
+                textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
+
+                pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value
+            Else
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     'bla

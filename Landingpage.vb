@@ -37,7 +37,7 @@ Public Class Landingpage
 
         If CStr(rs.Fields("Benutzername").Value) = textBoxEmail.Text And CStr(rs.Fields("Passwort").Value) = textBoxPasswort.Text Then
             Me.Hide()
-            MsgBox("Angemeldet")
+
 
             FormMain.ShowDialog()
         Else

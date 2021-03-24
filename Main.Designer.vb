@@ -58,7 +58,7 @@ Partial Class FormMain
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -70,6 +70,7 @@ Partial Class FormMain
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -434,6 +435,7 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
@@ -520,6 +522,15 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
+        'pictureBoxGeschaefteEinzelansichtsseite
+        '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -547,6 +558,7 @@ Partial Class FormMain
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -573,7 +585,6 @@ Partial Class FormMain
     Friend WithEvents panelContent As Panel
     Friend WithEvents PictureBoxMap As PictureBox
     Friend WithEvents webView As Microsoft.Web.WebView2.WinForms.WebView2
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -590,4 +601,5 @@ Partial Class FormMain
     Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
     Friend WithEvents Button1 As Button
     Friend WithEvents textBoxShopEinzelansichtOeffnungszeit As TextBox
+    Friend WithEvents pictureBoxGeschaefteEinzelansichtsseite As PictureBox
 End Class
