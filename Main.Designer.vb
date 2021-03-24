@@ -524,6 +524,7 @@ Partial Class FormMain
         '
         'pictureBoxGeschaefteEinzelansichtsseite
         '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
         Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
         Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
         Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
