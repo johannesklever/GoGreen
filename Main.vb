@@ -153,6 +153,20 @@
 
     End Sub
 
+    Private Sub btnHinzufuegen_Click(sender As Object, e As EventArgs) Handles btnHinzufuegen.Click
+
+        TabControl1.SelectedIndex = 2
+        textBoxShopEinzelansichtAdresse.Clear()
+        textBoxShopEinzelansichtBezeichnung.Clear()
+        textBoxShopEinzelansichtKategorie.Clear()
+        textBoxShopEinzelansichtOeffnungszeit.Clear()
+        textBoxShopEinzelansichtTelefonnummer.Clear()
+        pictureBoxGeschaefteEinzelansichtsseite.SizeMode = vbNormal
+        pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
+
+
+    End Sub
+
     'bla
 
 
