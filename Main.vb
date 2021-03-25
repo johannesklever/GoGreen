@@ -1,5 +1,6 @@
 ﻿Public Class FormMain
 
+
     Dim rsKategorien As ADODB.Recordset
     Dim rsStadtteile As ADODB.Recordset
     Dim conn As ADODB.Connection

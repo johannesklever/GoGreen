@@ -1,5 +1,9 @@
 ﻿Imports System.Windows.Forms
 
+Public Module Übergabe
+    Public LoggedUserID As Integer
+End Module
+
 Public Class Landingpage
 
 
@@ -56,7 +60,7 @@ Public Class Landingpage
         Dim valuesArray(2) As Object
 
         rs_KID.Open("SELECT MAX(Kunden_ID) AS MKID FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
+        Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
         KID = rs_KID.Fields("MKID").Value + 1
 
         fieldsArray(0) = "Kunden_ID"
