@@ -1,4 +1,5 @@
-﻿Public Class FormMain
+﻿
+Public Class FormMain
 
 
     Dim rsKategorien As ADODB.Recordset
@@ -158,6 +159,7 @@
 
         TabControl1.SelectedIndex = 2
         textBoxShopEinzelansichtAdresse.Clear()
+        textBoxShopEinzelansichtAdresse.Text = LoggedUserID
         textBoxShopEinzelansichtBezeichnung.Clear()
         textBoxShopEinzelansichtKategorie.Clear()
         textBoxShopEinzelansichtOeffnungszeit.Clear()

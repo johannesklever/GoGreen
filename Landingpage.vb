@@ -41,7 +41,7 @@ Public Class Landingpage
 
         If CStr(rs.Fields("Benutzername").Value) = textBoxEmail.Text And CStr(rs.Fields("Passwort").Value) = textBoxPasswort.Text Then
             Me.Hide()
-
+            Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
 
             FormMain.ShowDialog()
         Else
@@ -60,7 +60,6 @@ Public Class Landingpage
         Dim valuesArray(2) As Object
 
         rs_KID.Open("SELECT MAX(Kunden_ID) AS MKID FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
         KID = rs_KID.Fields("MKID").Value + 1
 
         fieldsArray(0) = "Kunden_ID"
