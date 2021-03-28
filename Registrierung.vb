@@ -5,22 +5,20 @@ Public Class Registrierung
 
 
 
-    Dim rs As ADODB.Recordset
-    Dim rs_Bestellung As ADODB.Recordset
+    Dim rsKunde As ADODB.Recordset
     Dim conn As ADODB.Connection
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        rs = New ADODB.Recordset
-        rs_Bestellung = New ADODB.Recordset
+        rsKunde = New ADODB.Recordset
         Try
             conn = New ADODB.Connection
             conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
 
-            rs.Open("SELECT * FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsKunde.Open("SELECT * FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-            'MsgBox("Datensätze gefunden: " & rs.RecordCount)
-            If rs.RecordCount > 0 Then
-                rs.MoveFirst()
+            'MsgBox("Datensätze gefunden: " & rsKunde.RecordCount)
+            If rsKunde.RecordCount > 0 Then
+                rsKunde.MoveFirst()
             Else
                 MsgBox("Keine Daten gefunden!")
             End If
@@ -29,24 +27,53 @@ Public Class Registrierung
             MsgBox(ex.Message)
         End Try
     End Sub
-    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles Button_Registrieren.Click
 
-        'Call ValidatePassword()
+    Public Function FindeDatensatzImRecordset(ByVal benutzername As String) As Boolean
 
-        If TextBox_NeuesPasswort.Text = TextBox_PasswortBestätigen.Text Then  'And ValidatePassword() = True
-            rs.MoveLast()
-            rs.Fields("Benutzername").Value = TextBox_NeuerBenutzername.Text
-            rs.Fields("Passwort").Value = TextBox_NeuesPasswort.Text
-            rs.Update()
-            MsgBox("Account erfolgreich erstellt")
-            Me.Hide()
-            Landingpage.ShowDialog()
+        rsKunde.Find("Benutzername = " & "'" & benutzername & "'") 'Prüfung, ob Benutzername in der Datenbank hinterlegt ist
+
+        If rsKunde.EOF Then
+            Return False
         Else
-            MsgBox("Min 8 Zeichen")
-            TextBox_NeuesPasswort.Clear()
-            TextBox_PasswortBestätigen.Clear()
+            Return True
         End If
 
+    End Function
+
+    Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles buttonRegistrieren.Click
+
+        FindeDatensatzImRecordset(textBoxBenutzername.Text)
+
+        If FindeDatensatzImRecordset(textBoxBenutzername.Text) = False Then
+            If textBoxNeuesPasswort.Text = textBoxPasswortBestätigen.Text And ValidatePassword() = True Then
+                With rsKunde
+                    .AddNew()
+                    .MoveLast()
+                    .Fields("Benutzername").Value = textBoxBenutzername.Text
+                    .Fields("Passwort").Value = textBoxNeuesPasswort.Text
+                    .Update()
+                    MsgBox("Account erfolgreich erstellt")
+                    .Close()
+                End With
+                Me.Hide()
+                Landingpage.ShowDialog()
+            ElseIf textBoxNeuesPasswort.Text = textBoxPasswortBestätigen.Text And ValidatePassword() = False Then
+                MsgBox("Mindestens 5 Zeichen, 1 Kleinbuchstabe, 1 Großbuchstabe, 1 Zahl und ein Sonderzeichen")
+                textBoxNeuesPasswort.Clear()
+                textBoxPasswortBestätigen.Clear()
+                textBoxNeuesPasswort.Clear()
+            Else
+                MsgBox("Passwort stimmt nicht überein")
+                textBoxNeuesPasswort.Clear()
+                textBoxPasswortBestätigen.Clear()
+                textBoxNeuesPasswort.Clear()
+            End If
+        Else
+            textBoxBenutzername.Clear()
+            textBoxNeuesPasswort.Clear()
+            textBoxPasswortBestätigen.Clear()
+            MsgBox("Benutzer bereits vergeben!")
+        End If
 
 
     End Sub
@@ -56,12 +83,12 @@ Public Class Registrierung
     'End Function
     Function ValidatePassword() As Boolean
 
-        Dim pwd As String = TextBox_NeuesPasswort.Text
-        Dim minLength As Integer = 8
-        Dim numUpper As Integer = 2
-        Dim numLower As Integer = 2
-        Dim numNumbers As Integer = 2
-        Dim numSpecial As Integer = 2
+        Dim pwd As String = textBoxNeuesPasswort.Text
+        Dim minLength As Integer = 5
+        Dim numUpper As Integer = 1
+        Dim numLower As Integer = 0
+        Dim numNumbers As Integer = 1
+        Dim numSpecial As Integer = 1
 
         ' Replace [A-Z] with \p{Lu}, to allow for Unicode uppercase letters.
         Dim upper As New System.Text.RegularExpressions.Regex("[A-Z]")

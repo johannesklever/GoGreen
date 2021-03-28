@@ -22,22 +22,22 @@ Partial Class Registrierung
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TextBox_NeuerBenutzername = New System.Windows.Forms.TextBox()
+        Me.textBoxBenutzername = New System.Windows.Forms.TextBox()
         Me.Label_NeuerBenutzername = New System.Windows.Forms.Label()
         Me.Label_NeuesPasswort = New System.Windows.Forms.Label()
-        Me.TextBox_NeuesPasswort = New System.Windows.Forms.TextBox()
+        Me.textBoxNeuesPasswort = New System.Windows.Forms.TextBox()
         Me.Label_PasswortBestätigen = New System.Windows.Forms.Label()
-        Me.TextBox_PasswortBestätigen = New System.Windows.Forms.TextBox()
-        Me.Button_Registrieren = New System.Windows.Forms.Button()
+        Me.textBoxPasswortBestätigen = New System.Windows.Forms.TextBox()
+        Me.buttonRegistrieren = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'TextBox_NeuerBenutzername
+        'textBoxBenutzername
         '
-        Me.TextBox_NeuerBenutzername.Location = New System.Drawing.Point(355, 67)
-        Me.TextBox_NeuerBenutzername.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.TextBox_NeuerBenutzername.Name = "TextBox_NeuerBenutzername"
-        Me.TextBox_NeuerBenutzername.Size = New System.Drawing.Size(68, 22)
-        Me.TextBox_NeuerBenutzername.TabIndex = 0
+        Me.textBoxBenutzername.Location = New System.Drawing.Point(355, 67)
+        Me.textBoxBenutzername.Margin = New System.Windows.Forms.Padding(2)
+        Me.textBoxBenutzername.Name = "textBoxBenutzername"
+        Me.textBoxBenutzername.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxBenutzername.TabIndex = 0
         '
         'Label_NeuerBenutzername
         '
@@ -59,13 +59,13 @@ Partial Class Registrierung
         Me.Label_NeuesPasswort.TabIndex = 3
         Me.Label_NeuesPasswort.Text = "Neues Passwort:"
         '
-        'TextBox_NeuesPasswort
+        'textBoxNeuesPasswort
         '
-        Me.TextBox_NeuesPasswort.Location = New System.Drawing.Point(355, 114)
-        Me.TextBox_NeuesPasswort.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.TextBox_NeuesPasswort.Name = "TextBox_NeuesPasswort"
-        Me.TextBox_NeuesPasswort.Size = New System.Drawing.Size(68, 22)
-        Me.TextBox_NeuesPasswort.TabIndex = 2
+        Me.textBoxNeuesPasswort.Location = New System.Drawing.Point(355, 114)
+        Me.textBoxNeuesPasswort.Margin = New System.Windows.Forms.Padding(2)
+        Me.textBoxNeuesPasswort.Name = "textBoxNeuesPasswort"
+        Me.textBoxNeuesPasswort.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxNeuesPasswort.TabIndex = 2
         '
         'Label_PasswortBestätigen
         '
@@ -77,37 +77,37 @@ Partial Class Registrierung
         Me.Label_PasswortBestätigen.TabIndex = 5
         Me.Label_PasswortBestätigen.Text = "Passwort bestätigen:"
         '
-        'TextBox_PasswortBestätigen
+        'textBoxPasswortBestätigen
         '
-        Me.TextBox_PasswortBestätigen.Location = New System.Drawing.Point(355, 164)
-        Me.TextBox_PasswortBestätigen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.TextBox_PasswortBestätigen.Name = "TextBox_PasswortBestätigen"
-        Me.TextBox_PasswortBestätigen.Size = New System.Drawing.Size(68, 22)
-        Me.TextBox_PasswortBestätigen.TabIndex = 4
+        Me.textBoxPasswortBestätigen.Location = New System.Drawing.Point(355, 164)
+        Me.textBoxPasswortBestätigen.Margin = New System.Windows.Forms.Padding(2)
+        Me.textBoxPasswortBestätigen.Name = "textBoxPasswortBestätigen"
+        Me.textBoxPasswortBestätigen.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxPasswortBestätigen.TabIndex = 4
         '
-        'Button_Registrieren
+        'buttonRegistrieren
         '
-        Me.Button_Registrieren.Location = New System.Drawing.Point(355, 204)
-        Me.Button_Registrieren.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.Button_Registrieren.Name = "Button_Registrieren"
-        Me.Button_Registrieren.Size = New System.Drawing.Size(93, 30)
-        Me.Button_Registrieren.TabIndex = 6
-        Me.Button_Registrieren.Text = "Registrieren"
-        Me.Button_Registrieren.UseVisualStyleBackColor = True
+        Me.buttonRegistrieren.Location = New System.Drawing.Point(355, 204)
+        Me.buttonRegistrieren.Margin = New System.Windows.Forms.Padding(2)
+        Me.buttonRegistrieren.Name = "buttonRegistrieren"
+        Me.buttonRegistrieren.Size = New System.Drawing.Size(93, 30)
+        Me.buttonRegistrieren.TabIndex = 6
+        Me.buttonRegistrieren.Text = "Registrieren"
+        Me.buttonRegistrieren.UseVisualStyleBackColor = True
         '
         'Registrierung
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(533, 288)
-        Me.Controls.Add(Me.Button_Registrieren)
+        Me.Controls.Add(Me.buttonRegistrieren)
         Me.Controls.Add(Me.Label_PasswortBestätigen)
-        Me.Controls.Add(Me.TextBox_PasswortBestätigen)
+        Me.Controls.Add(Me.textBoxPasswortBestätigen)
         Me.Controls.Add(Me.Label_NeuesPasswort)
-        Me.Controls.Add(Me.TextBox_NeuesPasswort)
+        Me.Controls.Add(Me.textBoxNeuesPasswort)
         Me.Controls.Add(Me.Label_NeuerBenutzername)
-        Me.Controls.Add(Me.TextBox_NeuerBenutzername)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Controls.Add(Me.textBoxBenutzername)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Registrierung"
         Me.Text = "Registrierung"
         Me.ResumeLayout(False)
@@ -115,12 +115,12 @@ Partial Class Registrierung
 
     End Sub
 
-    Friend WithEvents TextBox_NeuerBenutzername As TextBox
+    Friend WithEvents textBoxBenutzername As TextBox
     Friend WithEvents Label_NeuerBenutzername As Label
     Friend WithEvents Label_NeuesPasswort As Label
-    Friend WithEvents TextBox_NeuesPasswort As TextBox
+    Friend WithEvents textBoxNeuesPasswort As TextBox
     Friend WithEvents Label_PasswortBestätigen As Label
-    Friend WithEvents TextBox_PasswortBestätigen As TextBox
-    Friend WithEvents Button_Registrieren As Button
+    Friend WithEvents textBoxPasswortBestätigen As TextBox
+    Friend WithEvents buttonRegistrieren As Button
 End Class
 
