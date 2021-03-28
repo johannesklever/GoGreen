@@ -26,7 +26,7 @@ Partial Class Landingpage
         Me.buttonLogin = New System.Windows.Forms.Button()
         Me.labelEmail = New System.Windows.Forms.Label()
         Me.labelPasswort = New System.Windows.Forms.Label()
-        Me.textBoxEmail = New System.Windows.Forms.TextBox()
+        Me.textBoxBenutzername = New System.Windows.Forms.TextBox()
         Me.textBoxPasswort = New System.Windows.Forms.TextBox()
         Me.buttonKontoanlegen = New System.Windows.Forms.Button()
         Me.PictureBox_LPFn = New System.Windows.Forms.PictureBox()
@@ -36,7 +36,7 @@ Partial Class Landingpage
         'buttonLogin
         '
         Me.buttonLogin.Location = New System.Drawing.Point(440, 192)
-        Me.buttonLogin.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.buttonLogin.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonLogin.Name = "buttonLogin"
         Me.buttonLogin.Size = New System.Drawing.Size(65, 33)
         Me.buttonLogin.TabIndex = 0
@@ -66,18 +66,18 @@ Partial Class Landingpage
         Me.labelPasswort.TabIndex = 2
         Me.labelPasswort.Text = "Passwort"
         '
-        'textBoxEmail
+        'textBoxBenutzername
         '
-        Me.textBoxEmail.Location = New System.Drawing.Point(382, 50)
-        Me.textBoxEmail.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
-        Me.textBoxEmail.Name = "textBoxEmail"
-        Me.textBoxEmail.Size = New System.Drawing.Size(68, 22)
-        Me.textBoxEmail.TabIndex = 3
+        Me.textBoxBenutzername.Location = New System.Drawing.Point(382, 50)
+        Me.textBoxBenutzername.Margin = New System.Windows.Forms.Padding(2)
+        Me.textBoxBenutzername.Name = "textBoxBenutzername"
+        Me.textBoxBenutzername.Size = New System.Drawing.Size(68, 22)
+        Me.textBoxBenutzername.TabIndex = 3
         '
         'textBoxPasswort
         '
         Me.textBoxPasswort.Location = New System.Drawing.Point(382, 114)
-        Me.textBoxPasswort.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.textBoxPasswort.Margin = New System.Windows.Forms.Padding(2)
         Me.textBoxPasswort.Name = "textBoxPasswort"
         Me.textBoxPasswort.Size = New System.Drawing.Size(68, 22)
         Me.textBoxPasswort.TabIndex = 4
@@ -85,7 +85,7 @@ Partial Class Landingpage
         'buttonKontoanlegen
         '
         Me.buttonKontoanlegen.Location = New System.Drawing.Point(294, 192)
-        Me.buttonKontoanlegen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.buttonKontoanlegen.Margin = New System.Windows.Forms.Padding(2)
         Me.buttonKontoanlegen.Name = "buttonKontoanlegen"
         Me.buttonKontoanlegen.Size = New System.Drawing.Size(121, 33)
         Me.buttonKontoanlegen.TabIndex = 5
@@ -101,7 +101,7 @@ Partial Class Landingpage
         Me.PictureBox_LPFn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox_LPFn.InitialImage = Nothing
         Me.PictureBox_LPFn.Location = New System.Drawing.Point(-2, -1)
-        Me.PictureBox_LPFn.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox_LPFn.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox_LPFn.Name = "PictureBox_LPFn"
         Me.PictureBox_LPFn.Size = New System.Drawing.Size(535, 289)
         Me.PictureBox_LPFn.TabIndex = 6
@@ -114,13 +114,13 @@ Partial Class Landingpage
         Me.ClientSize = New System.Drawing.Size(533, 288)
         Me.Controls.Add(Me.buttonKontoanlegen)
         Me.Controls.Add(Me.textBoxPasswort)
-        Me.Controls.Add(Me.textBoxEmail)
+        Me.Controls.Add(Me.textBoxBenutzername)
         Me.Controls.Add(Me.labelPasswort)
         Me.Controls.Add(Me.labelEmail)
         Me.Controls.Add(Me.buttonLogin)
         Me.Controls.Add(Me.PictureBox_LPFn)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "Landingpage"
         Me.Text = "Landingpage"
         CType(Me.PictureBox_LPFn, System.ComponentModel.ISupportInitialize).EndInit()
@@ -132,7 +132,7 @@ Partial Class Landingpage
     Friend WithEvents buttonLogin As Button
     Friend WithEvents labelEmail As Label
     Friend WithEvents labelPasswort As Label
-    Friend WithEvents textBoxEmail As TextBox
+    Friend WithEvents textBoxBenutzername As TextBox
     Friend WithEvents textBoxPasswort As TextBox
     Friend WithEvents buttonKontoanlegen As Button
     Friend WithEvents PictureBox_LPFn As PictureBox
