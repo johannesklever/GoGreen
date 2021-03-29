@@ -47,8 +47,8 @@ Public Class Registrierung
         If FindeDatensatzImRecordset(textBoxBenutzername.Text) = False Then
             If textBoxNeuesPasswort.Text = textBoxPasswortBestätigen.Text And ValidatePassword() = True Then
                 With rsKunde
-                    .AddNew()
                     .MoveLast()
+                    .AddNew()
                     .Fields("Benutzername").Value = textBoxBenutzername.Text
                     .Fields("Passwort").Value = textBoxNeuesPasswort.Text
                     .Update()

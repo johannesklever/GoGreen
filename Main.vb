@@ -213,6 +213,13 @@ Public Class FormMain
             MsgBox(ex.Message)
         End Try
 
+
+        textBoxShopEinzelansichtAdresse.Clear()
+        textBoxShopEinzelansichtBezeichnung.Clear()
+        textBoxShopEinzelansichtOeffnungszeit.Clear()
+        textBoxShopEinzelansichtTelefonnummer.Clear()
+        comboBoxEinzelansichtKategorie.ResetText()
+        comboBoxEinzelansichtStadtteile.ResetText()
     End Sub
 
 
