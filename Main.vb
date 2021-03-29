@@ -9,62 +9,29 @@ Public Class FormMain
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim rsGeschäfte As ADODB.Recordset
         panelGeschaefteSubmenu.Visible = False
         panelMeinBereichSubMenu.Visible = False
-        rsGeschäfte = New ADODB.Recordset
+
         rsKategorien = New ADODB.Recordset
         rsStadtteile = New ADODB.Recordset
+        rsGeschaefte = New ADODB.Recordset
 
-        'Try
+        Try
 
-        conn = New ADODB.Connection
-        conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
+            conn = New ADODB.Connection
+            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
-        rsKategorien.Open("SELECT * FROM Kategorien",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsKategorien.Open("SELECT * FROM Kategorien",
+                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsGeschaefte.Open("SELECT * FROM Geschäfte",
+                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsStadtteile.Open("SELECT * FROM Stadtteile",
+                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
-        'Treeview Geschäfte nach Kategorien
-        Do While Not rsKategorien.EOF
-            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
-            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorien.Fields("Kategorie_ID").Value,
-                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        Catch ex As Exception
+            MsgBox(ex.Message)
 
-            If rsGeschäfte.RecordCount > 0 Then
-                Do While Not rsGeschäfte.EOF
-                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                    rsGeschäfte.MoveNext()
-                Loop
-            End If
-            rsGeschäfte.Close()
-            rsKategorien.MoveNext()
-        Loop
-
-        'Treeview Geschäfte nach Stadtteilen
-
-        rsStadtteile.Open("SELECT * FROM Stadtteile",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
-        Do While Not rsStadtteile.EOF
-            Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
-            rsGeschäfte.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
-                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
-            If rsGeschäfte.RecordCount > 0 Then
-                Do While Not rsGeschäfte.EOF
-                    ndTop.Nodes.Add(rsGeschäfte.Fields("Bezeichnung").Value)
-                    rsGeschäfte.MoveNext()
-                Loop
-            End If
-            rsGeschäfte.Close()
-            rsStadtteile.MoveNext()
-        Loop
-
-
-        'Catch ex As Exception
-        '    MsgBox(ex.Message)
-
-        'End Try
+        End Try
 
     End Sub
 
@@ -78,7 +45,7 @@ Public Class FormMain
         End With
     End Sub
 
-    Private Sub btnGeschaefte_Click(sender As Object, e As EventArgs) Handles btnGeschaefte.Click
+    Private Sub btnGeschaefte_Click(sender As Object, e As EventArgs) Handles buttonSideMenuGeschaefte.Click
 
         Toggle(panelGeschaefteSubmenu)  'das Panel wird aufgedeckt oder versteckt, sodass Untermenü sichtbar ist oder nicht
 
@@ -90,15 +57,55 @@ Public Class FormMain
 
     End Sub
 
-    Private Sub btnSideMenuKategorien_Click(sender As Object, e As EventArgs) Handles btnSideMenuKategorien.Click
+    Private Sub buttonSideMenuKategorien_Click(sender As Object, e As EventArgs) Handles buttonSideMenuKategorien.Click
 
         TabControl1.SelectedIndex = 1
 
+        Dim rsGeschaefteNachKategorie = New ADODB.Recordset
+        'Dim rsGeschaefte As New ADODB.Recordset
+
+        Do While Not rsKategorien.EOF
+            Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
+            rsGeschaefteNachKategorie.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorien.Fields("Kategorie_ID").Value,
+                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+            If rsGeschaefteNachKategorie.RecordCount > 0 Then
+                Do While Not rsGeschaefteNachKategorie.EOF
+                    ndTop.Nodes.Add(rsGeschaefteNachKategorie.Fields("Bezeichnung").Value)
+                    rsGeschaefteNachKategorie.MoveNext()
+                Loop
+            End If
+            rsGeschaefteNachKategorie.Close()
+            rsKategorien.MoveNext()
+        Loop
+
     End Sub
 
-    Private Sub btnSideMenuStadtteile_Click(sender As Object, e As EventArgs) Handles btnSideMenuStadtteile.Click
+    Private Sub btnSideMenuStadtteile_Click(sender As Object, e As EventArgs) Handles buttonSideMenuStadtteile.Click
+
+        Dim rsGeschaefteNachStadtteilen = New ADODB.Recordset
 
         TabControl1.SelectedIndex = 3
+
+        'Treeview Geschäfte nach Stadtteilen
+
+        rsStadtteile.Open("SELECT * FROM Stadtteile",
+                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+        Do While Not rsStadtteile.EOF
+            Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
+            rsGeschaefteNachStadtteilen.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
+                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+            If rsGeschaefteNachStadtteilen.RecordCount > 0 Then
+                Do While Not rsGeschaefteNachStadtteilen.EOF
+                    ndTop.Nodes.Add(rsGeschaefteNachStadtteilen.Fields("Bezeichnung").Value)
+                    rsGeschaefteNachStadtteilen.MoveNext()
+                Loop
+            End If
+            rsGeschaefteNachStadtteilen.Close()
+            rsStadtteile.MoveNext()
+        Loop
 
     End Sub
 
@@ -117,18 +124,10 @@ Public Class FormMain
     Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
         Dim geschaeftsBezeichnung As String
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
-        rsGeschaefte = New ADODB.Recordset
 
         Try
-            conn = New ADODB.Connection
-            conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
-
-            rsGeschaefte.Open("SELECT * FROM Geschäfte",
-                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
 
             geschaeftsBezeichnung = treeView.SelectedNode.Text
-
             rsGeschaefte.MoveFirst()
             rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
 
@@ -155,7 +154,7 @@ Public Class FormMain
 
     End Sub
 
-    Private Sub btnHinzufuegen_Click(sender As Object, e As EventArgs) Handles btnHinzufuegen.Click
+    Private Sub btnSideMenuHinzufuegenClick(sender As Object, e As EventArgs) Handles buttonSideMenuHinzufuegen.Click
 
         TabControl1.SelectedIndex = 2
         'alte Einträge löschen
@@ -173,14 +172,56 @@ Public Class FormMain
         pictureBoxGeschaefteEinzelansichtsseite.SizeMode = vbNormal
         pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
 
+        rsKategorien.MoveFirst()
+
+        Do While Not rsKategorien.EOF
+
+            comboBoxEinzelansichtKategorie.Items.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
+            rsKategorien.MoveNext()
+
+        Loop
+
+        Do While Not rsStadtteile.EOF
+            comboBoxEinzelansichtStadtteile.Items.Add(rsStadtteile.Fields("Bezeichnung").Value)
+            rsStadtteile.MoveNext()
+        Loop
 
     End Sub
 
     Private Sub buttonShopHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopHinzufuegen.Click
 
+        Dim rsAktuelleKategorieID As New ADODB.Recordset 'zur Ermittlung der KategorienID über die ausgewählte Kategorienbezeichung in der Combobox
+        Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
 
+        Try
+            rsAktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung = " & "'" & comboBoxEinzelansichtKategorie.SelectedItem & "'",
+                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsAktuellerStadtteilID.Open("SELECT ID FROM Stadtteile WHERE Bezeichnung = " & "'" & comboBoxEinzelansichtStadtteile.SelectedItem & "'",
+                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsGeschaefte.MoveFirst()
+            rsGeschaefte.AddNew()
+            rsGeschaefte.Fields("Bezeichnung").Value = textBoxShopEinzelansichtBezeichnung.Text
+            rsGeschaefte.Fields("Adresse").Value = textBoxShopEinzelansichtAdresse.Text
+            rsGeschaefte.Fields("Öffnungszeiten").Value = textBoxShopEinzelansichtOeffnungszeit.Text
+            rsGeschaefte.Fields("Telefon").Value = textBoxShopEinzelansichtTelefonnummer.Text
+            rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
+            rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
+            rsGeschaefte.Update()
+            MsgBox("Geschäft hinzugefügt")
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
     End Sub
+
+
+
+
+
+
+
+
 
     'bla
 

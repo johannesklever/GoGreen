@@ -34,10 +34,10 @@ Partial Class FormMain
         Me.btnMeinBereich = New System.Windows.Forms.Button()
         Me.panelGeschaefteSubmenu = New System.Windows.Forms.Panel()
         Me.btnBekleidungslaeden = New System.Windows.Forms.Button()
-        Me.btnHinzufuegen = New System.Windows.Forms.Button()
-        Me.btnSideMenuStadtteile = New System.Windows.Forms.Button()
-        Me.btnSideMenuKategorien = New System.Windows.Forms.Button()
-        Me.btnGeschaefte = New System.Windows.Forms.Button()
+        Me.buttonSideMenuHinzufuegen = New System.Windows.Forms.Button()
+        Me.buttonSideMenuStadtteile = New System.Windows.Forms.Button()
+        Me.buttonSideMenuKategorien = New System.Windows.Forms.Button()
+        Me.buttonSideMenuGeschaefte = New System.Windows.Forms.Button()
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.panelContent = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -49,6 +49,14 @@ Partial Class FormMain
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.labelShopEinzelansichtOeffnungszeit = New System.Windows.Forms.Label()
+        Me.labelShopEinzelansichtTelefonnummer = New System.Windows.Forms.Label()
+        Me.labelShopEinzelansichtAdresse = New System.Windows.Forms.Label()
+        Me.labelBezeichnungEinzelansichtKategorie = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.labelShopEinzelansichtKategorie = New System.Windows.Forms.Label()
+        Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
+        Me.comboBoxEinzelansichtKategorie = New System.Windows.Forms.ComboBox()
         Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.textBoxShopEinzelansichtOeffnungszeit = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtAdresse = New System.Windows.Forms.TextBox()
@@ -59,8 +67,7 @@ Partial Class FormMain
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.comboBoxEinzelansichtKategorie = New System.Windows.Forms.ComboBox()
-        Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
+        Me.comboBoxEinzelansichtStadtteile = New System.Windows.Forms.ComboBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -85,7 +92,7 @@ Partial Class FormMain
         Me.panelSideMenu.Controls.Add(Me.panelMeinBereichSubMenu)
         Me.panelSideMenu.Controls.Add(Me.btnMeinBereich)
         Me.panelSideMenu.Controls.Add(Me.panelGeschaefteSubmenu)
-        Me.panelSideMenu.Controls.Add(Me.btnGeschaefte)
+        Me.panelSideMenu.Controls.Add(Me.buttonSideMenuGeschaefte)
         Me.panelSideMenu.Controls.Add(Me.panelLogo)
         Me.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left
         Me.panelSideMenu.Location = New System.Drawing.Point(35, 0)
@@ -241,9 +248,9 @@ Partial Class FormMain
         '
         Me.panelGeschaefteSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
         Me.panelGeschaefteSubmenu.Controls.Add(Me.btnBekleidungslaeden)
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnHinzufuegen)
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnSideMenuStadtteile)
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnSideMenuKategorien)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuHinzufuegen)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuStadtteile)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuKategorien)
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
@@ -265,68 +272,68 @@ Partial Class FormMain
         Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnBekleidungslaeden.UseVisualStyleBackColor = True
         '
-        'btnHinzufuegen
+        'buttonSideMenuHinzufuegen
         '
-        Me.btnHinzufuegen.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnHinzufuegen.FlatAppearance.BorderSize = 0
-        Me.btnHinzufuegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHinzufuegen.ForeColor = System.Drawing.Color.LightGray
-        Me.btnHinzufuegen.Location = New System.Drawing.Point(0, 80)
-        Me.btnHinzufuegen.Name = "btnHinzufuegen"
-        Me.btnHinzufuegen.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnHinzufuegen.Size = New System.Drawing.Size(229, 40)
-        Me.btnHinzufuegen.TabIndex = 2
-        Me.btnHinzufuegen.Text = "Hinzufügen"
-        Me.btnHinzufuegen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHinzufuegen.UseVisualStyleBackColor = True
+        Me.buttonSideMenuHinzufuegen.Dock = System.Windows.Forms.DockStyle.Top
+        Me.buttonSideMenuHinzufuegen.FlatAppearance.BorderSize = 0
+        Me.buttonSideMenuHinzufuegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.buttonSideMenuHinzufuegen.ForeColor = System.Drawing.Color.LightGray
+        Me.buttonSideMenuHinzufuegen.Location = New System.Drawing.Point(0, 80)
+        Me.buttonSideMenuHinzufuegen.Name = "buttonSideMenuHinzufuegen"
+        Me.buttonSideMenuHinzufuegen.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.buttonSideMenuHinzufuegen.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuHinzufuegen.TabIndex = 2
+        Me.buttonSideMenuHinzufuegen.Text = "Hinzufügen"
+        Me.buttonSideMenuHinzufuegen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.buttonSideMenuHinzufuegen.UseVisualStyleBackColor = True
         '
-        'btnSideMenuStadtteile
+        'buttonSideMenuStadtteile
         '
-        Me.btnSideMenuStadtteile.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnSideMenuStadtteile.FlatAppearance.BorderSize = 0
-        Me.btnSideMenuStadtteile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSideMenuStadtteile.ForeColor = System.Drawing.Color.LightGray
-        Me.btnSideMenuStadtteile.Location = New System.Drawing.Point(0, 40)
-        Me.btnSideMenuStadtteile.Name = "btnSideMenuStadtteile"
-        Me.btnSideMenuStadtteile.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnSideMenuStadtteile.Size = New System.Drawing.Size(229, 40)
-        Me.btnSideMenuStadtteile.TabIndex = 1
-        Me.btnSideMenuStadtteile.Text = "Stadtteile"
-        Me.btnSideMenuStadtteile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSideMenuStadtteile.UseVisualStyleBackColor = True
+        Me.buttonSideMenuStadtteile.Dock = System.Windows.Forms.DockStyle.Top
+        Me.buttonSideMenuStadtteile.FlatAppearance.BorderSize = 0
+        Me.buttonSideMenuStadtteile.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.buttonSideMenuStadtteile.ForeColor = System.Drawing.Color.LightGray
+        Me.buttonSideMenuStadtteile.Location = New System.Drawing.Point(0, 40)
+        Me.buttonSideMenuStadtteile.Name = "buttonSideMenuStadtteile"
+        Me.buttonSideMenuStadtteile.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.buttonSideMenuStadtteile.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuStadtteile.TabIndex = 1
+        Me.buttonSideMenuStadtteile.Text = "Stadtteile"
+        Me.buttonSideMenuStadtteile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.buttonSideMenuStadtteile.UseVisualStyleBackColor = True
         '
-        'btnSideMenuKategorien
+        'buttonSideMenuKategorien
         '
-        Me.btnSideMenuKategorien.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnSideMenuKategorien.FlatAppearance.BorderSize = 0
-        Me.btnSideMenuKategorien.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSideMenuKategorien.ForeColor = System.Drawing.Color.LightGray
-        Me.btnSideMenuKategorien.Location = New System.Drawing.Point(0, 0)
-        Me.btnSideMenuKategorien.Name = "btnSideMenuKategorien"
-        Me.btnSideMenuKategorien.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnSideMenuKategorien.Size = New System.Drawing.Size(229, 40)
-        Me.btnSideMenuKategorien.TabIndex = 0
-        Me.btnSideMenuKategorien.Text = "Kategorien"
-        Me.btnSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSideMenuKategorien.UseVisualStyleBackColor = True
+        Me.buttonSideMenuKategorien.Dock = System.Windows.Forms.DockStyle.Top
+        Me.buttonSideMenuKategorien.FlatAppearance.BorderSize = 0
+        Me.buttonSideMenuKategorien.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.buttonSideMenuKategorien.ForeColor = System.Drawing.Color.LightGray
+        Me.buttonSideMenuKategorien.Location = New System.Drawing.Point(0, 0)
+        Me.buttonSideMenuKategorien.Name = "buttonSideMenuKategorien"
+        Me.buttonSideMenuKategorien.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.buttonSideMenuKategorien.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuKategorien.TabIndex = 0
+        Me.buttonSideMenuKategorien.Text = "Kategorien"
+        Me.buttonSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.buttonSideMenuKategorien.UseVisualStyleBackColor = True
         '
-        'btnGeschaefte
+        'buttonSideMenuGeschaefte
         '
-        Me.btnGeschaefte.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGeschaefte.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnGeschaefte.FlatAppearance.BorderSize = 0
-        Me.btnGeschaefte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGeschaefte.ForeColor = System.Drawing.Color.LightGray
-        Me.btnGeschaefte.Image = Global.GoGreen.My.Resources.Resources.outline_storefront_white_18dp
-        Me.btnGeschaefte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGeschaefte.Location = New System.Drawing.Point(0, 100)
-        Me.btnGeschaefte.Name = "btnGeschaefte"
-        Me.btnGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnGeschaefte.Size = New System.Drawing.Size(229, 45)
-        Me.btnGeschaefte.TabIndex = 1
-        Me.btnGeschaefte.Text = "Geschäfte"
-        Me.btnGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnGeschaefte.UseVisualStyleBackColor = True
+        Me.buttonSideMenuGeschaefte.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.buttonSideMenuGeschaefte.Dock = System.Windows.Forms.DockStyle.Top
+        Me.buttonSideMenuGeschaefte.FlatAppearance.BorderSize = 0
+        Me.buttonSideMenuGeschaefte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.buttonSideMenuGeschaefte.ForeColor = System.Drawing.Color.LightGray
+        Me.buttonSideMenuGeschaefte.Image = Global.GoGreen.My.Resources.Resources.outline_storefront_white_18dp
+        Me.buttonSideMenuGeschaefte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.buttonSideMenuGeschaefte.Location = New System.Drawing.Point(0, 100)
+        Me.buttonSideMenuGeschaefte.Name = "buttonSideMenuGeschaefte"
+        Me.buttonSideMenuGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.buttonSideMenuGeschaefte.Size = New System.Drawing.Size(229, 45)
+        Me.buttonSideMenuGeschaefte.TabIndex = 1
+        Me.buttonSideMenuGeschaefte.Text = "Geschäfte"
+        Me.buttonSideMenuGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.buttonSideMenuGeschaefte.UseVisualStyleBackColor = True
         '
         'panelLogo
         '
@@ -437,6 +444,13 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtAdresse)
+        Me.TabPage3.Controls.Add(Me.labelBezeichnungEinzelansichtKategorie)
+        Me.TabPage3.Controls.Add(Me.Label1)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
@@ -453,6 +467,77 @@ Partial Class FormMain
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'labelShopEinzelansichtOeffnungszeit
+        '
+        Me.labelShopEinzelansichtOeffnungszeit.AutoSize = True
+        Me.labelShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(35, 405)
+        Me.labelShopEinzelansichtOeffnungszeit.Name = "labelShopEinzelansichtOeffnungszeit"
+        Me.labelShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(104, 20)
+        Me.labelShopEinzelansichtOeffnungszeit.TabIndex = 13
+        Me.labelShopEinzelansichtOeffnungszeit.Text = "Öffnungszeit"
+        '
+        'labelShopEinzelansichtTelefonnummer
+        '
+        Me.labelShopEinzelansichtTelefonnummer.AutoSize = True
+        Me.labelShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(35, 456)
+        Me.labelShopEinzelansichtTelefonnummer.Name = "labelShopEinzelansichtTelefonnummer"
+        Me.labelShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(125, 20)
+        Me.labelShopEinzelansichtTelefonnummer.TabIndex = 12
+        Me.labelShopEinzelansichtTelefonnummer.Text = "Telefonnummer"
+        '
+        'labelShopEinzelansichtAdresse
+        '
+        Me.labelShopEinzelansichtAdresse.AutoSize = True
+        Me.labelShopEinzelansichtAdresse.Location = New System.Drawing.Point(35, 353)
+        Me.labelShopEinzelansichtAdresse.Name = "labelShopEinzelansichtAdresse"
+        Me.labelShopEinzelansichtAdresse.Size = New System.Drawing.Size(71, 20)
+        Me.labelShopEinzelansichtAdresse.TabIndex = 11
+        Me.labelShopEinzelansichtAdresse.Text = "Adresse"
+        '
+        'labelBezeichnungEinzelansichtKategorie
+        '
+        Me.labelBezeichnungEinzelansichtKategorie.AutoSize = True
+        Me.labelBezeichnungEinzelansichtKategorie.Location = New System.Drawing.Point(279, 248)
+        Me.labelBezeichnungEinzelansichtKategorie.Name = "labelBezeichnungEinzelansichtKategorie"
+        Me.labelBezeichnungEinzelansichtKategorie.Size = New System.Drawing.Size(80, 20)
+        Me.labelBezeichnungEinzelansichtKategorie.TabIndex = 10
+        Me.labelBezeichnungEinzelansichtKategorie.Text = "Kategorie"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(390, 35)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(106, 20)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Bezeichnung"
+        '
+        'labelShopEinzelansichtKategorie
+        '
+        Me.labelShopEinzelansichtKategorie.AutoSize = True
+        Me.labelShopEinzelansichtKategorie.Location = New System.Drawing.Point(390, 113)
+        Me.labelShopEinzelansichtKategorie.Name = "labelShopEinzelansichtKategorie"
+        Me.labelShopEinzelansichtKategorie.Size = New System.Drawing.Size(80, 20)
+        Me.labelShopEinzelansichtKategorie.TabIndex = 8
+        Me.labelShopEinzelansichtKategorie.Text = "Kategorie"
+        '
+        'buttonShopHinzufuegen
+        '
+        Me.buttonShopHinzufuegen.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopHinzufuegen.Name = "buttonShopHinzufuegen"
+        Me.buttonShopHinzufuegen.Size = New System.Drawing.Size(193, 37)
+        Me.buttonShopHinzufuegen.TabIndex = 7
+        Me.buttonShopHinzufuegen.Text = "Shop hinzufügen"
+        Me.buttonShopHinzufuegen.UseVisualStyleBackColor = True
+        '
+        'comboBoxEinzelansichtKategorie
+        '
+        Me.comboBoxEinzelansichtKategorie.FormattingEnabled = True
+        Me.comboBoxEinzelansichtKategorie.Location = New System.Drawing.Point(394, 175)
+        Me.comboBoxEinzelansichtKategorie.Name = "comboBoxEinzelansichtKategorie"
+        Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtKategorie.TabIndex = 6
+        '
         'pictureBoxGeschaefteEinzelansichtsseite
         '
         Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
@@ -465,7 +550,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtOeffnungszeit
         '
-        Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(228, 425)
+        Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(39, 427)
         Me.textBoxShopEinzelansichtOeffnungszeit.Name = "textBoxShopEinzelansichtOeffnungszeit"
         Me.textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
         Me.textBoxShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(193, 26)
@@ -473,7 +558,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtAdresse
         '
-        Me.textBoxShopEinzelansichtAdresse.Location = New System.Drawing.Point(15, 425)
+        Me.textBoxShopEinzelansichtAdresse.Location = New System.Drawing.Point(39, 376)
         Me.textBoxShopEinzelansichtAdresse.Name = "textBoxShopEinzelansichtAdresse"
         Me.textBoxShopEinzelansichtAdresse.ReadOnly = True
         Me.textBoxShopEinzelansichtAdresse.Size = New System.Drawing.Size(193, 26)
@@ -481,7 +566,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtTelefonnummer
         '
-        Me.textBoxShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(443, 425)
+        Me.textBoxShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(39, 479)
         Me.textBoxShopEinzelansichtTelefonnummer.Name = "textBoxShopEinzelansichtTelefonnummer"
         Me.textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
         Me.textBoxShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(193, 26)
@@ -541,22 +626,13 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'comboBoxEinzelansichtKategorie
+        'comboBoxEinzelansichtStadtteile
         '
-        Me.comboBoxEinzelansichtKategorie.FormattingEnabled = True
-        Me.comboBoxEinzelansichtKategorie.Location = New System.Drawing.Point(394, 205)
-        Me.comboBoxEinzelansichtKategorie.Name = "comboBoxEinzelansichtKategorie"
-        Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 28)
-        Me.comboBoxEinzelansichtKategorie.TabIndex = 6
-        '
-        'buttonShopHinzufuegen
-        '
-        Me.buttonShopHinzufuegen.Location = New System.Drawing.Point(228, 463)
-        Me.buttonShopHinzufuegen.Name = "buttonShopHinzufuegen"
-        Me.buttonShopHinzufuegen.Size = New System.Drawing.Size(193, 37)
-        Me.buttonShopHinzufuegen.TabIndex = 7
-        Me.buttonShopHinzufuegen.Text = "Shop hinzufügen"
-        Me.buttonShopHinzufuegen.UseVisualStyleBackColor = True
+        Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
+        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(250, 374)
+        Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
+        Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
         '
         'FormMain
         '
@@ -592,12 +668,12 @@ Partial Class FormMain
 
     Friend WithEvents panelSideMenu As Panel
     Friend WithEvents panelGeschaefteSubmenu As Panel
-    Friend WithEvents btnSideMenuKategorien As Button
-    Friend WithEvents btnGeschaefte As Button
+    Friend WithEvents buttonSideMenuKategorien As Button
+    Friend WithEvents buttonSideMenuGeschaefte As Button
     Friend WithEvents panelLogo As Panel
     Friend WithEvents btnBekleidungslaeden As Button
-    Friend WithEvents btnHinzufuegen As Button
-    Friend WithEvents btnSideMenuStadtteile As Button
+    Friend WithEvents buttonSideMenuHinzufuegen As Button
+    Friend WithEvents buttonSideMenuStadtteile As Button
 
     Friend WithEvents btnHelp As Button
     Friend WithEvents btnAbout As Button
@@ -631,4 +707,11 @@ Partial Class FormMain
     Friend WithEvents pictureBoxGeschaefteEinzelansichtsseite As PictureBox
     Friend WithEvents comboBoxEinzelansichtKategorie As ComboBox
     Friend WithEvents buttonShopHinzufuegen As Button
+    Friend WithEvents labelShopEinzelansichtKategorie As Label
+    Friend WithEvents labelBezeichnungEinzelansichtKategorie As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents labelShopEinzelansichtOeffnungszeit As Label
+    Friend WithEvents labelShopEinzelansichtTelefonnummer As Label
+    Friend WithEvents labelShopEinzelansichtAdresse As Label
+    Friend WithEvents comboBoxEinzelansichtStadtteile As ComboBox
 End Class
