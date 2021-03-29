@@ -72,27 +72,6 @@ Public Class Landingpage
 
     Private Sub Button_Registrieren_Click(sender As Object, e As EventArgs) Handles buttonKontoanlegen.Click
 
-        'Dim rs_KID As ADODB.Recordset
-        'rs_KID = New ADODB.Recordset
-        'Dim KID As Integer
-        'Dim fieldsArray(2) As Object
-        'Dim valuesArray(2) As Object
-
-        'rs_KID.Open("SELECT MAX(Kunden_ID) AS MKID FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        'KID = rs_KID.Fields("MKID").Value + 1
-
-
-        'fieldsArray(0) = "Kunden_ID"
-        'fieldsArray(1) = "Benutzername"
-        'fieldsArray(2) = "Passwort"
-
-        'valuesArray(0) = KID
-        'valuesArray(1) = ""
-        'valuesArray(2) = ""
-
-        'rs.AddNew(fieldsArray, valuesArray)
-        'rs.Update()
-
         textBoxBenutzername.Clear()  'falls Nutzer Daten eingibt und dann auf Registrieren drückt
         textBoxPasswort.Clear()
 
@@ -103,6 +82,11 @@ Public Class Landingpage
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub buttonOhneAnmelden_Click(sender As Object, e As EventArgs) Handles buttonOhneAnmelden.Click
+        Me.Hide()
+        FormMain.ShowDialog()
     End Sub
 
 End Class

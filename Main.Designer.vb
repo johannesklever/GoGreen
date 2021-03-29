@@ -23,16 +23,21 @@ Partial Class FormMain
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.panelSideMenu = New System.Windows.Forms.Panel()
+        Me.btnHelp = New System.Windows.Forms.Button()
+        Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnProgrammeinstellungen = New System.Windows.Forms.Button()
         Me.panelMeinBereichSubMenu = New System.Windows.Forms.Panel()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.btnUserSettings = New System.Windows.Forms.Button()
         Me.btnFavorit = New System.Windows.Forms.Button()
+        Me.btnMeinBereich = New System.Windows.Forms.Button()
         Me.panelGeschaefteSubmenu = New System.Windows.Forms.Panel()
         Me.btnBekleidungslaeden = New System.Windows.Forms.Button()
         Me.btnHinzufuegen = New System.Windows.Forms.Button()
         Me.btnSideMenuStadtteile = New System.Windows.Forms.Button()
         Me.btnSideMenuKategorien = New System.Windows.Forms.Button()
+        Me.btnGeschaefte = New System.Windows.Forms.Button()
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.panelContent = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -44,6 +49,7 @@ Partial Class FormMain
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.textBoxShopEinzelansichtOeffnungszeit = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtAdresse = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtTelefonnummer = New System.Windows.Forms.TextBox()
@@ -52,14 +58,9 @@ Partial Class FormMain
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
-        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnAbout = New System.Windows.Forms.Button()
-        Me.btnProgrammeinstellungen = New System.Windows.Forms.Button()
-        Me.btnMeinBereich = New System.Windows.Forms.Button()
-        Me.btnGeschaefte = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.comboBoxEinzelansichtKategorie = New System.Windows.Forms.ComboBox()
+        Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -69,8 +70,8 @@ Partial Class FormMain
         CType(Me.webView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage4.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -91,6 +92,59 @@ Partial Class FormMain
         Me.panelSideMenu.Name = "panelSideMenu"
         Me.panelSideMenu.Size = New System.Drawing.Size(250, 553)
         Me.panelSideMenu.TabIndex = 0
+        '
+        'btnHelp
+        '
+        Me.btnHelp.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnHelp.FlatAppearance.BorderSize = 0
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.ForeColor = System.Drawing.Color.LightGray
+        Me.btnHelp.Image = Global.GoGreen.My.Resources.Resources.outline_help_center_white_18dp
+        Me.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnHelp.Location = New System.Drawing.Point(0, 608)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
+        Me.btnHelp.TabIndex = 8
+        Me.btnHelp.Text = "Help"
+        Me.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnHelp.UseVisualStyleBackColor = True
+        '
+        'btnAbout
+        '
+        Me.btnAbout.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnAbout.FlatAppearance.BorderSize = 0
+        Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAbout.ForeColor = System.Drawing.Color.LightGray
+        Me.btnAbout.Image = Global.GoGreen.My.Resources.Resources.outline_info_white_18dp
+        Me.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAbout.Location = New System.Drawing.Point(0, 563)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
+        Me.btnAbout.TabIndex = 6
+        Me.btnAbout.Text = "About"
+        Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnAbout.UseVisualStyleBackColor = True
+        '
+        'btnProgrammeinstellungen
+        '
+        Me.btnProgrammeinstellungen.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnProgrammeinstellungen.FlatAppearance.BorderSize = 0
+        Me.btnProgrammeinstellungen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProgrammeinstellungen.ForeColor = System.Drawing.Color.LightGray
+        Me.btnProgrammeinstellungen.Image = Global.GoGreen.My.Resources.Resources.outline_settings_suggest_white_18dp
+        Me.btnProgrammeinstellungen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
+        Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
+        Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
+        Me.btnProgrammeinstellungen.TabIndex = 5
+        Me.btnProgrammeinstellungen.Text = "Einstellungen"
+        Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnProgrammeinstellungen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnProgrammeinstellungen.UseVisualStyleBackColor = True
         '
         'panelMeinBereichSubMenu
         '
@@ -165,6 +219,24 @@ Partial Class FormMain
         Me.btnFavorit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnFavorit.UseVisualStyleBackColor = True
         '
+        'btnMeinBereich
+        '
+        Me.btnMeinBereich.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnMeinBereich.FlatAppearance.BorderSize = 0
+        Me.btnMeinBereich.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMeinBereich.ForeColor = System.Drawing.Color.LightGray
+        Me.btnMeinBereich.Image = Global.GoGreen.My.Resources.Resources.outline_person_white_18dp
+        Me.btnMeinBereich.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
+        Me.btnMeinBereich.Name = "btnMeinBereich"
+        Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
+        Me.btnMeinBereich.TabIndex = 3
+        Me.btnMeinBereich.Text = "Mein Bereich"
+        Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnMeinBereich.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnMeinBereich.UseVisualStyleBackColor = True
+        '
         'panelGeschaefteSubmenu
         '
         Me.panelGeschaefteSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
@@ -237,6 +309,24 @@ Partial Class FormMain
         Me.btnSideMenuKategorien.Text = "Kategorien"
         Me.btnSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSideMenuKategorien.UseVisualStyleBackColor = True
+        '
+        'btnGeschaefte
+        '
+        Me.btnGeschaefte.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnGeschaefte.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnGeschaefte.FlatAppearance.BorderSize = 0
+        Me.btnGeschaefte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGeschaefte.ForeColor = System.Drawing.Color.LightGray
+        Me.btnGeschaefte.Image = Global.GoGreen.My.Resources.Resources.outline_storefront_white_18dp
+        Me.btnGeschaefte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnGeschaefte.Location = New System.Drawing.Point(0, 100)
+        Me.btnGeschaefte.Name = "btnGeschaefte"
+        Me.btnGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.btnGeschaefte.Size = New System.Drawing.Size(229, 45)
+        Me.btnGeschaefte.TabIndex = 1
+        Me.btnGeschaefte.Text = "Geschäfte"
+        Me.btnGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGeschaefte.UseVisualStyleBackColor = True
         '
         'panelLogo
         '
@@ -347,7 +437,8 @@ Partial Class FormMain
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.ListBox1)
+        Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
+        Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
@@ -361,6 +452,16 @@ Partial Class FormMain
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'pictureBoxGeschaefteEinzelansichtsseite
+        '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
         '
         'textBoxShopEinzelansichtOeffnungszeit
         '
@@ -430,16 +531,6 @@ Partial Class FormMain
         Me.TreeViewGeschäfteStadtteile.Size = New System.Drawing.Size(205, 368)
         Me.TreeViewGeschäfteStadtteile.TabIndex = 5
         '
-        'pictureBoxGeschaefteEinzelansichtsseite
-        '
-        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
-        '
         'PictureBoxMap
         '
         Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
@@ -450,103 +541,22 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'btnHelp
+        'comboBoxEinzelansichtKategorie
         '
-        Me.btnHelp.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnHelp.FlatAppearance.BorderSize = 0
-        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.ForeColor = System.Drawing.Color.LightGray
-        Me.btnHelp.Image = Global.GoGreen.My.Resources.Resources.outline_help_center_white_18dp
-        Me.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHelp.Location = New System.Drawing.Point(0, 608)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
-        Me.btnHelp.TabIndex = 8
-        Me.btnHelp.Text = "Help"
-        Me.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnHelp.UseVisualStyleBackColor = True
+        Me.comboBoxEinzelansichtKategorie.FormattingEnabled = True
+        Me.comboBoxEinzelansichtKategorie.Location = New System.Drawing.Point(394, 205)
+        Me.comboBoxEinzelansichtKategorie.Name = "comboBoxEinzelansichtKategorie"
+        Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtKategorie.TabIndex = 6
         '
-        'btnAbout
+        'buttonShopHinzufuegen
         '
-        Me.btnAbout.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnAbout.FlatAppearance.BorderSize = 0
-        Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAbout.ForeColor = System.Drawing.Color.LightGray
-        Me.btnAbout.Image = Global.GoGreen.My.Resources.Resources.outline_info_white_18dp
-        Me.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAbout.Location = New System.Drawing.Point(0, 563)
-        Me.btnAbout.Name = "btnAbout"
-        Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
-        Me.btnAbout.TabIndex = 6
-        Me.btnAbout.Text = "About"
-        Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnAbout.UseVisualStyleBackColor = True
-        '
-        'btnProgrammeinstellungen
-        '
-        Me.btnProgrammeinstellungen.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnProgrammeinstellungen.FlatAppearance.BorderSize = 0
-        Me.btnProgrammeinstellungen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnProgrammeinstellungen.ForeColor = System.Drawing.Color.LightGray
-        Me.btnProgrammeinstellungen.Image = Global.GoGreen.My.Resources.Resources.outline_settings_suggest_white_18dp
-        Me.btnProgrammeinstellungen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
-        Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
-        Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
-        Me.btnProgrammeinstellungen.TabIndex = 5
-        Me.btnProgrammeinstellungen.Text = "Einstellungen"
-        Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProgrammeinstellungen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnProgrammeinstellungen.UseVisualStyleBackColor = True
-        '
-        'btnMeinBereich
-        '
-        Me.btnMeinBereich.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnMeinBereich.FlatAppearance.BorderSize = 0
-        Me.btnMeinBereich.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMeinBereich.ForeColor = System.Drawing.Color.LightGray
-        Me.btnMeinBereich.Image = Global.GoGreen.My.Resources.Resources.outline_person_white_18dp
-        Me.btnMeinBereich.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
-        Me.btnMeinBereich.Name = "btnMeinBereich"
-        Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
-        Me.btnMeinBereich.TabIndex = 3
-        Me.btnMeinBereich.Text = "Mein Bereich"
-        Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnMeinBereich.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnMeinBereich.UseVisualStyleBackColor = True
-        '
-        'btnGeschaefte
-        '
-        Me.btnGeschaefte.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGeschaefte.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnGeschaefte.FlatAppearance.BorderSize = 0
-        Me.btnGeschaefte.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGeschaefte.ForeColor = System.Drawing.Color.LightGray
-        Me.btnGeschaefte.Image = Global.GoGreen.My.Resources.Resources.outline_storefront_white_18dp
-        Me.btnGeschaefte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnGeschaefte.Location = New System.Drawing.Point(0, 100)
-        Me.btnGeschaefte.Name = "btnGeschaefte"
-        Me.btnGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnGeschaefte.Size = New System.Drawing.Size(229, 45)
-        Me.btnGeschaefte.TabIndex = 1
-        Me.btnGeschaefte.Text = "Geschäfte"
-        Me.btnGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnGeschaefte.UseVisualStyleBackColor = True
-        '
-        'ListBox1
-        '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(394, 192)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(193, 204)
-        Me.ListBox1.TabIndex = 6
+        Me.buttonShopHinzufuegen.Location = New System.Drawing.Point(228, 463)
+        Me.buttonShopHinzufuegen.Name = "buttonShopHinzufuegen"
+        Me.buttonShopHinzufuegen.Size = New System.Drawing.Size(193, 37)
+        Me.buttonShopHinzufuegen.TabIndex = 7
+        Me.buttonShopHinzufuegen.Text = "Shop hinzufügen"
+        Me.buttonShopHinzufuegen.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -572,9 +582,9 @@ Partial Class FormMain
         Me.TabPage2.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -619,5 +629,6 @@ Partial Class FormMain
     Friend WithEvents Button1 As Button
     Friend WithEvents textBoxShopEinzelansichtOeffnungszeit As TextBox
     Friend WithEvents pictureBoxGeschaefteEinzelansichtsseite As PictureBox
-    Friend WithEvents ListBox1 As ListBox
+    Friend WithEvents comboBoxEinzelansichtKategorie As ComboBox
+    Friend WithEvents buttonShopHinzufuegen As Button
 End Class

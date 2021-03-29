@@ -158,14 +158,26 @@ Public Class FormMain
     Private Sub btnHinzufuegen_Click(sender As Object, e As EventArgs) Handles btnHinzufuegen.Click
 
         TabControl1.SelectedIndex = 2
+        'alte Einträge löschen
         textBoxShopEinzelansichtAdresse.Clear()
         textBoxShopEinzelansichtAdresse.Text = LoggedUserID
         textBoxShopEinzelansichtBezeichnung.Clear()
-        textBoxShopEinzelansichtKategorie.Clear()
+        textBoxShopEinzelansichtKategorie.Hide()
         textBoxShopEinzelansichtOeffnungszeit.Clear()
         textBoxShopEinzelansichtTelefonnummer.Clear()
+        'Textfelder beschreibbar machen
+        textBoxShopEinzelansichtBezeichnung.ReadOnly = False
+        textBoxShopEinzelansichtAdresse.ReadOnly = False
+        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = False
+        textBoxShopEinzelansichtTelefonnummer.ReadOnly = False
         pictureBoxGeschaefteEinzelansichtsseite.SizeMode = vbNormal
         pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
+
+
+    End Sub
+
+    Private Sub buttonShopHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopHinzufuegen.Click
+
 
 
     End Sub

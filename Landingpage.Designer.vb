@@ -30,6 +30,7 @@ Partial Class Landingpage
         Me.textBoxPasswort = New System.Windows.Forms.TextBox()
         Me.buttonKontoanlegen = New System.Windows.Forms.Button()
         Me.PictureBox_LPFn = New System.Windows.Forms.PictureBox()
+        Me.buttonOhneAnmelden = New System.Windows.Forms.Button()
         CType(Me.PictureBox_LPFn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -107,11 +108,21 @@ Partial Class Landingpage
         Me.PictureBox_LPFn.TabIndex = 6
         Me.PictureBox_LPFn.TabStop = False
         '
+        'buttonOhneAnmelden
+        '
+        Me.buttonOhneAnmelden.Location = New System.Drawing.Point(77, 192)
+        Me.buttonOhneAnmelden.Name = "buttonOhneAnmelden"
+        Me.buttonOhneAnmelden.Size = New System.Drawing.Size(165, 33)
+        Me.buttonOhneAnmelden.TabIndex = 7
+        Me.buttonOhneAnmelden.Text = "Ohne Anmeldung"
+        Me.buttonOhneAnmelden.UseVisualStyleBackColor = True
+        '
         'Landingpage
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(533, 288)
+        Me.Controls.Add(Me.buttonOhneAnmelden)
         Me.Controls.Add(Me.buttonKontoanlegen)
         Me.Controls.Add(Me.textBoxPasswort)
         Me.Controls.Add(Me.textBoxBenutzername)
@@ -136,5 +147,6 @@ Partial Class Landingpage
     Friend WithEvents textBoxPasswort As TextBox
     Friend WithEvents buttonKontoanlegen As Button
     Friend WithEvents PictureBox_LPFn As PictureBox
+    Friend WithEvents buttonOhneAnmelden As Button
 End Class
 
