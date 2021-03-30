@@ -322,6 +322,10 @@ Public Class FormMain
 
     End Sub
 
+    Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click
+        TabControl1.SelectedTab = TabPageUser
+    End Sub
+
 
 
 
