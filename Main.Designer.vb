@@ -69,6 +69,10 @@ Partial Class FormMain
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.textBoxShopImageFileName = New System.Windows.Forms.TextBox()
+        Me.buttonShopBearbeiten = New System.Windows.Forms.Button()
+        Me.textBoxShopEinzelansichtStadtteil = New System.Windows.Forms.TextBox()
+        Me.labelShopEinzelansichtStadtteil = New System.Windows.Forms.Label()
+        Me.buttonShopAenderungenSpeichern = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -445,6 +449,10 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.buttonShopAenderungenSpeichern)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtStadtteil)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtStadtteil)
+        Me.TabPage3.Controls.Add(Me.buttonShopBearbeiten)
         Me.TabPage3.Controls.Add(Me.textBoxShopImageFileName)
         Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
@@ -485,7 +493,7 @@ Partial Class FormMain
         'comboBoxEinzelansichtStadtteile
         '
         Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
-        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(250, 374)
+        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(249, 408)
         Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
         Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
         Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
@@ -648,6 +656,42 @@ Partial Class FormMain
         Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 26)
         Me.textBoxShopImageFileName.TabIndex = 16
         '
+        'buttonShopBearbeiten
+        '
+        Me.buttonShopBearbeiten.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopBearbeiten.Name = "buttonShopBearbeiten"
+        Me.buttonShopBearbeiten.Size = New System.Drawing.Size(193, 37)
+        Me.buttonShopBearbeiten.TabIndex = 17
+        Me.buttonShopBearbeiten.Text = "Bearbeiten"
+        Me.buttonShopBearbeiten.UseVisualStyleBackColor = True
+        '
+        'textBoxShopEinzelansichtStadtteil
+        '
+        Me.textBoxShopEinzelansichtStadtteil.Location = New System.Drawing.Point(249, 376)
+        Me.textBoxShopEinzelansichtStadtteil.Name = "textBoxShopEinzelansichtStadtteil"
+        Me.textBoxShopEinzelansichtStadtteil.ReadOnly = True
+        Me.textBoxShopEinzelansichtStadtteil.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtStadtteil.TabIndex = 18
+        '
+        'labelShopEinzelansichtStadtteil
+        '
+        Me.labelShopEinzelansichtStadtteil.AutoSize = True
+        Me.labelShopEinzelansichtStadtteil.Location = New System.Drawing.Point(245, 353)
+        Me.labelShopEinzelansichtStadtteil.Name = "labelShopEinzelansichtStadtteil"
+        Me.labelShopEinzelansichtStadtteil.Size = New System.Drawing.Size(70, 20)
+        Me.labelShopEinzelansichtStadtteil.TabIndex = 19
+        Me.labelShopEinzelansichtStadtteil.Text = "Stadtteil"
+        '
+        'buttonShopAenderungenSpeichern
+        '
+        Me.buttonShopAenderungenSpeichern.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopAenderungenSpeichern.Name = "buttonShopAenderungenSpeichern"
+        Me.buttonShopAenderungenSpeichern.Size = New System.Drawing.Size(193, 37)
+        Me.buttonShopAenderungenSpeichern.TabIndex = 20
+        Me.buttonShopAenderungenSpeichern.Text = "Änderung Speichern"
+        Me.buttonShopAenderungenSpeichern.UseVisualStyleBackColor = True
+        Me.buttonShopAenderungenSpeichern.Visible = False
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -729,4 +773,8 @@ Partial Class FormMain
     Friend WithEvents comboBoxEinzelansichtStadtteile As ComboBox
     Friend WithEvents buttonShopImageHinzufuegen As Button
     Friend WithEvents textBoxShopImageFileName As TextBox
+    Friend WithEvents buttonShopBearbeiten As Button
+    Friend WithEvents labelShopEinzelansichtStadtteil As Label
+    Friend WithEvents textBoxShopEinzelansichtStadtteil As TextBox
+    Friend WithEvents buttonShopAenderungenSpeichern As Button
 End Class
