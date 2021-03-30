@@ -64,6 +64,8 @@ Public Class FormMain
         Dim rsGeschaefteNachKategorie = New ADODB.Recordset
         'Dim rsGeschaefte As New ADODB.Recordset
 
+        TreeViewGeschäfteKategorien.Nodes.Clear() 'verhindert, dass sich TreeView nach jedem Click verlängert
+        rsKategorien.MoveFirst()
         Do While Not rsKategorien.EOF
             Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
             rsGeschaefteNachKategorie.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorien.Fields("Kategorie_ID").Value,
@@ -88,7 +90,8 @@ Public Class FormMain
         TabControl1.SelectedIndex = 3
 
         'Treeview Geschäfte nach Stadtteilen
-
+        TreeViewGeschäfteKategorien.Nodes.Clear() 'verhindert, dass sich TreeView nach jedem Click verlängert
+        rsStadtteile.MoveFirst()
         Do While Not rsStadtteile.EOF
             Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
             rsGeschaefteNachStadtteilen.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
@@ -121,6 +124,17 @@ Public Class FormMain
     Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
         Dim geschaeftsBezeichnung As String
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
+
+        textBoxShopEinzelansichtBezeichnung.ReadOnly = True
+        textBoxShopEinzelansichtAdresse.ReadOnly = True
+        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
+        textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.Show()
+        comboBoxEinzelansichtKategorie.Hide()
+        comboBoxEinzelansichtStadtteile.Hide()
+        textBoxShopImageFileName.Hide()
+        buttonShopImageHinzufuegen.Hide()
 
         Try
 
@@ -227,6 +241,7 @@ Public Class FormMain
         textBoxShopEinzelansichtTelefonnummer.Clear()
         comboBoxEinzelansichtKategorie.ResetText()
         comboBoxEinzelansichtStadtteile.ResetText()
+
     End Sub
 
     Private Sub buttonShopImageHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopImageHinzufuegen.Click

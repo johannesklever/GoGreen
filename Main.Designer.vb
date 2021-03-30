@@ -54,7 +54,6 @@ Partial Class FormMain
         Me.labelShopEinzelansichtOeffnungszeit = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtTelefonnummer = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtAdresse = New System.Windows.Forms.Label()
-        Me.labelBezeichnungEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
@@ -452,7 +451,6 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtAdresse)
-        Me.TabPage3.Controls.Add(Me.labelBezeichnungEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.Label1)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
@@ -518,15 +516,6 @@ Partial Class FormMain
         Me.labelShopEinzelansichtAdresse.Size = New System.Drawing.Size(71, 20)
         Me.labelShopEinzelansichtAdresse.TabIndex = 11
         Me.labelShopEinzelansichtAdresse.Text = "Adresse"
-        '
-        'labelBezeichnungEinzelansichtKategorie
-        '
-        Me.labelBezeichnungEinzelansichtKategorie.AutoSize = True
-        Me.labelBezeichnungEinzelansichtKategorie.Location = New System.Drawing.Point(279, 248)
-        Me.labelBezeichnungEinzelansichtKategorie.Name = "labelBezeichnungEinzelansichtKategorie"
-        Me.labelBezeichnungEinzelansichtKategorie.Size = New System.Drawing.Size(80, 20)
-        Me.labelBezeichnungEinzelansichtKategorie.TabIndex = 10
-        Me.labelBezeichnungEinzelansichtKategorie.Text = "Kategorie"
         '
         'Label1
         '
@@ -733,7 +722,6 @@ Partial Class FormMain
     Friend WithEvents comboBoxEinzelansichtKategorie As ComboBox
     Friend WithEvents buttonShopHinzufuegen As Button
     Friend WithEvents labelShopEinzelansichtKategorie As Label
-    Friend WithEvents labelBezeichnungEinzelansichtKategorie As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents labelShopEinzelansichtOeffnungszeit As Label
     Friend WithEvents labelShopEinzelansichtTelefonnummer As Label
