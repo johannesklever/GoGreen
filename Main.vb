@@ -89,9 +89,6 @@ Public Class FormMain
 
         'Treeview Geschäfte nach Stadtteilen
 
-        rsStadtteile.Open("SELECT * FROM Stadtteile",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
         Do While Not rsStadtteile.EOF
             Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
             rsGeschaefteNachStadtteilen.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
@@ -169,8 +166,7 @@ Public Class FormMain
         textBoxShopEinzelansichtAdresse.ReadOnly = False
         textBoxShopEinzelansichtOeffnungszeit.ReadOnly = False
         textBoxShopEinzelansichtTelefonnummer.ReadOnly = False
-        pictureBoxGeschaefteEinzelansichtsseite.SizeMode = vbNormal
-        pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
+        'pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
 
         rsKategorien.MoveFirst()
 
@@ -206,12 +202,23 @@ Public Class FormMain
             rsGeschaefte.Fields("Telefon").Value = textBoxShopEinzelansichtTelefonnummer.Text
             rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
             rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
+            rsGeschaefte.Fields("Geschäftsbild").Value = textBoxShopImageFileName.Text
             rsGeschaefte.Update()
             MsgBox("Geschäft hinzugefügt")
+
+            'Kopieren des Bildes in Programmverzeichnis
+            Dim SourceFile, DestinationFile As String
+            SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
+            DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
+            FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
+
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'Bild ins Projektverzeichnis verschieben
+        'pictureBoxGeschaefteEinzelansichtsseite
 
 
         textBoxShopEinzelansichtAdresse.Clear()
@@ -221,6 +228,25 @@ Public Class FormMain
         comboBoxEinzelansichtKategorie.ResetText()
         comboBoxEinzelansichtStadtteile.ResetText()
     End Sub
+
+    Private Sub buttonShopImageHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopImageHinzufuegen.Click
+
+        Dim openFileDialogShopImage As New OpenFileDialog()
+
+        openFileDialogShopImage.InitialDirectory = "c:\"
+        openFileDialogShopImage.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        openFileDialogShopImage.FilterIndex = 2
+        openFileDialogShopImage.RestoreDirectory = True
+        openFileDialogShopImage.Title = "Bild auswählen"
+
+        If openFileDialogShopImage.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = openFileDialogShopImage.FileName
+            textBoxShopImageFileName.Text = openFileDialogShopImage.SafeFileName
+        End If
+
+    End Sub
+
+
 
 
 
