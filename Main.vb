@@ -233,40 +233,17 @@ Public Class FormMain
 
     Private Sub buttonShopHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopHinzufuegen.Click
 
-        Dim rsAktuelleKategorieID As New ADODB.Recordset 'zur Ermittlung der KategorienID über die ausgewählte Kategorienbezeichung in der Combobox
-        Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
 
-        Try
-            rsAktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung = " & "'" & comboBoxEinzelansichtKategorie.SelectedItem & "'",
-                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-            rsAktuellerStadtteilID.Open("SELECT ID FROM Stadtteile WHERE Bezeichnung = " & "'" & comboBoxEinzelansichtStadtteile.SelectedItem & "'",
-                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-            rsGeschaefte.MoveFirst()
-            rsGeschaefte.AddNew()
-            rsGeschaefte.Fields("Bezeichnung").Value = textBoxShopEinzelansichtBezeichnung.Text
-            rsGeschaefte.Fields("Adresse").Value = textBoxShopEinzelansichtAdresse.Text
-            rsGeschaefte.Fields("Öffnungszeiten").Value = textBoxShopEinzelansichtOeffnungszeit.Text
-            rsGeschaefte.Fields("Telefon").Value = textBoxShopEinzelansichtTelefonnummer.Text
-            rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
-            rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
-            rsGeschaefte.Fields("Geschäftsbild").Value = textBoxShopImageFileName.Text
-            rsGeschaefte.Update()
-            MsgBox("Geschäft hinzugefügt")
+        rsGeschaefte.MoveFirst()
+        rsGeschaefte.AddNew()
+        ShopInformationenDatenbankHochladen()
+        MsgBox("Geschäft hinzugefügt")
 
-            'Kopieren des Bildes in Programmverzeichnis
-            Dim SourceFile, DestinationFile As String
-            SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
-            DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
-            FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
-
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-
-        'Bild ins Projektverzeichnis verschieben
-        'pictureBoxGeschaefteEinzelansichtsseite
-
+        'Kopieren des Bildes in Programmverzeichnis
+        Dim SourceFile, DestinationFile As String
+        SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
+        DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
+        FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
 
         textBoxShopEinzelansichtAdresse.Clear()
         textBoxShopEinzelansichtBezeichnung.Clear()
@@ -277,12 +254,36 @@ Public Class FormMain
 
     End Sub
 
+    Sub ShopInformationenDatenbankHochladen()
+
+        Dim rsAktuelleKategorieID As New ADODB.Recordset 'zur Ermittlung der KategorienID über die ausgewählte Kategorienbezeichung in der Combobox
+        Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
+
+        Try
+            rsAktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung = " & "'" & comboBoxEinzelansichtKategorie.SelectedItem & "'",
+                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsAktuellerStadtteilID.Open("SELECT ID FROM Stadtteile WHERE Bezeichnung = " & "'" & comboBoxEinzelansichtStadtteile.SelectedItem & "'",
+                                        conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsGeschaefte.Fields("Bezeichnung").Value = textBoxShopEinzelansichtBezeichnung.Text
+            rsGeschaefte.Fields("Adresse").Value = textBoxShopEinzelansichtAdresse.Text
+            rsGeschaefte.Fields("Öffnungszeiten").Value = textBoxShopEinzelansichtOeffnungszeit.Text
+            rsGeschaefte.Fields("Telefon").Value = textBoxShopEinzelansichtTelefonnummer.Text
+            rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
+            rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
+            rsGeschaefte.Fields("Geschäftsbild").Value = textBoxShopImageFileName.Text
+            rsGeschaefte.Update()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
+
     Private Sub buttonShopImageHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopImageHinzufuegen.Click
 
         Dim openFileDialogShopImage As New OpenFileDialog()
 
         openFileDialogShopImage.InitialDirectory = "c:\"
-        openFileDialogShopImage.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        openFileDialogShopImage.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|All files (*.*)|*.*"
         openFileDialogShopImage.FilterIndex = 2
         openFileDialogShopImage.RestoreDirectory = True
         openFileDialogShopImage.Title = "Bild auswählen"
@@ -301,6 +302,23 @@ Public Class FormMain
         buttonShopAenderungenSpeichern.Show()
         comboBoxEinzelansichtKategorie.SelectedItem = textBoxShopEinzelansichtKategorie.Text
         comboBoxEinzelansichtStadtteile.SelectedItem = textBoxShopEinzelansichtStadtteil.Text
+
+    End Sub
+
+    Private Sub buttonShopAenderungenSpeichern_Click(sender As Object, e As EventArgs) Handles buttonShopAenderungenSpeichern.Click
+
+
+
+        ShopInformationenDatenbankHochladen()
+
+        buttonShopAenderungenSpeichern.Hide()
+        buttonShopBearbeiten.Show()
+        buttonShopImageHinzufuegen.Hide()
+        comboBoxEinzelansichtKategorie.Hide()
+        comboBoxEinzelansichtStadtteile.Hide()
+        textBoxShopEinzelansichtKategorie.Show()
+        textBoxShopEinzelansichtStadtteil.Show()
+        textBoxShopImageFileName.Hide()
 
     End Sub
 
