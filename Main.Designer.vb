@@ -49,10 +49,11 @@ Partial Class FormMain
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
+        Me.comboBoxEinzelansichtStadtteile = New System.Windows.Forms.ComboBox()
         Me.labelShopEinzelansichtOeffnungszeit = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtTelefonnummer = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtAdresse = New System.Windows.Forms.Label()
-        Me.labelBezeichnungEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
@@ -67,7 +68,7 @@ Partial Class FormMain
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.comboBoxEinzelansichtStadtteile = New System.Windows.Forms.ComboBox()
+        Me.textBoxShopImageFileName = New System.Windows.Forms.TextBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -398,7 +399,7 @@ Partial Class FormMain
         Me.webView.CreationProperties = Nothing
         Me.webView.Location = New System.Drawing.Point(3, 13)
         Me.webView.Name = "webView"
-        Me.webView.Size = New System.Drawing.Size(621, 444)
+        Me.webView.Size = New System.Drawing.Size(621, 440)
         Me.webView.Source = New System.Uri("C:\Users\simon\source\repos\GoGreen\GoGreen\Website\index.html", System.UriKind.Absolute)
         Me.webView.TabIndex = 4
         Me.webView.UseWaitCursor = True
@@ -444,11 +445,12 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.textBoxShopImageFileName)
+        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtAdresse)
-        Me.TabPage3.Controls.Add(Me.labelBezeichnungEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.Label1)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
@@ -466,6 +468,27 @@ Partial Class FormMain
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'buttonShopImageHinzufuegen
+        '
+        Me.buttonShopImageHinzufuegen.BackColor = System.Drawing.Color.Transparent
+        Me.buttonShopImageHinzufuegen.FlatAppearance.BorderSize = 0
+        Me.buttonShopImageHinzufuegen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.buttonShopImageHinzufuegen.Image = Global.GoGreen.My.Resources.Resources.BildHinzufügen
+        Me.buttonShopImageHinzufuegen.Location = New System.Drawing.Point(39, 10)
+        Me.buttonShopImageHinzufuegen.Margin = New System.Windows.Forms.Padding(0)
+        Me.buttonShopImageHinzufuegen.Name = "buttonShopImageHinzufuegen"
+        Me.buttonShopImageHinzufuegen.Size = New System.Drawing.Size(67, 45)
+        Me.buttonShopImageHinzufuegen.TabIndex = 15
+        Me.buttonShopImageHinzufuegen.UseVisualStyleBackColor = False
+        '
+        'comboBoxEinzelansichtStadtteile
+        '
+        Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
+        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(250, 374)
+        Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
+        Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
         '
         'labelShopEinzelansichtOeffnungszeit
         '
@@ -493,15 +516,6 @@ Partial Class FormMain
         Me.labelShopEinzelansichtAdresse.Size = New System.Drawing.Size(71, 20)
         Me.labelShopEinzelansichtAdresse.TabIndex = 11
         Me.labelShopEinzelansichtAdresse.Text = "Adresse"
-        '
-        'labelBezeichnungEinzelansichtKategorie
-        '
-        Me.labelBezeichnungEinzelansichtKategorie.AutoSize = True
-        Me.labelBezeichnungEinzelansichtKategorie.Location = New System.Drawing.Point(279, 248)
-        Me.labelBezeichnungEinzelansichtKategorie.Name = "labelBezeichnungEinzelansichtKategorie"
-        Me.labelBezeichnungEinzelansichtKategorie.Size = New System.Drawing.Size(80, 20)
-        Me.labelBezeichnungEinzelansichtKategorie.TabIndex = 10
-        Me.labelBezeichnungEinzelansichtKategorie.Text = "Kategorie"
         '
         'Label1
         '
@@ -626,13 +640,13 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'comboBoxEinzelansichtStadtteile
+        'textBoxShopImageFileName
         '
-        Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
-        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(250, 374)
-        Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
-        Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
-        Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
+        Me.textBoxShopImageFileName.Location = New System.Drawing.Point(166, 32)
+        Me.textBoxShopImageFileName.Name = "textBoxShopImageFileName"
+        Me.textBoxShopImageFileName.ReadOnly = True
+        Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopImageFileName.TabIndex = 16
         '
         'FormMain
         '
@@ -708,10 +722,11 @@ Partial Class FormMain
     Friend WithEvents comboBoxEinzelansichtKategorie As ComboBox
     Friend WithEvents buttonShopHinzufuegen As Button
     Friend WithEvents labelShopEinzelansichtKategorie As Label
-    Friend WithEvents labelBezeichnungEinzelansichtKategorie As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents labelShopEinzelansichtOeffnungszeit As Label
     Friend WithEvents labelShopEinzelansichtTelefonnummer As Label
     Friend WithEvents labelShopEinzelansichtAdresse As Label
     Friend WithEvents comboBoxEinzelansichtStadtteile As ComboBox
+    Friend WithEvents buttonShopImageHinzufuegen As Button
+    Friend WithEvents textBoxShopImageFileName As TextBox
 End Class

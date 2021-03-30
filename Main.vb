@@ -64,6 +64,8 @@ Public Class FormMain
         Dim rsGeschaefteNachKategorie = New ADODB.Recordset
         'Dim rsGeschaefte As New ADODB.Recordset
 
+        TreeViewGeschäfteKategorien.Nodes.Clear() 'verhindert, dass sich TreeView nach jedem Click verlängert
+        rsKategorien.MoveFirst()
         Do While Not rsKategorien.EOF
             Dim ndTop = TreeViewGeschäfteKategorien.Nodes.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
             rsGeschaefteNachKategorie.Open("SELECT * FROM Geschäfte WHERE Kategorie_ID = " & rsKategorien.Fields("Kategorie_ID").Value,
@@ -88,10 +90,8 @@ Public Class FormMain
         TabControl1.SelectedIndex = 3
 
         'Treeview Geschäfte nach Stadtteilen
-
-        rsStadtteile.Open("SELECT * FROM Stadtteile",
-                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
+        TreeViewGeschäfteKategorien.Nodes.Clear() 'verhindert, dass sich TreeView nach jedem Click verlängert
+        rsStadtteile.MoveFirst()
         Do While Not rsStadtteile.EOF
             Dim ndTop = TreeViewGeschäfteStadtteile.Nodes.Add(rsStadtteile.Fields("Bezeichnung").Value)
             rsGeschaefteNachStadtteilen.Open("SELECT * FROM Geschäfte WHERE Stadtteil_ID = " & rsStadtteile.Fields("ID").Value,
@@ -124,6 +124,17 @@ Public Class FormMain
     Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
         Dim geschaeftsBezeichnung As String
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
+
+        textBoxShopEinzelansichtBezeichnung.ReadOnly = True
+        textBoxShopEinzelansichtAdresse.ReadOnly = True
+        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
+        textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.Show()
+        comboBoxEinzelansichtKategorie.Hide()
+        comboBoxEinzelansichtStadtteile.Hide()
+        textBoxShopImageFileName.Hide()
+        buttonShopImageHinzufuegen.Hide()
 
         Try
 
@@ -169,8 +180,7 @@ Public Class FormMain
         textBoxShopEinzelansichtAdresse.ReadOnly = False
         textBoxShopEinzelansichtOeffnungszeit.ReadOnly = False
         textBoxShopEinzelansichtTelefonnummer.ReadOnly = False
-        pictureBoxGeschaefteEinzelansichtsseite.SizeMode = vbNormal
-        pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
+        'pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
 
         rsKategorien.MoveFirst()
 
@@ -206,12 +216,23 @@ Public Class FormMain
             rsGeschaefte.Fields("Telefon").Value = textBoxShopEinzelansichtTelefonnummer.Text
             rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
             rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
+            rsGeschaefte.Fields("Geschäftsbild").Value = textBoxShopImageFileName.Text
             rsGeschaefte.Update()
             MsgBox("Geschäft hinzugefügt")
+
+            'Kopieren des Bildes in Programmverzeichnis
+            Dim SourceFile, DestinationFile As String
+            SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
+            DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
+            FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
+
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'Bild ins Projektverzeichnis verschieben
+        'pictureBoxGeschaefteEinzelansichtsseite
 
 
         textBoxShopEinzelansichtAdresse.Clear()
@@ -220,7 +241,27 @@ Public Class FormMain
         textBoxShopEinzelansichtTelefonnummer.Clear()
         comboBoxEinzelansichtKategorie.ResetText()
         comboBoxEinzelansichtStadtteile.ResetText()
+
     End Sub
+
+    Private Sub buttonShopImageHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopImageHinzufuegen.Click
+
+        Dim openFileDialogShopImage As New OpenFileDialog()
+
+        openFileDialogShopImage.InitialDirectory = "c:\"
+        openFileDialogShopImage.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        openFileDialogShopImage.FilterIndex = 2
+        openFileDialogShopImage.RestoreDirectory = True
+        openFileDialogShopImage.Title = "Bild auswählen"
+
+        If openFileDialogShopImage.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = openFileDialogShopImage.FileName
+            textBoxShopImageFileName.Text = openFileDialogShopImage.SafeFileName
+        End If
+
+    End Sub
+
+
 
 
 
