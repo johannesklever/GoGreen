@@ -181,6 +181,7 @@ Public Class FormMain
         textBoxShopEinzelansichtTelefonnummer.Clear()
         textBoxShopEinzelansichtAdresse.Clear()
         textBoxShopEinzelansichtBezeichnung.Clear()
+        textBoxShopImageFileName.Clear()
         buttonShopHinzufuegen.Show()
         buttonShopAenderungenSpeichern.Hide()
         pictureBoxGeschaefteEinzelansichtsseite.Hide() 'verhindert, dass Bild beim Wechsel von der Einzelansichtsseite bestehen bleibt
@@ -239,11 +240,7 @@ Public Class FormMain
         ShopInformationenDatenbankHochladen()
         MsgBox("Geschäft hinzugefügt")
 
-        'Kopieren des Bildes in Programmverzeichnis
-        Dim SourceFile, DestinationFile As String
-        SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
-        DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
-        FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
+
 
         textBoxShopEinzelansichtAdresse.Clear()
         textBoxShopEinzelansichtBezeichnung.Clear()
@@ -254,10 +251,26 @@ Public Class FormMain
 
     End Sub
 
-    Sub ShopInformationenDatenbankHochladen()
+    Sub ShopInformationenDatenbankHochladen() 'wird ausgeführt, wenn ein Geschäft angelegt wurde oder bearbeitet wurde
 
+        'löschen des vorherigen Bildes aus dem Projektverzeichnis
+        Try
+            My.Computer.FileSystem.DeleteFile("GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value)
+        Catch ex As Exception
+
+        End Try
+
+        'Kopieren des Bildes in Programmverzeichnis
+        Dim SourceFile, DestinationFile As String
+        SourceFile = pictureBoxGeschaefteEinzelansichtsseite.ImageLocation   ' Define source file name.
+        DestinationFile = "GeschäfteBilder\" & textBoxShopImageFileName.Text
+        Try
+            FileCopy(SourceFile, DestinationFile)   ' Copy source to target.
+        Catch ex As Exception
+
+        End Try
         Dim rsAktuelleKategorieID As New ADODB.Recordset 'zur Ermittlung der KategorienID über die ausgewählte Kategorienbezeichung in der Combobox
-        Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
+            Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
 
         Try
             rsAktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung = " & "'" & comboBoxEinzelansichtKategorie.SelectedItem & "'",
@@ -283,14 +296,14 @@ Public Class FormMain
         Dim openFileDialogShopImage As New OpenFileDialog()
 
         openFileDialogShopImage.InitialDirectory = "c:\"
-        openFileDialogShopImage.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|All files (*.*)|*.*"
+        openFileDialogShopImage.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|All files (*.*)|*.*" 'zugelassene File Typen
         openFileDialogShopImage.FilterIndex = 2
         openFileDialogShopImage.RestoreDirectory = True
         openFileDialogShopImage.Title = "Bild auswählen"
 
-        If openFileDialogShopImage.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = openFileDialogShopImage.FileName
-            textBoxShopImageFileName.Text = openFileDialogShopImage.SafeFileName
+        If openFileDialogShopImage.ShowDialog() = System.Windows.Forms.DialogResult.OK Then  'wenn Bild ausgewählt wurde
+            pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = openFileDialogShopImage.FileName '
+            textBoxShopImageFileName.Text = openFileDialogShopImage.SafeFileName 'zeigt den Filename des aktuellen Fotos an
             pictureBoxGeschaefteEinzelansichtsseite.Show() 'zeigt die Picturebox wieder mit einem neuen Foto
         End If
 
@@ -300,6 +313,7 @@ Public Class FormMain
 
         ShopBearbeitenundHinzufügen()
         buttonShopAenderungenSpeichern.Show()
+        textBoxShopImageFileName.Text = rsGeschaefte.Fields("Geschäftsbild").Value
         comboBoxEinzelansichtKategorie.SelectedItem = textBoxShopEinzelansichtKategorie.Text
         comboBoxEinzelansichtStadtteile.SelectedItem = textBoxShopEinzelansichtStadtteil.Text
 
@@ -308,8 +322,9 @@ Public Class FormMain
     Private Sub buttonShopAenderungenSpeichern_Click(sender As Object, e As EventArgs) Handles buttonShopAenderungenSpeichern.Click
 
 
-
+        'Update der Datenbank nachdem Änderung gespeichert wurde
         ShopInformationenDatenbankHochladen()
+
 
         buttonShopAenderungenSpeichern.Hide()
         buttonShopBearbeiten.Show()
@@ -324,6 +339,17 @@ Public Class FormMain
 
     Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click
         TabControl1.SelectedTab = TabPageUser
+    End Sub
+
+    Private Sub pictureBoxGeschaefteEinzelansichtsseite_MouseHover(sender As Object, e As EventArgs) Handles pictureBoxGeschaefteEinzelansichtsseite.MouseHover
+        labelShopImageErrorBildNachricht.Show()
+        If pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" Then
+            labelShopImageErrorBildNachricht.Text = "Fehler beim Laden des Bildes oder kein Bild hinterlegt in der Datenbank!"
+        End If
+    End Sub
+
+    Private Sub pictureBoxGeschaefteEinzelansichtsseite_MouseLeave(sender As Object, e As EventArgs) Handles pictureBoxGeschaefteEinzelansichtsseite.MouseLeave
+        labelShopImageErrorBildNachricht.Hide()
     End Sub
 
 
