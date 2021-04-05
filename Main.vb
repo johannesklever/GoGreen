@@ -343,7 +343,33 @@ Public Class FormMain
     End Sub
 
     Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click
-        TabControl1.SelectedTab = TabPageUser
+        Dim UserIDCONV As String
+        UserIDCONV = CStr(Übergabe.LoggedUserID)
+        rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
+
+        If UserIDCONV = 0 Then
+            Me.Close()
+            FormKeinBenutzer.ShowDialog()
+        Else
+            TabControl1.SelectedTab = TabPageUser
+            TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value
+            TextBoxUserPhone.Text = rsBearbeiten.Fields("Telefon").Value
+            TextBoxUserBirthdate.Text = rsBearbeiten.Fields("Geburtsdatum").Value
+            TextBoxUserName.Text = rsBearbeiten.Fields("Name").Value
+            TextBoxUserUsername.Text = rsBearbeiten.Fields("Benutzername").Value
+            TextBoxUserPassword.Text = rsBearbeiten.Fields("Passwort").Value
+
+            TextBoxUserPhone.ReadOnly = True
+            TextBoxUserAdress.ReadOnly = True
+            TextBoxUserBirthdate.ReadOnly = True
+            TextBoxUserName.ReadOnly = True
+            TextBoxUserPassword.ReadOnly = True
+            TextBoxUserUsername.ReadOnly = True
+        End If
+
+
+
+
     End Sub
 
     Private Sub pictureBoxGeschaefteEinzelansichtsseite_MouseHover(sender As Object, e As EventArgs) Handles pictureBoxGeschaefteEinzelansichtsseite.MouseHover
@@ -357,12 +383,38 @@ Public Class FormMain
         labelShopImageErrorBildNachricht.Hide()
     End Sub
 
+    Private Sub ButtonUserSavePhone_Click(sender As Object, e As EventArgs) Handles ButtonUserSavePhone.Click
+        Dim UserIDCONV As String
+        UserIDCONV = CStr(Übergabe.LoggedUserID)
+        rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
+        rsBearbeiten.Fields("Telefon").Value = TextBoxUserPhone.Text
+        rsBearbeiten.Fields("Anschrift").Value = TextBoxUserAdress.Text
+        rsBearbeiten.Fields("Name").Value = TextBoxUserName.Text
+        rsBearbeiten.Fields("Benutzername").Value = TextBoxUserPassword.Text
+        rsBearbeiten.Fields("Passwort").Value = TextBoxUserPassword.Text
+        rsBearbeiten.Fields("Geburtsdatum").Value = TextBoxUserBirthdate.Text
+        rsBearbeiten.Update()
 
 
+    End Sub
 
+    Private Sub ButtonUserRelease_Click(sender As Object, e As EventArgs) Handles ButtonUserRelease.Click
+        TextBoxUserPhone.ReadOnly = False
+        TextBoxUserAdress.ReadOnly = False
+        TextBoxUserBirthdate.ReadOnly = False
+        TextBoxUserName.ReadOnly = False
+        TextBoxUserPassword.ReadOnly = False
+        TextBoxUserUsername.ReadOnly = False
+    End Sub
 
+    Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
 
-
+        TabControl1.SelectedTab = TabPageFavorit
+        Do While Not rsGeschaefte.EOF
+            ListBoxFavoriten.Items.Add(rsGeschaefte.Fields("Bezeichnung").Value)
+            rsGeschaefte.MoveNext()
+        Loop
+    End Sub
 
 
 

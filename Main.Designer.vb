@@ -55,7 +55,6 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtStadtteil = New System.Windows.Forms.TextBox()
         Me.buttonShopBearbeiten = New System.Windows.Forms.Button()
         Me.textBoxShopImageFileName = New System.Windows.Forms.TextBox()
-        Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
         Me.comboBoxEinzelansichtStadtteile = New System.Windows.Forms.ComboBox()
         Me.labelShopEinzelansichtOeffnungszeit = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtTelefonnummer = New System.Windows.Forms.Label()
@@ -64,29 +63,36 @@ Partial Class FormMain
         Me.labelShopEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
         Me.comboBoxEinzelansichtKategorie = New System.Windows.Forms.ComboBox()
-        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.textBoxShopEinzelansichtOeffnungszeit = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtAdresse = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtTelefonnummer = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtKategorie = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtBezeichnung = New System.Windows.Forms.TextBox()
+        Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
+        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.TabPageUser = New System.Windows.Forms.TabPage()
-        Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.LabelUserName = New System.Windows.Forms.Label()
-        Me.LabelUserUsername = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.LabelUserBirthdate = New System.Windows.Forms.Label()
-        Me.LabelUserAdress = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBoxUserName = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
+        Me.ButtonUserRelease = New System.Windows.Forms.Button()
+        Me.TextBoxUserPassword = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBoxUserAdress = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserName = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.LabelUserAdress = New System.Windows.Forms.Label()
+        Me.LabelUserBirthdate = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LabelUserUsername = New System.Windows.Forms.Label()
+        Me.LabelUserName = New System.Windows.Forms.Label()
+        Me.ButtonUserSavePhone = New System.Windows.Forms.Button()
+        Me.TabPageFavorit = New System.Windows.Forms.TabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
+        Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -99,6 +105,7 @@ Partial Class FormMain
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         Me.TabPageUser.SuspendLayout()
+        Me.TabPageFavorit.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -384,6 +391,7 @@ Partial Class FormMain
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPageUser)
+        Me.TabControl1.Controls.Add(Me.TabPageFavorit)
         Me.TabControl1.Location = New System.Drawing.Point(0, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -419,7 +427,7 @@ Partial Class FormMain
         Me.webView.CreationProperties = Nothing
         Me.webView.Location = New System.Drawing.Point(3, 13)
         Me.webView.Name = "webView"
-        Me.webView.Size = New System.Drawing.Size(621, 440)
+        Me.webView.Size = New System.Drawing.Size(621, 434)
         Me.webView.Source = New System.Uri("C:\Users\simon\source\repos\GoGreen\GoGreen\Website\index.html", System.UriKind.Absolute)
         Me.webView.TabIndex = 4
         Me.webView.UseWaitCursor = True
@@ -471,7 +479,6 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtStadtteil)
         Me.TabPage3.Controls.Add(Me.buttonShopBearbeiten)
         Me.TabPage3.Controls.Add(Me.textBoxShopImageFileName)
-        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
@@ -480,12 +487,13 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtKategorie)
-        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
+        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
+        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Location = New System.Drawing.Point(8, 45)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -547,19 +555,6 @@ Partial Class FormMain
         Me.textBoxShopImageFileName.ReadOnly = True
         Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopImageFileName.TabIndex = 16
-        '
-        'buttonShopImageHinzufuegen
-        '
-        Me.buttonShopImageHinzufuegen.BackColor = System.Drawing.Color.Transparent
-        Me.buttonShopImageHinzufuegen.FlatAppearance.BorderSize = 0
-        Me.buttonShopImageHinzufuegen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.buttonShopImageHinzufuegen.Image = Global.GoGreen.My.Resources.Resources.BildHinzufügen
-        Me.buttonShopImageHinzufuegen.Location = New System.Drawing.Point(39, 10)
-        Me.buttonShopImageHinzufuegen.Margin = New System.Windows.Forms.Padding(0)
-        Me.buttonShopImageHinzufuegen.Name = "buttonShopImageHinzufuegen"
-        Me.buttonShopImageHinzufuegen.Size = New System.Drawing.Size(67, 45)
-        Me.buttonShopImageHinzufuegen.TabIndex = 15
-        Me.buttonShopImageHinzufuegen.UseVisualStyleBackColor = False
         '
         'comboBoxEinzelansichtStadtteile
         '
@@ -631,16 +626,6 @@ Partial Class FormMain
         Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 39)
         Me.comboBoxEinzelansichtKategorie.TabIndex = 6
         '
-        'pictureBoxGeschaefteEinzelansichtsseite
-        '
-        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
-        '
         'textBoxShopEinzelansichtOeffnungszeit
         '
         Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(39, 427)
@@ -681,6 +666,29 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtBezeichnung.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtBezeichnung.TabIndex = 0
         '
+        'buttonShopImageHinzufuegen
+        '
+        Me.buttonShopImageHinzufuegen.BackColor = System.Drawing.Color.Transparent
+        Me.buttonShopImageHinzufuegen.FlatAppearance.BorderSize = 0
+        Me.buttonShopImageHinzufuegen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.buttonShopImageHinzufuegen.Image = Global.GoGreen.My.Resources.Resources.BildHinzufügen
+        Me.buttonShopImageHinzufuegen.Location = New System.Drawing.Point(39, 10)
+        Me.buttonShopImageHinzufuegen.Margin = New System.Windows.Forms.Padding(0)
+        Me.buttonShopImageHinzufuegen.Name = "buttonShopImageHinzufuegen"
+        Me.buttonShopImageHinzufuegen.Size = New System.Drawing.Size(67, 45)
+        Me.buttonShopImageHinzufuegen.TabIndex = 15
+        Me.buttonShopImageHinzufuegen.UseVisualStyleBackColor = False
+        '
+        'pictureBoxGeschaefteEinzelansichtsseite
+        '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
+        '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
@@ -711,6 +719,9 @@ Partial Class FormMain
         '
         'TabPageUser
         '
+        Me.TabPageUser.Controls.Add(Me.ButtonUserRelease)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserPassword)
+        Me.TabPageUser.Controls.Add(Me.Label3)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserAdress)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserBirthdate)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserPhone)
@@ -722,7 +733,7 @@ Partial Class FormMain
         Me.TabPageUser.Controls.Add(Me.Label2)
         Me.TabPageUser.Controls.Add(Me.LabelUserUsername)
         Me.TabPageUser.Controls.Add(Me.LabelUserName)
-        Me.TabPageUser.Controls.Add(Me.Button2)
+        Me.TabPageUser.Controls.Add(Me.ButtonUserSavePhone)
         Me.TabPageUser.Location = New System.Drawing.Point(8, 45)
         Me.TabPageUser.Name = "TabPageUser"
         Me.TabPageUser.Size = New System.Drawing.Size(631, 497)
@@ -730,60 +741,74 @@ Partial Class FormMain
         Me.TabPageUser.Text = "User"
         Me.TabPageUser.UseVisualStyleBackColor = True
         '
-        'PictureBoxMap
+        'ButtonUserRelease
         '
-        Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBoxMap.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBoxMap.Name = "PictureBoxMap"
-        Me.PictureBoxMap.Size = New System.Drawing.Size(647, 553)
-        Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBoxMap.TabIndex = 0
-        Me.PictureBoxMap.TabStop = False
+        Me.ButtonUserRelease.Location = New System.Drawing.Point(181, 418)
+        Me.ButtonUserRelease.Name = "ButtonUserRelease"
+        Me.ButtonUserRelease.Size = New System.Drawing.Size(120, 50)
+        Me.ButtonUserRelease.TabIndex = 14
+        Me.ButtonUserRelease.Text = "freigeben"
+        Me.ButtonUserRelease.UseVisualStyleBackColor = True
         '
-        'Button2
+        'TextBoxUserPassword
         '
-        Me.Button2.Location = New System.Drawing.Point(475, 420)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(116, 46)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Ändern"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.TextBoxUserPassword.Location = New System.Drawing.Point(339, 359)
+        Me.TextBoxUserPassword.Name = "TextBoxUserPassword"
+        Me.TextBoxUserPassword.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPassword.TabIndex = 13
         '
-        'LabelUserName
+        'Label3
         '
-        Me.LabelUserName.AutoSize = True
-        Me.LabelUserName.Location = New System.Drawing.Point(54, 33)
-        Me.LabelUserName.Name = "LabelUserName"
-        Me.LabelUserName.Size = New System.Drawing.Size(94, 31)
-        Me.LabelUserName.TabIndex = 1
-        Me.LabelUserName.Text = "Name:"
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(60, 360)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 31)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Passwort:"
         '
-        'LabelUserUsername
+        'TextBoxUserAdress
         '
-        Me.LabelUserUsername.AutoSize = True
-        Me.LabelUserUsername.Location = New System.Drawing.Point(54, 97)
-        Me.LabelUserUsername.Name = "LabelUserUsername"
-        Me.LabelUserUsername.Size = New System.Drawing.Size(198, 31)
-        Me.LabelUserUsername.TabIndex = 2
-        Me.LabelUserUsername.Text = "Benutzername:"
+        Me.TextBoxUserAdress.Location = New System.Drawing.Point(339, 289)
+        Me.TextBoxUserAdress.Name = "TextBoxUserAdress"
+        Me.TextBoxUserAdress.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserAdress.TabIndex = 11
         '
-        'Label2
+        'TextBoxUserBirthdate
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(54, 166)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(113, 31)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Telefon:"
+        Me.TextBoxUserBirthdate.Location = New System.Drawing.Point(339, 230)
+        Me.TextBoxUserBirthdate.Name = "TextBoxUserBirthdate"
+        Me.TextBoxUserBirthdate.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserBirthdate.TabIndex = 10
         '
-        'LabelUserBirthdate
+        'TextBoxUserPhone
         '
-        Me.LabelUserBirthdate.AutoSize = True
-        Me.LabelUserBirthdate.Location = New System.Drawing.Point(54, 230)
-        Me.LabelUserBirthdate.Name = "LabelUserBirthdate"
-        Me.LabelUserBirthdate.Size = New System.Drawing.Size(194, 31)
-        Me.LabelUserBirthdate.TabIndex = 4
-        Me.LabelUserBirthdate.Text = "Geburtsdatum:"
+        Me.TextBoxUserPhone.Location = New System.Drawing.Point(339, 166)
+        Me.TextBoxUserPhone.Name = "TextBoxUserPhone"
+        Me.TextBoxUserPhone.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPhone.TabIndex = 9
+        '
+        'TextBoxUserUsername
+        '
+        Me.TextBoxUserUsername.Location = New System.Drawing.Point(339, 94)
+        Me.TextBoxUserUsername.Name = "TextBoxUserUsername"
+        Me.TextBoxUserUsername.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserUsername.TabIndex = 8
+        '
+        'TextBoxUserName
+        '
+        Me.TextBoxUserName.Location = New System.Drawing.Point(339, 33)
+        Me.TextBoxUserName.Name = "TextBoxUserName"
+        Me.TextBoxUserName.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserName.TabIndex = 7
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(60, 418)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(88, 50)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Passwort ändern"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'LabelUserAdress
         '
@@ -794,49 +819,89 @@ Partial Class FormMain
         Me.LabelUserAdress.TabIndex = 5
         Me.LabelUserAdress.Text = "Adresse:"
         '
-        'Button3
+        'LabelUserBirthdate
         '
-        Me.Button3.Location = New System.Drawing.Point(60, 416)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(255, 50)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "Passwort ändern"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.LabelUserBirthdate.AutoSize = True
+        Me.LabelUserBirthdate.Location = New System.Drawing.Point(54, 230)
+        Me.LabelUserBirthdate.Name = "LabelUserBirthdate"
+        Me.LabelUserBirthdate.Size = New System.Drawing.Size(194, 31)
+        Me.LabelUserBirthdate.TabIndex = 4
+        Me.LabelUserBirthdate.Text = "Geburtsdatum:"
         '
-        'TextBoxUserName
+        'Label2
         '
-        Me.TextBoxUserName.Location = New System.Drawing.Point(339, 33)
-        Me.TextBoxUserName.Name = "TextBoxUserName"
-        Me.TextBoxUserName.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserName.TabIndex = 7
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(54, 166)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(113, 31)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Telefon:"
         '
-        'TextBoxUserUsername
+        'LabelUserUsername
         '
-        Me.TextBoxUserUsername.Location = New System.Drawing.Point(339, 94)
-        Me.TextBoxUserUsername.Name = "TextBoxUserUsername"
-        Me.TextBoxUserUsername.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserUsername.TabIndex = 8
+        Me.LabelUserUsername.AutoSize = True
+        Me.LabelUserUsername.Location = New System.Drawing.Point(54, 97)
+        Me.LabelUserUsername.Name = "LabelUserUsername"
+        Me.LabelUserUsername.Size = New System.Drawing.Size(198, 31)
+        Me.LabelUserUsername.TabIndex = 2
+        Me.LabelUserUsername.Text = "Benutzername:"
         '
-        'TextBoxUserPhone
+        'LabelUserName
         '
-        Me.TextBoxUserPhone.Location = New System.Drawing.Point(339, 166)
-        Me.TextBoxUserPhone.Name = "TextBoxUserPhone"
-        Me.TextBoxUserPhone.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserPhone.TabIndex = 9
+        Me.LabelUserName.AutoSize = True
+        Me.LabelUserName.Location = New System.Drawing.Point(54, 33)
+        Me.LabelUserName.Name = "LabelUserName"
+        Me.LabelUserName.Size = New System.Drawing.Size(94, 31)
+        Me.LabelUserName.TabIndex = 1
+        Me.LabelUserName.Text = "Name:"
         '
-        'TextBoxUserBirthdate
+        'ButtonUserSavePhone
         '
-        Me.TextBoxUserBirthdate.Location = New System.Drawing.Point(339, 230)
-        Me.TextBoxUserBirthdate.Name = "TextBoxUserBirthdate"
-        Me.TextBoxUserBirthdate.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserBirthdate.TabIndex = 10
+        Me.ButtonUserSavePhone.Location = New System.Drawing.Point(475, 420)
+        Me.ButtonUserSavePhone.Name = "ButtonUserSavePhone"
+        Me.ButtonUserSavePhone.Size = New System.Drawing.Size(116, 46)
+        Me.ButtonUserSavePhone.TabIndex = 0
+        Me.ButtonUserSavePhone.Text = "Ändern"
+        Me.ButtonUserSavePhone.UseVisualStyleBackColor = True
         '
-        'TextBoxUserAdress
+        'TabPageFavorit
         '
-        Me.TextBoxUserAdress.Location = New System.Drawing.Point(339, 289)
-        Me.TextBoxUserAdress.Name = "TextBoxUserAdress"
-        Me.TextBoxUserAdress.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserAdress.TabIndex = 11
+        Me.TabPageFavorit.Controls.Add(Me.Label4)
+        Me.TabPageFavorit.Controls.Add(Me.ListBoxFavoriten)
+        Me.TabPageFavorit.Location = New System.Drawing.Point(8, 45)
+        Me.TabPageFavorit.Name = "TabPageFavorit"
+        Me.TabPageFavorit.Size = New System.Drawing.Size(631, 497)
+        Me.TabPageFavorit.TabIndex = 5
+        Me.TabPageFavorit.Text = "Favoriten"
+        Me.TabPageFavorit.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(45, 34)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(494, 31)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Hier siehst du deine Lieblingsgeschäfte:"
+        '
+        'ListBoxFavoriten
+        '
+        Me.ListBoxFavoriten.FormattingEnabled = True
+        Me.ListBoxFavoriten.ItemHeight = 31
+        Me.ListBoxFavoriten.Location = New System.Drawing.Point(148, 137)
+        Me.ListBoxFavoriten.Name = "ListBoxFavoriten"
+        Me.ListBoxFavoriten.Size = New System.Drawing.Size(328, 128)
+        Me.ListBoxFavoriten.TabIndex = 0
+        '
+        'PictureBoxMap
+        '
+        Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureBoxMap.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBoxMap.Name = "PictureBoxMap"
+        Me.PictureBoxMap.Size = New System.Drawing.Size(647, 553)
+        Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBoxMap.TabIndex = 0
+        Me.PictureBoxMap.TabStop = False
         '
         'FormMain
         '
@@ -867,6 +932,8 @@ Partial Class FormMain
         Me.TabPage4.PerformLayout()
         Me.TabPageUser.ResumeLayout(False)
         Me.TabPageUser.PerformLayout()
+        Me.TabPageFavorit.ResumeLayout(False)
+        Me.TabPageFavorit.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -938,5 +1005,11 @@ Partial Class FormMain
     Friend WithEvents Label2 As Label
     Friend WithEvents LabelUserUsername As Label
     Friend WithEvents LabelUserName As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ButtonUserSavePhone As Button
+    Friend WithEvents TextBoxUserPassword As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents ButtonUserRelease As Button
+    Friend WithEvents TabPageFavorit As TabPage
+    Friend WithEvents Label4 As Label
+    Friend WithEvents ListBoxFavoriten As ListBox
 End Class
