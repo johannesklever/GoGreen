@@ -55,7 +55,6 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtStadtteil = New System.Windows.Forms.TextBox()
         Me.buttonShopBearbeiten = New System.Windows.Forms.Button()
         Me.textBoxShopImageFileName = New System.Windows.Forms.TextBox()
-        Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
         Me.comboBoxEinzelansichtStadtteile = New System.Windows.Forms.ComboBox()
         Me.labelShopEinzelansichtOeffnungszeit = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtTelefonnummer = New System.Windows.Forms.Label()
@@ -64,16 +63,20 @@ Partial Class FormMain
         Me.labelShopEinzelansichtKategorie = New System.Windows.Forms.Label()
         Me.buttonShopHinzufuegen = New System.Windows.Forms.Button()
         Me.comboBoxEinzelansichtKategorie = New System.Windows.Forms.ComboBox()
-        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.textBoxShopEinzelansichtOeffnungszeit = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtAdresse = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtTelefonnummer = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtKategorie = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtBezeichnung = New System.Windows.Forms.TextBox()
+        Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
+        Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.TabPageUser = New System.Windows.Forms.TabPage()
+        Me.ButtonUserRelease = New System.Windows.Forms.Button()
+        Me.TextBoxUserPassword = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBoxUserAdress = New System.Windows.Forms.TextBox()
         Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
         Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
@@ -86,10 +89,10 @@ Partial Class FormMain
         Me.LabelUserUsername = New System.Windows.Forms.Label()
         Me.LabelUserName = New System.Windows.Forms.Label()
         Me.ButtonUserSavePhone = New System.Windows.Forms.Button()
+        Me.TabPageFavorit = New System.Windows.Forms.TabPage()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBoxUserPassword = New System.Windows.Forms.TextBox()
-        Me.ButtonUserRelease = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -102,6 +105,7 @@ Partial Class FormMain
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
         Me.TabPageUser.SuspendLayout()
+        Me.TabPageFavorit.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -387,6 +391,7 @@ Partial Class FormMain
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPageUser)
+        Me.TabControl1.Controls.Add(Me.TabPageFavorit)
         Me.TabControl1.Location = New System.Drawing.Point(0, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -422,7 +427,7 @@ Partial Class FormMain
         Me.webView.CreationProperties = Nothing
         Me.webView.Location = New System.Drawing.Point(3, 13)
         Me.webView.Name = "webView"
-        Me.webView.Size = New System.Drawing.Size(621, 440)
+        Me.webView.Size = New System.Drawing.Size(621, 434)
         Me.webView.Source = New System.Uri("C:\Users\simon\source\repos\GoGreen\GoGreen\Website\index.html", System.UriKind.Absolute)
         Me.webView.TabIndex = 4
         Me.webView.UseWaitCursor = True
@@ -474,7 +479,6 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtStadtteil)
         Me.TabPage3.Controls.Add(Me.buttonShopBearbeiten)
         Me.TabPage3.Controls.Add(Me.textBoxShopImageFileName)
-        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
@@ -483,12 +487,13 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
         Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtKategorie)
-        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
+        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
+        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
         Me.TabPage3.Location = New System.Drawing.Point(8, 45)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
@@ -550,19 +555,6 @@ Partial Class FormMain
         Me.textBoxShopImageFileName.ReadOnly = True
         Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopImageFileName.TabIndex = 16
-        '
-        'buttonShopImageHinzufuegen
-        '
-        Me.buttonShopImageHinzufuegen.BackColor = System.Drawing.Color.Transparent
-        Me.buttonShopImageHinzufuegen.FlatAppearance.BorderSize = 0
-        Me.buttonShopImageHinzufuegen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.buttonShopImageHinzufuegen.Image = Global.GoGreen.My.Resources.Resources.BildHinzufügen
-        Me.buttonShopImageHinzufuegen.Location = New System.Drawing.Point(39, 10)
-        Me.buttonShopImageHinzufuegen.Margin = New System.Windows.Forms.Padding(0)
-        Me.buttonShopImageHinzufuegen.Name = "buttonShopImageHinzufuegen"
-        Me.buttonShopImageHinzufuegen.Size = New System.Drawing.Size(67, 45)
-        Me.buttonShopImageHinzufuegen.TabIndex = 15
-        Me.buttonShopImageHinzufuegen.UseVisualStyleBackColor = False
         '
         'comboBoxEinzelansichtStadtteile
         '
@@ -634,16 +626,6 @@ Partial Class FormMain
         Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 39)
         Me.comboBoxEinzelansichtKategorie.TabIndex = 6
         '
-        'pictureBoxGeschaefteEinzelansichtsseite
-        '
-        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
-        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
-        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
-        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
-        '
         'textBoxShopEinzelansichtOeffnungszeit
         '
         Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(39, 427)
@@ -683,6 +665,29 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtBezeichnung.ReadOnly = True
         Me.textBoxShopEinzelansichtBezeichnung.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtBezeichnung.TabIndex = 0
+        '
+        'buttonShopImageHinzufuegen
+        '
+        Me.buttonShopImageHinzufuegen.BackColor = System.Drawing.Color.Transparent
+        Me.buttonShopImageHinzufuegen.FlatAppearance.BorderSize = 0
+        Me.buttonShopImageHinzufuegen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.buttonShopImageHinzufuegen.Image = Global.GoGreen.My.Resources.Resources.BildHinzufügen
+        Me.buttonShopImageHinzufuegen.Location = New System.Drawing.Point(39, 10)
+        Me.buttonShopImageHinzufuegen.Margin = New System.Windows.Forms.Padding(0)
+        Me.buttonShopImageHinzufuegen.Name = "buttonShopImageHinzufuegen"
+        Me.buttonShopImageHinzufuegen.Size = New System.Drawing.Size(67, 45)
+        Me.buttonShopImageHinzufuegen.TabIndex = 15
+        Me.buttonShopImageHinzufuegen.UseVisualStyleBackColor = False
+        '
+        'pictureBoxGeschaefteEinzelansichtsseite
+        '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Size = New System.Drawing.Size(321, 256)
+        Me.pictureBoxGeschaefteEinzelansichtsseite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
+        Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
         '
         'TabPage4
         '
@@ -735,6 +740,31 @@ Partial Class FormMain
         Me.TabPageUser.TabIndex = 4
         Me.TabPageUser.Text = "User"
         Me.TabPageUser.UseVisualStyleBackColor = True
+        '
+        'ButtonUserRelease
+        '
+        Me.ButtonUserRelease.Location = New System.Drawing.Point(181, 418)
+        Me.ButtonUserRelease.Name = "ButtonUserRelease"
+        Me.ButtonUserRelease.Size = New System.Drawing.Size(120, 50)
+        Me.ButtonUserRelease.TabIndex = 14
+        Me.ButtonUserRelease.Text = "freigeben"
+        Me.ButtonUserRelease.UseVisualStyleBackColor = True
+        '
+        'TextBoxUserPassword
+        '
+        Me.TextBoxUserPassword.Location = New System.Drawing.Point(339, 359)
+        Me.TextBoxUserPassword.Name = "TextBoxUserPassword"
+        Me.TextBoxUserPassword.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPassword.TabIndex = 13
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(60, 360)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 31)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Passwort:"
         '
         'TextBoxUserAdress
         '
@@ -834,6 +864,35 @@ Partial Class FormMain
         Me.ButtonUserSavePhone.Text = "Ändern"
         Me.ButtonUserSavePhone.UseVisualStyleBackColor = True
         '
+        'TabPageFavorit
+        '
+        Me.TabPageFavorit.Controls.Add(Me.Label4)
+        Me.TabPageFavorit.Controls.Add(Me.ListBoxFavoriten)
+        Me.TabPageFavorit.Location = New System.Drawing.Point(8, 45)
+        Me.TabPageFavorit.Name = "TabPageFavorit"
+        Me.TabPageFavorit.Size = New System.Drawing.Size(631, 497)
+        Me.TabPageFavorit.TabIndex = 5
+        Me.TabPageFavorit.Text = "Favoriten"
+        Me.TabPageFavorit.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(45, 34)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(494, 31)
+        Me.Label4.TabIndex = 1
+        Me.Label4.Text = "Hier siehst du deine Lieblingsgeschäfte:"
+        '
+        'ListBoxFavoriten
+        '
+        Me.ListBoxFavoriten.FormattingEnabled = True
+        Me.ListBoxFavoriten.ItemHeight = 31
+        Me.ListBoxFavoriten.Location = New System.Drawing.Point(148, 137)
+        Me.ListBoxFavoriten.Name = "ListBoxFavoriten"
+        Me.ListBoxFavoriten.Size = New System.Drawing.Size(328, 128)
+        Me.ListBoxFavoriten.TabIndex = 0
+        '
         'PictureBoxMap
         '
         Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
@@ -843,31 +902,6 @@ Partial Class FormMain
         Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(60, 360)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(135, 31)
-        Me.Label3.TabIndex = 12
-        Me.Label3.Text = "Passwort:"
-        '
-        'TextBoxUserPassword
-        '
-        Me.TextBoxUserPassword.Location = New System.Drawing.Point(339, 359)
-        Me.TextBoxUserPassword.Name = "TextBoxUserPassword"
-        Me.TextBoxUserPassword.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserPassword.TabIndex = 13
-        '
-        'ButtonUserRelease
-        '
-        Me.ButtonUserRelease.Location = New System.Drawing.Point(181, 418)
-        Me.ButtonUserRelease.Name = "ButtonUserRelease"
-        Me.ButtonUserRelease.Size = New System.Drawing.Size(120, 50)
-        Me.ButtonUserRelease.TabIndex = 14
-        Me.ButtonUserRelease.Text = "freigeben"
-        Me.ButtonUserRelease.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -898,6 +932,8 @@ Partial Class FormMain
         Me.TabPage4.PerformLayout()
         Me.TabPageUser.ResumeLayout(False)
         Me.TabPageUser.PerformLayout()
+        Me.TabPageFavorit.ResumeLayout(False)
+        Me.TabPageFavorit.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -973,4 +1009,7 @@ Partial Class FormMain
     Friend WithEvents TextBoxUserPassword As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ButtonUserRelease As Button
+    Friend WithEvents TabPageFavorit As TabPage
+    Friend WithEvents Label4 As Label
+    Friend WithEvents ListBoxFavoriten As ListBox
 End Class

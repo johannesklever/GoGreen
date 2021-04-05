@@ -348,8 +348,8 @@ Public Class FormMain
         rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
 
         If UserIDCONV = 0 Then
-            FormKeinBenutzer.ShowDialog()
             Me.Close()
+            FormKeinBenutzer.ShowDialog()
         Else
             TabControl1.SelectedTab = TabPageUser
             TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value
@@ -406,6 +406,17 @@ Public Class FormMain
         TextBoxUserPassword.ReadOnly = False
         TextBoxUserUsername.ReadOnly = False
     End Sub
+
+    Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
+
+        TabControl1.SelectedTab = TabPageFavorit
+        Do While Not rsGeschaefte.EOF
+            ListBoxFavoriten.Items.Add(rsGeschaefte.Fields("Bezeichnung").Value)
+            rsGeschaefte.MoveNext()
+        Loop
+    End Sub
+
+
 
 
     'bla
