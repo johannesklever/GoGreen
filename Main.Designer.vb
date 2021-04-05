@@ -75,6 +75,18 @@ Partial Class FormMain
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.TabPageUser = New System.Windows.Forms.TabPage()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.LabelUserName = New System.Windows.Forms.Label()
+        Me.LabelUserUsername = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LabelUserBirthdate = New System.Windows.Forms.Label()
+        Me.LabelUserAdress = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.TextBoxUserName = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserAdress = New System.Windows.Forms.TextBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -86,6 +98,7 @@ Partial Class FormMain
         Me.TabPage3.SuspendLayout()
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
+        Me.TabPageUser.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -118,7 +131,7 @@ Partial Class FormMain
         Me.btnHelp.Location = New System.Drawing.Point(0, 608)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
+        Me.btnHelp.Size = New System.Drawing.Size(216, 45)
         Me.btnHelp.TabIndex = 8
         Me.btnHelp.Text = "Help"
         Me.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -135,7 +148,7 @@ Partial Class FormMain
         Me.btnAbout.Location = New System.Drawing.Point(0, 563)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
+        Me.btnAbout.Size = New System.Drawing.Size(216, 45)
         Me.btnAbout.TabIndex = 6
         Me.btnAbout.Text = "About"
         Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -153,7 +166,7 @@ Partial Class FormMain
         Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
         Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
         Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
+        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(216, 45)
         Me.btnProgrammeinstellungen.TabIndex = 5
         Me.btnProgrammeinstellungen.Text = "Einstellungen"
         Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -170,7 +183,7 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelMeinBereichSubMenu.Location = New System.Drawing.Point(0, 354)
         Me.panelMeinBereichSubMenu.Name = "panelMeinBereichSubMenu"
-        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(216, 164)
         Me.panelMeinBereichSubMenu.TabIndex = 4
         '
         'Button6
@@ -182,7 +195,7 @@ Partial Class FormMain
         Me.Button6.Location = New System.Drawing.Point(0, 120)
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(229, 40)
+        Me.Button6.Size = New System.Drawing.Size(216, 40)
         Me.Button6.TabIndex = 3
         Me.Button6.Text = "Button6"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -197,7 +210,7 @@ Partial Class FormMain
         Me.Button7.Location = New System.Drawing.Point(0, 80)
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(229, 40)
+        Me.Button7.Size = New System.Drawing.Size(216, 40)
         Me.Button7.TabIndex = 2
         Me.Button7.Text = "Button7"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -212,7 +225,7 @@ Partial Class FormMain
         Me.btnUserSettings.Location = New System.Drawing.Point(0, 40)
         Me.btnUserSettings.Name = "btnUserSettings"
         Me.btnUserSettings.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnUserSettings.Size = New System.Drawing.Size(229, 40)
+        Me.btnUserSettings.Size = New System.Drawing.Size(216, 40)
         Me.btnUserSettings.TabIndex = 1
         Me.btnUserSettings.Text = "User Settings"
         Me.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -227,7 +240,7 @@ Partial Class FormMain
         Me.btnFavorit.Location = New System.Drawing.Point(0, 0)
         Me.btnFavorit.Name = "btnFavorit"
         Me.btnFavorit.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnFavorit.Size = New System.Drawing.Size(229, 40)
+        Me.btnFavorit.Size = New System.Drawing.Size(216, 40)
         Me.btnFavorit.TabIndex = 0
         Me.btnFavorit.Text = "Favoriten"
         Me.btnFavorit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -244,7 +257,7 @@ Partial Class FormMain
         Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
         Me.btnMeinBereich.Name = "btnMeinBereich"
         Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
+        Me.btnMeinBereich.Size = New System.Drawing.Size(216, 45)
         Me.btnMeinBereich.TabIndex = 3
         Me.btnMeinBereich.Text = "Mein Bereich"
         Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -261,7 +274,7 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
-        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(216, 164)
         Me.panelGeschaefteSubmenu.TabIndex = 2
         '
         'btnBekleidungslaeden
@@ -273,7 +286,7 @@ Partial Class FormMain
         Me.btnBekleidungslaeden.Location = New System.Drawing.Point(0, 120)
         Me.btnBekleidungslaeden.Name = "btnBekleidungslaeden"
         Me.btnBekleidungslaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(229, 40)
+        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(216, 40)
         Me.btnBekleidungslaeden.TabIndex = 3
         Me.btnBekleidungslaeden.Text = "Bekleidungsläden"
         Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -288,7 +301,7 @@ Partial Class FormMain
         Me.buttonSideMenuHinzufuegen.Location = New System.Drawing.Point(0, 80)
         Me.buttonSideMenuHinzufuegen.Name = "buttonSideMenuHinzufuegen"
         Me.buttonSideMenuHinzufuegen.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuHinzufuegen.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuHinzufuegen.Size = New System.Drawing.Size(216, 40)
         Me.buttonSideMenuHinzufuegen.TabIndex = 2
         Me.buttonSideMenuHinzufuegen.Text = "Hinzufügen"
         Me.buttonSideMenuHinzufuegen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -303,7 +316,7 @@ Partial Class FormMain
         Me.buttonSideMenuStadtteile.Location = New System.Drawing.Point(0, 40)
         Me.buttonSideMenuStadtteile.Name = "buttonSideMenuStadtteile"
         Me.buttonSideMenuStadtteile.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuStadtteile.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuStadtteile.Size = New System.Drawing.Size(216, 40)
         Me.buttonSideMenuStadtteile.TabIndex = 1
         Me.buttonSideMenuStadtteile.Text = "Stadtteile"
         Me.buttonSideMenuStadtteile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -318,7 +331,7 @@ Partial Class FormMain
         Me.buttonSideMenuKategorien.Location = New System.Drawing.Point(0, 0)
         Me.buttonSideMenuKategorien.Name = "buttonSideMenuKategorien"
         Me.buttonSideMenuKategorien.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuKategorien.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuKategorien.Size = New System.Drawing.Size(216, 40)
         Me.buttonSideMenuKategorien.TabIndex = 0
         Me.buttonSideMenuKategorien.Text = "Kategorien"
         Me.buttonSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -336,7 +349,7 @@ Partial Class FormMain
         Me.buttonSideMenuGeschaefte.Location = New System.Drawing.Point(0, 100)
         Me.buttonSideMenuGeschaefte.Name = "buttonSideMenuGeschaefte"
         Me.buttonSideMenuGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.buttonSideMenuGeschaefte.Size = New System.Drawing.Size(229, 45)
+        Me.buttonSideMenuGeschaefte.Size = New System.Drawing.Size(216, 45)
         Me.buttonSideMenuGeschaefte.TabIndex = 1
         Me.buttonSideMenuGeschaefte.Text = "Geschäfte"
         Me.buttonSideMenuGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -347,7 +360,7 @@ Partial Class FormMain
         Me.panelLogo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelLogo.Location = New System.Drawing.Point(0, 0)
         Me.panelLogo.Name = "panelLogo"
-        Me.panelLogo.Size = New System.Drawing.Size(229, 100)
+        Me.panelLogo.Size = New System.Drawing.Size(216, 100)
         Me.panelLogo.TabIndex = 0
         '
         'panelContent
@@ -381,10 +394,10 @@ Partial Class FormMain
         '
         Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.webView)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage1.Location = New System.Drawing.Point(8, 45)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage1.Size = New System.Drawing.Size(631, 497)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -417,10 +430,10 @@ Partial Class FormMain
         Me.TabPage2.Controls.Add(Me.LabelGeschäfteNachKategorien)
         Me.TabPage2.Controls.Add(Me.TreeViewGeschäfteKategorien)
         Me.TabPage2.Controls.Add(Me.btnbla)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage2.Location = New System.Drawing.Point(8, 45)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage2.Size = New System.Drawing.Size(631, 497)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -430,7 +443,7 @@ Partial Class FormMain
         Me.LabelGeschäfteNachKategorien.AutoSize = True
         Me.LabelGeschäfteNachKategorien.Location = New System.Drawing.Point(49, 25)
         Me.LabelGeschäfteNachKategorien.Name = "LabelGeschäfteNachKategorien"
-        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(212, 20)
+        Me.LabelGeschäfteNachKategorien.Size = New System.Drawing.Size(343, 31)
         Me.LabelGeschäfteNachKategorien.TabIndex = 2
         Me.LabelGeschäfteNachKategorien.Text = "Geschäfte nach Kategorien"
         '
@@ -473,10 +486,10 @@ Partial Class FormMain
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
         Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage3.Location = New System.Drawing.Point(8, 45)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage3.Size = New System.Drawing.Size(631, 497)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -486,7 +499,7 @@ Partial Class FormMain
         Me.labelShopImageErrorBildNachricht.AutoSize = True
         Me.labelShopImageErrorBildNachricht.Location = New System.Drawing.Point(35, 327)
         Me.labelShopImageErrorBildNachricht.Name = "labelShopImageErrorBildNachricht"
-        Me.labelShopImageErrorBildNachricht.Size = New System.Drawing.Size(0, 20)
+        Me.labelShopImageErrorBildNachricht.Size = New System.Drawing.Size(0, 31)
         Me.labelShopImageErrorBildNachricht.TabIndex = 21
         Me.labelShopImageErrorBildNachricht.Visible = False
         '
@@ -506,7 +519,7 @@ Partial Class FormMain
         Me.labelShopEinzelansichtStadtteil.AutoSize = True
         Me.labelShopEinzelansichtStadtteil.Location = New System.Drawing.Point(245, 353)
         Me.labelShopEinzelansichtStadtteil.Name = "labelShopEinzelansichtStadtteil"
-        Me.labelShopEinzelansichtStadtteil.Size = New System.Drawing.Size(70, 20)
+        Me.labelShopEinzelansichtStadtteil.Size = New System.Drawing.Size(113, 31)
         Me.labelShopEinzelansichtStadtteil.TabIndex = 19
         Me.labelShopEinzelansichtStadtteil.Text = "Stadtteil"
         '
@@ -515,7 +528,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtStadtteil.Location = New System.Drawing.Point(249, 376)
         Me.textBoxShopEinzelansichtStadtteil.Name = "textBoxShopEinzelansichtStadtteil"
         Me.textBoxShopEinzelansichtStadtteil.ReadOnly = True
-        Me.textBoxShopEinzelansichtStadtteil.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtStadtteil.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtStadtteil.TabIndex = 18
         '
         'buttonShopBearbeiten
@@ -532,7 +545,7 @@ Partial Class FormMain
         Me.textBoxShopImageFileName.Location = New System.Drawing.Point(166, 32)
         Me.textBoxShopImageFileName.Name = "textBoxShopImageFileName"
         Me.textBoxShopImageFileName.ReadOnly = True
-        Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopImageFileName.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopImageFileName.TabIndex = 16
         '
         'buttonShopImageHinzufuegen
@@ -553,7 +566,7 @@ Partial Class FormMain
         Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
         Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(249, 408)
         Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
-        Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 39)
         Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
         '
         'labelShopEinzelansichtOeffnungszeit
@@ -561,7 +574,7 @@ Partial Class FormMain
         Me.labelShopEinzelansichtOeffnungszeit.AutoSize = True
         Me.labelShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(35, 405)
         Me.labelShopEinzelansichtOeffnungszeit.Name = "labelShopEinzelansichtOeffnungszeit"
-        Me.labelShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(104, 20)
+        Me.labelShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(168, 31)
         Me.labelShopEinzelansichtOeffnungszeit.TabIndex = 13
         Me.labelShopEinzelansichtOeffnungszeit.Text = "Öffnungszeit"
         '
@@ -570,7 +583,7 @@ Partial Class FormMain
         Me.labelShopEinzelansichtTelefonnummer.AutoSize = True
         Me.labelShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(35, 456)
         Me.labelShopEinzelansichtTelefonnummer.Name = "labelShopEinzelansichtTelefonnummer"
-        Me.labelShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(125, 20)
+        Me.labelShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(203, 31)
         Me.labelShopEinzelansichtTelefonnummer.TabIndex = 12
         Me.labelShopEinzelansichtTelefonnummer.Text = "Telefonnummer"
         '
@@ -579,7 +592,7 @@ Partial Class FormMain
         Me.labelShopEinzelansichtAdresse.AutoSize = True
         Me.labelShopEinzelansichtAdresse.Location = New System.Drawing.Point(35, 353)
         Me.labelShopEinzelansichtAdresse.Name = "labelShopEinzelansichtAdresse"
-        Me.labelShopEinzelansichtAdresse.Size = New System.Drawing.Size(71, 20)
+        Me.labelShopEinzelansichtAdresse.Size = New System.Drawing.Size(114, 31)
         Me.labelShopEinzelansichtAdresse.TabIndex = 11
         Me.labelShopEinzelansichtAdresse.Text = "Adresse"
         '
@@ -588,7 +601,7 @@ Partial Class FormMain
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(390, 35)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(106, 20)
+        Me.Label1.Size = New System.Drawing.Size(171, 31)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Bezeichnung"
         '
@@ -597,7 +610,7 @@ Partial Class FormMain
         Me.labelShopEinzelansichtKategorie.AutoSize = True
         Me.labelShopEinzelansichtKategorie.Location = New System.Drawing.Point(390, 113)
         Me.labelShopEinzelansichtKategorie.Name = "labelShopEinzelansichtKategorie"
-        Me.labelShopEinzelansichtKategorie.Size = New System.Drawing.Size(80, 20)
+        Me.labelShopEinzelansichtKategorie.Size = New System.Drawing.Size(130, 31)
         Me.labelShopEinzelansichtKategorie.TabIndex = 8
         Me.labelShopEinzelansichtKategorie.Text = "Kategorie"
         '
@@ -615,7 +628,7 @@ Partial Class FormMain
         Me.comboBoxEinzelansichtKategorie.FormattingEnabled = True
         Me.comboBoxEinzelansichtKategorie.Location = New System.Drawing.Point(394, 175)
         Me.comboBoxEinzelansichtKategorie.Name = "comboBoxEinzelansichtKategorie"
-        Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 28)
+        Me.comboBoxEinzelansichtKategorie.Size = New System.Drawing.Size(193, 39)
         Me.comboBoxEinzelansichtKategorie.TabIndex = 6
         '
         'pictureBoxGeschaefteEinzelansichtsseite
@@ -633,7 +646,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(39, 427)
         Me.textBoxShopEinzelansichtOeffnungszeit.Name = "textBoxShopEinzelansichtOeffnungszeit"
         Me.textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
-        Me.textBoxShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtOeffnungszeit.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtOeffnungszeit.TabIndex = 4
         '
         'textBoxShopEinzelansichtAdresse
@@ -641,7 +654,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtAdresse.Location = New System.Drawing.Point(39, 376)
         Me.textBoxShopEinzelansichtAdresse.Name = "textBoxShopEinzelansichtAdresse"
         Me.textBoxShopEinzelansichtAdresse.ReadOnly = True
-        Me.textBoxShopEinzelansichtAdresse.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtAdresse.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtAdresse.TabIndex = 3
         '
         'textBoxShopEinzelansichtTelefonnummer
@@ -649,7 +662,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(39, 479)
         Me.textBoxShopEinzelansichtTelefonnummer.Name = "textBoxShopEinzelansichtTelefonnummer"
         Me.textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
-        Me.textBoxShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtTelefonnummer.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtTelefonnummer.TabIndex = 2
         '
         'textBoxShopEinzelansichtKategorie
@@ -657,7 +670,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtKategorie.Location = New System.Drawing.Point(394, 143)
         Me.textBoxShopEinzelansichtKategorie.Name = "textBoxShopEinzelansichtKategorie"
         Me.textBoxShopEinzelansichtKategorie.ReadOnly = True
-        Me.textBoxShopEinzelansichtKategorie.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtKategorie.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtKategorie.TabIndex = 1
         '
         'textBoxShopEinzelansichtBezeichnung
@@ -665,17 +678,17 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtBezeichnung.Location = New System.Drawing.Point(394, 68)
         Me.textBoxShopEinzelansichtBezeichnung.Name = "textBoxShopEinzelansichtBezeichnung"
         Me.textBoxShopEinzelansichtBezeichnung.ReadOnly = True
-        Me.textBoxShopEinzelansichtBezeichnung.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtBezeichnung.Size = New System.Drawing.Size(193, 38)
         Me.textBoxShopEinzelansichtBezeichnung.TabIndex = 0
         '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
         Me.TabPage4.Controls.Add(Me.TreeViewGeschäfteStadtteile)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage4.Location = New System.Drawing.Point(8, 45)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage4.Size = New System.Drawing.Size(631, 497)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "TabPage4"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -685,7 +698,7 @@ Partial Class FormMain
         Me.LabelGeschäfteNachStadtteilen.AutoSize = True
         Me.LabelGeschäfteNachStadtteilen.Location = New System.Drawing.Point(49, 25)
         Me.LabelGeschäfteNachStadtteilen.Name = "LabelGeschäfteNachStadtteilen"
-        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(211, 20)
+        Me.LabelGeschäfteNachStadtteilen.Size = New System.Drawing.Size(341, 31)
         Me.LabelGeschäfteNachStadtteilen.TabIndex = 6
         Me.LabelGeschäfteNachStadtteilen.Text = "Geschäfte nach Stadtteilen"
         '
@@ -698,9 +711,21 @@ Partial Class FormMain
         '
         'TabPageUser
         '
-        Me.TabPageUser.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserAdress)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserBirthdate)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserPhone)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserUsername)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserName)
+        Me.TabPageUser.Controls.Add(Me.Button3)
+        Me.TabPageUser.Controls.Add(Me.LabelUserAdress)
+        Me.TabPageUser.Controls.Add(Me.LabelUserBirthdate)
+        Me.TabPageUser.Controls.Add(Me.Label2)
+        Me.TabPageUser.Controls.Add(Me.LabelUserUsername)
+        Me.TabPageUser.Controls.Add(Me.LabelUserName)
+        Me.TabPageUser.Controls.Add(Me.Button2)
+        Me.TabPageUser.Location = New System.Drawing.Point(8, 45)
         Me.TabPageUser.Name = "TabPageUser"
-        Me.TabPageUser.Size = New System.Drawing.Size(639, 517)
+        Me.TabPageUser.Size = New System.Drawing.Size(631, 497)
         Me.TabPageUser.TabIndex = 4
         Me.TabPageUser.Text = "User"
         Me.TabPageUser.UseVisualStyleBackColor = True
@@ -715,9 +740,107 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(475, 420)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(116, 46)
+        Me.Button2.TabIndex = 0
+        Me.Button2.Text = "Ändern"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'LabelUserName
+        '
+        Me.LabelUserName.AutoSize = True
+        Me.LabelUserName.Location = New System.Drawing.Point(54, 33)
+        Me.LabelUserName.Name = "LabelUserName"
+        Me.LabelUserName.Size = New System.Drawing.Size(94, 31)
+        Me.LabelUserName.TabIndex = 1
+        Me.LabelUserName.Text = "Name:"
+        '
+        'LabelUserUsername
+        '
+        Me.LabelUserUsername.AutoSize = True
+        Me.LabelUserUsername.Location = New System.Drawing.Point(54, 97)
+        Me.LabelUserUsername.Name = "LabelUserUsername"
+        Me.LabelUserUsername.Size = New System.Drawing.Size(198, 31)
+        Me.LabelUserUsername.TabIndex = 2
+        Me.LabelUserUsername.Text = "Benutzername:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(54, 166)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(113, 31)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Telefon:"
+        '
+        'LabelUserBirthdate
+        '
+        Me.LabelUserBirthdate.AutoSize = True
+        Me.LabelUserBirthdate.Location = New System.Drawing.Point(54, 230)
+        Me.LabelUserBirthdate.Name = "LabelUserBirthdate"
+        Me.LabelUserBirthdate.Size = New System.Drawing.Size(194, 31)
+        Me.LabelUserBirthdate.TabIndex = 4
+        Me.LabelUserBirthdate.Text = "Geburtsdatum:"
+        '
+        'LabelUserAdress
+        '
+        Me.LabelUserAdress.AutoSize = True
+        Me.LabelUserAdress.Location = New System.Drawing.Point(54, 296)
+        Me.LabelUserAdress.Name = "LabelUserAdress"
+        Me.LabelUserAdress.Size = New System.Drawing.Size(122, 31)
+        Me.LabelUserAdress.TabIndex = 5
+        Me.LabelUserAdress.Text = "Adresse:"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(60, 416)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(255, 50)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Passwort ändern"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'TextBoxUserName
+        '
+        Me.TextBoxUserName.Location = New System.Drawing.Point(339, 33)
+        Me.TextBoxUserName.Name = "TextBoxUserName"
+        Me.TextBoxUserName.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserName.TabIndex = 7
+        '
+        'TextBoxUserUsername
+        '
+        Me.TextBoxUserUsername.Location = New System.Drawing.Point(339, 94)
+        Me.TextBoxUserUsername.Name = "TextBoxUserUsername"
+        Me.TextBoxUserUsername.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserUsername.TabIndex = 8
+        '
+        'TextBoxUserPhone
+        '
+        Me.TextBoxUserPhone.Location = New System.Drawing.Point(339, 166)
+        Me.TextBoxUserPhone.Name = "TextBoxUserPhone"
+        Me.TextBoxUserPhone.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPhone.TabIndex = 9
+        '
+        'TextBoxUserBirthdate
+        '
+        Me.TextBoxUserBirthdate.Location = New System.Drawing.Point(339, 230)
+        Me.TextBoxUserBirthdate.Name = "TextBoxUserBirthdate"
+        Me.TextBoxUserBirthdate.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserBirthdate.TabIndex = 10
+        '
+        'TextBoxUserAdress
+        '
+        Me.TextBoxUserAdress.Location = New System.Drawing.Point(339, 289)
+        Me.TextBoxUserAdress.Name = "TextBoxUserAdress"
+        Me.TextBoxUserAdress.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserAdress.TabIndex = 11
+        '
         'FormMain
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(16.0!, 31.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(932, 553)
         Me.Controls.Add(Me.panelContent)
@@ -742,6 +865,8 @@ Partial Class FormMain
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
+        Me.TabPageUser.ResumeLayout(False)
+        Me.TabPageUser.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -802,4 +927,16 @@ Partial Class FormMain
     Friend WithEvents buttonShopAenderungenSpeichern As Button
     Friend WithEvents TabPageUser As TabPage
     Friend WithEvents labelShopImageErrorBildNachricht As Label
+    Friend WithEvents TextBoxUserAdress As TextBox
+    Friend WithEvents TextBoxUserBirthdate As TextBox
+    Friend WithEvents TextBoxUserPhone As TextBox
+    Friend WithEvents TextBoxUserUsername As TextBox
+    Friend WithEvents TextBoxUserName As TextBox
+    Friend WithEvents Button3 As Button
+    Friend WithEvents LabelUserAdress As Label
+    Friend WithEvents LabelUserBirthdate As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents LabelUserUsername As Label
+    Friend WithEvents LabelUserName As Label
+    Friend WithEvents Button2 As Button
 End Class

@@ -6,24 +6,21 @@ End Module
 
 Public Class Landingpage
 
-
-
-    Dim rs As ADODB.Recordset
-    Dim rs_Bestellung As ADODB.Recordset
+    Dim rsKunde As ADODB.Recordset
     Dim conn As ADODB.Connection
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        rs = New ADODB.Recordset
-        rs_Bestellung = New ADODB.Recordset
+        rsKunde = New ADODB.Recordset
+
         Try
             conn = New ADODB.Connection
             conn.Open("Provider=Microsoft.ACE.OLEDB.12.0;“ & "Data Source=GoGreen.accdb")
 
 
-            rs.Open("SELECT * FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsKunde.Open("SELECT * FROM Kunde", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
             'MsgBox("Datensätze gefunden: " & rs.RecordCount)
-            If rs.RecordCount > 0 Then
-                rs.MoveFirst()
+            If rsKunde.RecordCount > 0 Then
+                rsKunde.MoveFirst()
 
 
             Else
@@ -39,9 +36,9 @@ Public Class Landingpage
 
     Public Function FindeDatensatzImRecordset(ByVal benutzername As String) As Boolean
 
-        rs.Find("Benutzername = " & "'" & benutzername & "'") 'Prüfung, ob Benutzername in der Datenbank hinterlegt ist
+        rsKunde.Find("Benutzername = " & "'" & benutzername & "'") 'Prüfung, ob Benutzername in der Datenbank hinterlegt ist
 
-        If rs.EOF Then
+        If rsKunde.EOF Then
             Return False
         Else
             Return True
@@ -54,9 +51,9 @@ Public Class Landingpage
         FindeDatensatzImRecordset(textBoxBenutzername.Text)
 
         If FindeDatensatzImRecordset(textBoxBenutzername.Text) = True Then  'erst Bedingung: Benutzername wurde in der Datenbank gefunden
-            If rs.Fields("Passwort").Value = textBoxPasswort.Text Then 'zweite Bedingung: Passwort des gefundenen Nutzers stimmt
+            If rsKunde.Fields("Passwort").Value = textBoxPasswort.Text Then 'zweite Bedingung: Passwort des gefundenen Nutzers stimmt
                 Me.Hide()
-                Übergabe.LoggedUserID = rs.Fields("Kunden_ID").Value
+                Übergabe.LoggedUserID = rsKunde.Fields("Kunden_ID").Value
 
                 FormMain.ShowDialog()
             Else

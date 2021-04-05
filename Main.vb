@@ -4,6 +4,7 @@ Public Class FormMain
 
     Dim rsKategorien As ADODB.Recordset
     Dim rsStadtteile As ADODB.Recordset
+    Dim rsBearbeiten As ADODB.Recordset
     Dim conn As ADODB.Connection
     Dim rsGeschaefte As ADODB.Recordset
 
@@ -15,6 +16,7 @@ Public Class FormMain
         rsKategorien = New ADODB.Recordset
         rsStadtteile = New ADODB.Recordset
         rsGeschaefte = New ADODB.Recordset
+        rsBearbeiten = New ADODB.Recordset
 
         Try
 
@@ -27,6 +29,9 @@ Public Class FormMain
                             conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
             rsStadtteile.Open("SELECT * FROM Stadtteile",
                             conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsBearbeiten.Open("SELECT * FROM Kunde",
+                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
 
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -270,7 +275,7 @@ Public Class FormMain
 
         End Try
         Dim rsAktuelleKategorieID As New ADODB.Recordset 'zur Ermittlung der KategorienID über die ausgewählte Kategorienbezeichung in der Combobox
-            Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
+        Dim rsAktuellerStadtteilID As New ADODB.Recordset 'zur Ermittlung der StadtteilID über den ausgewählten Stadtteil in der Combobox
 
         Try
             rsAktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung = " & "'" & comboBoxEinzelansichtKategorie.SelectedItem & "'",
