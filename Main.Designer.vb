@@ -74,19 +74,22 @@ Partial Class FormMain
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.TabPageUser = New System.Windows.Forms.TabPage()
-        Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.LabelUserName = New System.Windows.Forms.Label()
-        Me.LabelUserUsername = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.LabelUserBirthdate = New System.Windows.Forms.Label()
-        Me.LabelUserAdress = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.TextBoxUserName = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
-        Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
         Me.TextBoxUserAdress = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserBirthdate = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserPhone = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserUsername = New System.Windows.Forms.TextBox()
+        Me.TextBoxUserName = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.LabelUserAdress = New System.Windows.Forms.Label()
+        Me.LabelUserBirthdate = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LabelUserUsername = New System.Windows.Forms.Label()
+        Me.LabelUserName = New System.Windows.Forms.Label()
+        Me.ButtonUserSavePhone = New System.Windows.Forms.Button()
+        Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBoxUserPassword = New System.Windows.Forms.TextBox()
+        Me.ButtonUserRelease = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -711,6 +714,9 @@ Partial Class FormMain
         '
         'TabPageUser
         '
+        Me.TabPageUser.Controls.Add(Me.ButtonUserRelease)
+        Me.TabPageUser.Controls.Add(Me.TextBoxUserPassword)
+        Me.TabPageUser.Controls.Add(Me.Label3)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserAdress)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserBirthdate)
         Me.TabPageUser.Controls.Add(Me.TextBoxUserPhone)
@@ -722,13 +728,111 @@ Partial Class FormMain
         Me.TabPageUser.Controls.Add(Me.Label2)
         Me.TabPageUser.Controls.Add(Me.LabelUserUsername)
         Me.TabPageUser.Controls.Add(Me.LabelUserName)
-        Me.TabPageUser.Controls.Add(Me.Button2)
+        Me.TabPageUser.Controls.Add(Me.ButtonUserSavePhone)
         Me.TabPageUser.Location = New System.Drawing.Point(8, 45)
         Me.TabPageUser.Name = "TabPageUser"
         Me.TabPageUser.Size = New System.Drawing.Size(631, 497)
         Me.TabPageUser.TabIndex = 4
         Me.TabPageUser.Text = "User"
         Me.TabPageUser.UseVisualStyleBackColor = True
+        '
+        'TextBoxUserAdress
+        '
+        Me.TextBoxUserAdress.Location = New System.Drawing.Point(339, 289)
+        Me.TextBoxUserAdress.Name = "TextBoxUserAdress"
+        Me.TextBoxUserAdress.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserAdress.TabIndex = 11
+        '
+        'TextBoxUserBirthdate
+        '
+        Me.TextBoxUserBirthdate.Location = New System.Drawing.Point(339, 230)
+        Me.TextBoxUserBirthdate.Name = "TextBoxUserBirthdate"
+        Me.TextBoxUserBirthdate.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserBirthdate.TabIndex = 10
+        '
+        'TextBoxUserPhone
+        '
+        Me.TextBoxUserPhone.Location = New System.Drawing.Point(339, 166)
+        Me.TextBoxUserPhone.Name = "TextBoxUserPhone"
+        Me.TextBoxUserPhone.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPhone.TabIndex = 9
+        '
+        'TextBoxUserUsername
+        '
+        Me.TextBoxUserUsername.Location = New System.Drawing.Point(339, 94)
+        Me.TextBoxUserUsername.Name = "TextBoxUserUsername"
+        Me.TextBoxUserUsername.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserUsername.TabIndex = 8
+        '
+        'TextBoxUserName
+        '
+        Me.TextBoxUserName.Location = New System.Drawing.Point(339, 33)
+        Me.TextBoxUserName.Name = "TextBoxUserName"
+        Me.TextBoxUserName.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserName.TabIndex = 7
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(60, 418)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(88, 50)
+        Me.Button3.TabIndex = 6
+        Me.Button3.Text = "Passwort ändern"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'LabelUserAdress
+        '
+        Me.LabelUserAdress.AutoSize = True
+        Me.LabelUserAdress.Location = New System.Drawing.Point(54, 296)
+        Me.LabelUserAdress.Name = "LabelUserAdress"
+        Me.LabelUserAdress.Size = New System.Drawing.Size(122, 31)
+        Me.LabelUserAdress.TabIndex = 5
+        Me.LabelUserAdress.Text = "Adresse:"
+        '
+        'LabelUserBirthdate
+        '
+        Me.LabelUserBirthdate.AutoSize = True
+        Me.LabelUserBirthdate.Location = New System.Drawing.Point(54, 230)
+        Me.LabelUserBirthdate.Name = "LabelUserBirthdate"
+        Me.LabelUserBirthdate.Size = New System.Drawing.Size(194, 31)
+        Me.LabelUserBirthdate.TabIndex = 4
+        Me.LabelUserBirthdate.Text = "Geburtsdatum:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(54, 166)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(113, 31)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Telefon:"
+        '
+        'LabelUserUsername
+        '
+        Me.LabelUserUsername.AutoSize = True
+        Me.LabelUserUsername.Location = New System.Drawing.Point(54, 97)
+        Me.LabelUserUsername.Name = "LabelUserUsername"
+        Me.LabelUserUsername.Size = New System.Drawing.Size(198, 31)
+        Me.LabelUserUsername.TabIndex = 2
+        Me.LabelUserUsername.Text = "Benutzername:"
+        '
+        'LabelUserName
+        '
+        Me.LabelUserName.AutoSize = True
+        Me.LabelUserName.Location = New System.Drawing.Point(54, 33)
+        Me.LabelUserName.Name = "LabelUserName"
+        Me.LabelUserName.Size = New System.Drawing.Size(94, 31)
+        Me.LabelUserName.TabIndex = 1
+        Me.LabelUserName.Text = "Name:"
+        '
+        'ButtonUserSavePhone
+        '
+        Me.ButtonUserSavePhone.Location = New System.Drawing.Point(475, 420)
+        Me.ButtonUserSavePhone.Name = "ButtonUserSavePhone"
+        Me.ButtonUserSavePhone.Size = New System.Drawing.Size(116, 46)
+        Me.ButtonUserSavePhone.TabIndex = 0
+        Me.ButtonUserSavePhone.Text = "Ändern"
+        Me.ButtonUserSavePhone.UseVisualStyleBackColor = True
         '
         'PictureBoxMap
         '
@@ -740,103 +844,30 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'Button2
+        'Label3
         '
-        Me.Button2.Location = New System.Drawing.Point(475, 420)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(116, 46)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Ändern"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(60, 360)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(135, 31)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Passwort:"
         '
-        'LabelUserName
+        'TextBoxUserPassword
         '
-        Me.LabelUserName.AutoSize = True
-        Me.LabelUserName.Location = New System.Drawing.Point(54, 33)
-        Me.LabelUserName.Name = "LabelUserName"
-        Me.LabelUserName.Size = New System.Drawing.Size(94, 31)
-        Me.LabelUserName.TabIndex = 1
-        Me.LabelUserName.Text = "Name:"
+        Me.TextBoxUserPassword.Location = New System.Drawing.Point(339, 359)
+        Me.TextBoxUserPassword.Name = "TextBoxUserPassword"
+        Me.TextBoxUserPassword.Size = New System.Drawing.Size(100, 38)
+        Me.TextBoxUserPassword.TabIndex = 13
         '
-        'LabelUserUsername
+        'ButtonUserRelease
         '
-        Me.LabelUserUsername.AutoSize = True
-        Me.LabelUserUsername.Location = New System.Drawing.Point(54, 97)
-        Me.LabelUserUsername.Name = "LabelUserUsername"
-        Me.LabelUserUsername.Size = New System.Drawing.Size(198, 31)
-        Me.LabelUserUsername.TabIndex = 2
-        Me.LabelUserUsername.Text = "Benutzername:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(54, 166)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(113, 31)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Telefon:"
-        '
-        'LabelUserBirthdate
-        '
-        Me.LabelUserBirthdate.AutoSize = True
-        Me.LabelUserBirthdate.Location = New System.Drawing.Point(54, 230)
-        Me.LabelUserBirthdate.Name = "LabelUserBirthdate"
-        Me.LabelUserBirthdate.Size = New System.Drawing.Size(194, 31)
-        Me.LabelUserBirthdate.TabIndex = 4
-        Me.LabelUserBirthdate.Text = "Geburtsdatum:"
-        '
-        'LabelUserAdress
-        '
-        Me.LabelUserAdress.AutoSize = True
-        Me.LabelUserAdress.Location = New System.Drawing.Point(54, 296)
-        Me.LabelUserAdress.Name = "LabelUserAdress"
-        Me.LabelUserAdress.Size = New System.Drawing.Size(122, 31)
-        Me.LabelUserAdress.TabIndex = 5
-        Me.LabelUserAdress.Text = "Adresse:"
-        '
-        'Button3
-        '
-        Me.Button3.Location = New System.Drawing.Point(60, 416)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(255, 50)
-        Me.Button3.TabIndex = 6
-        Me.Button3.Text = "Passwort ändern"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'TextBoxUserName
-        '
-        Me.TextBoxUserName.Location = New System.Drawing.Point(339, 33)
-        Me.TextBoxUserName.Name = "TextBoxUserName"
-        Me.TextBoxUserName.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserName.TabIndex = 7
-        '
-        'TextBoxUserUsername
-        '
-        Me.TextBoxUserUsername.Location = New System.Drawing.Point(339, 94)
-        Me.TextBoxUserUsername.Name = "TextBoxUserUsername"
-        Me.TextBoxUserUsername.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserUsername.TabIndex = 8
-        '
-        'TextBoxUserPhone
-        '
-        Me.TextBoxUserPhone.Location = New System.Drawing.Point(339, 166)
-        Me.TextBoxUserPhone.Name = "TextBoxUserPhone"
-        Me.TextBoxUserPhone.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserPhone.TabIndex = 9
-        '
-        'TextBoxUserBirthdate
-        '
-        Me.TextBoxUserBirthdate.Location = New System.Drawing.Point(339, 230)
-        Me.TextBoxUserBirthdate.Name = "TextBoxUserBirthdate"
-        Me.TextBoxUserBirthdate.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserBirthdate.TabIndex = 10
-        '
-        'TextBoxUserAdress
-        '
-        Me.TextBoxUserAdress.Location = New System.Drawing.Point(339, 289)
-        Me.TextBoxUserAdress.Name = "TextBoxUserAdress"
-        Me.TextBoxUserAdress.Size = New System.Drawing.Size(100, 38)
-        Me.TextBoxUserAdress.TabIndex = 11
+        Me.ButtonUserRelease.Location = New System.Drawing.Point(181, 418)
+        Me.ButtonUserRelease.Name = "ButtonUserRelease"
+        Me.ButtonUserRelease.Size = New System.Drawing.Size(120, 50)
+        Me.ButtonUserRelease.TabIndex = 14
+        Me.ButtonUserRelease.Text = "freigeben"
+        Me.ButtonUserRelease.UseVisualStyleBackColor = True
         '
         'FormMain
         '
@@ -938,5 +969,8 @@ Partial Class FormMain
     Friend WithEvents Label2 As Label
     Friend WithEvents LabelUserUsername As Label
     Friend WithEvents LabelUserName As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ButtonUserSavePhone As Button
+    Friend WithEvents TextBoxUserPassword As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents ButtonUserRelease As Button
 End Class
