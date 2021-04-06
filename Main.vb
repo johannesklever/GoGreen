@@ -8,6 +8,7 @@ Public Class FormMain
     Dim conn As ADODB.Connection
     Dim rsGeschaefte As ADODB.Recordset
     Dim rsFavoriten As ADODB.Recordset
+    Dim rsFavoritenID As ADODB.Recordset
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -19,6 +20,7 @@ Public Class FormMain
         rsGeschaefte = New ADODB.Recordset
         rsBearbeiten = New ADODB.Recordset
         rsFavoriten = New ADODB.Recordset
+        rsFavoritenID = New ADODB.Recordset
 
         Try
 
@@ -35,6 +37,8 @@ Public Class FormMain
                             conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
             rsFavoriten.Open("SELECT Bezeichnung FROM Geschäfte, Lieblingsgeschäfte WHERE Geschäfte.Geschäfts_ID = Lieblingsgeschäfte.Geschäfts_ID AND Kunden_ID=" & Übergabe.LoggedUserID,
                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+
 
 
 
@@ -454,6 +458,9 @@ Public Class FormMain
         Dim AnzahlDatensätze As Integer
         Dim Schleife, GeschäftsID, FavoritenID As Integer
 
+        rsFavoritenID.Open("SELECT Geschäfte.Geschäfts_ID FROM Geschäfte, Lieblingsgeschäfte WHERE Geschäfte.Geschäfts_ID = Lieblingsgeschäfte.Geschäfts_ID AND Kunden_ID=" & Übergabe.LoggedUserID,
+                           conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
         textBoxShopEinzelansichtBezeichnung.ReadOnly = True
         textBoxShopEinzelansichtAdresse.ReadOnly = True
         textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
@@ -498,14 +505,17 @@ Public Class FormMain
             MsgBox(ex.Message)
         End Try
 
-        AnzahlDatensätze = rsFavoriten.RecordCount
+        AnzahlDatensätze = rsFavoritenID.RecordCount
 
         For Schleife = 0 To AnzahlDatensätze
+            rsGeschaefte.MoveFirst()
+            rsFavoritenID.MoveFirst()
             GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
-            FavoritenID = rsFavoriten("Geschäfts_ID").Value
+            FavoritenID = rsFavoritenID("Geschäfts_ID").Value
 
             If GeschäftsID = FavoritenID Then
                 MsgBox("Ein Lieblingsgeschäft")
+
             Else
                 rsFavoriten.MoveNext()
             End If
