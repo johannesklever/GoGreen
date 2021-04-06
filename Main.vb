@@ -49,7 +49,66 @@ Public Class FormMain
         End Try
 
 
+        'GMap1.MapProvider = GoogleMapProvider.Instance
+        'GMaps.Instance.Mode = AccessMode.ServerAndCache
+        'GMap1.MapProvider = BingHybridMapProvider.Instance
+        'GMap1.Position = New GMap.NET.PointLatLng(textBoxLatitude.Text.Trim(), textBoxLongitude.Text.Trim())
+        'GMap1.ShowCenter = False
 
+        'Dim markers As GMapOverlay = New GMapOverlay("markers")
+        'Dim marker As GMapMarker = New GMapMarker(New PointLatLng(textBoxLatitude.Text.Trim(), textBoxLongitude.Text.Trim())
+        'markers.Markers.Add(marker)
+        'GMap1.Overlays.Add(markers)
+
+
+        'GMap1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance
+        'GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache
+        'GMap1.SetPositionByKeywords("Paris, France")
+        'GMap1.ShowCenter = False
+        'Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
+        'Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(48.8617774, 2.349272), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
+        'markers.Markers.Add(marker)
+        'GMap1.Overlays.Add(markers)
+
+
+
+
+
+
+
+        'GMapControl1.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance
+        'GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly
+        'GMapControl1.SetPositionByKeywords("Paris, France")
+
+
+        'GMapControl1.Position = New GMap.NET.PointLatLng(48.8589507, 2.2775175)
+
+
+        ''marker.ToolTipMode = MarkerTooltipMode.OnMouseOver
+
+        GMap1.MaxZoom = 18
+        GMap1.MinZoom = 0
+        GMap1.Zoom = 13
+
+        'GMap1.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance
+        'GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerOnly
+        'GMap1.SetPositionByKeywords("Berlin")
+
+
+
+        GMap1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance
+        GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache
+        GMap1.SetPositionByKeywords("Paris, Frankreich")
+        GMap1.ShowCenter = False
+        Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
+        Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(48.8617774, 2.349272), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
+        markers.Markers.Add(marker)
+        GMap1.Overlays.Add(markers)
+        GMap1.Position = New GMap.NET.PointLatLng(48.8589507, 2.2775175)
+
+        GMap1.MaxZoom = 18
+        GMap1.MinZoom = 0
+        GMap1.Zoom = 15
 
 
 

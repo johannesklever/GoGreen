@@ -42,6 +42,9 @@ Partial Class FormMain
         Me.panelContent = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.textBoxLongitude = New System.Windows.Forms.TextBox()
+        Me.textBoxLatitude = New System.Windows.Forms.TextBox()
+        Me.GMap1 = New GMap.NET.WindowsForms.GMapControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
@@ -91,9 +94,6 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.GMapControl1 = New GMap.NET.WindowsForms.GMapControl()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -400,9 +400,9 @@ Partial Class FormMain
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.TextBox2)
-        Me.TabPage1.Controls.Add(Me.TextBox1)
-        Me.TabPage1.Controls.Add(Me.GMapControl1)
+        Me.TabPage1.Controls.Add(Me.textBoxLongitude)
+        Me.TabPage1.Controls.Add(Me.textBoxLatitude)
+        Me.TabPage1.Controls.Add(Me.GMap1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabPage1.Name = "TabPage1"
@@ -410,6 +410,46 @@ Partial Class FormMain
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'textBoxLongitude
+        '
+        Me.textBoxLongitude.Location = New System.Drawing.Point(226, 20)
+        Me.textBoxLongitude.Name = "textBoxLongitude"
+        Me.textBoxLongitude.Size = New System.Drawing.Size(100, 26)
+        Me.textBoxLongitude.TabIndex = 2
+        '
+        'textBoxLatitude
+        '
+        Me.textBoxLatitude.Location = New System.Drawing.Point(47, 20)
+        Me.textBoxLatitude.Name = "textBoxLatitude"
+        Me.textBoxLatitude.Size = New System.Drawing.Size(100, 26)
+        Me.textBoxLatitude.TabIndex = 1
+        '
+        'GMap1
+        '
+        Me.GMap1.Bearing = 0!
+        Me.GMap1.CanDragMap = True
+        Me.GMap1.EmptyTileColor = System.Drawing.Color.Navy
+        Me.GMap1.GrayScaleMode = False
+        Me.GMap1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
+        Me.GMap1.LevelsKeepInMemory = 5
+        Me.GMap1.Location = New System.Drawing.Point(27, 68)
+        Me.GMap1.MarkersEnabled = True
+        Me.GMap1.MaxZoom = 2
+        Me.GMap1.MinZoom = 2
+        Me.GMap1.MouseWheelZoomEnabled = True
+        Me.GMap1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter
+        Me.GMap1.Name = "GMap1"
+        Me.GMap1.NegativeMode = False
+        Me.GMap1.PolygonsEnabled = True
+        Me.GMap1.RetryLoadTile = 0
+        Me.GMap1.RoutesEnabled = True
+        Me.GMap1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
+        Me.GMap1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.GMap1.ShowTileGridLines = False
+        Me.GMap1.Size = New System.Drawing.Size(582, 434)
+        Me.GMap1.TabIndex = 0
+        Me.GMap1.Zoom = 0R
         '
         'TabPage2
         '
@@ -881,46 +921,6 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'GMapControl1
-        '
-        Me.GMapControl1.Bearing = 0!
-        Me.GMapControl1.CanDragMap = True
-        Me.GMapControl1.EmptyTileColor = System.Drawing.Color.Navy
-        Me.GMapControl1.GrayScaleMode = False
-        Me.GMapControl1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
-        Me.GMapControl1.LevelsKeepInMemory = 5
-        Me.GMapControl1.Location = New System.Drawing.Point(27, 68)
-        Me.GMapControl1.MarkersEnabled = True
-        Me.GMapControl1.MaxZoom = 2
-        Me.GMapControl1.MinZoom = 2
-        Me.GMapControl1.MouseWheelZoomEnabled = True
-        Me.GMapControl1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter
-        Me.GMapControl1.Name = "GMapControl1"
-        Me.GMapControl1.NegativeMode = False
-        Me.GMapControl1.PolygonsEnabled = True
-        Me.GMapControl1.RetryLoadTile = 0
-        Me.GMapControl1.RoutesEnabled = True
-        Me.GMapControl1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
-        Me.GMapControl1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
-        Me.GMapControl1.ShowTileGridLines = False
-        Me.GMapControl1.Size = New System.Drawing.Size(582, 434)
-        Me.GMapControl1.TabIndex = 0
-        Me.GMapControl1.Zoom = 0R
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(47, 20)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox1.TabIndex = 1
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(226, 20)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(100, 26)
-        Me.TextBox2.TabIndex = 2
-        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -1028,7 +1028,7 @@ Partial Class FormMain
     Friend WithEvents TabPageFavorit As TabPage
     Friend WithEvents Label4 As Label
     Friend WithEvents ListBoxFavoriten As ListBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents GMapControl1 As GMap.NET.WindowsForms.GMapControl
+    Friend WithEvents textBoxLongitude As TextBox
+    Friend WithEvents textBoxLatitude As TextBox
+    Friend WithEvents GMap1 As GMap.NET.WindowsForms.GMapControl
 End Class
