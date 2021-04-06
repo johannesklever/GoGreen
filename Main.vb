@@ -20,7 +20,7 @@ Public Class FormMain
         rsGeschaefte = New ADODB.Recordset
         rsBearbeiten = New ADODB.Recordset
         rsFavoriten = New ADODB.Recordset
-        rsFavoritenID = New ADODB.Recordset
+
 
         Try
 
@@ -455,6 +455,7 @@ Public Class FormMain
     Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung)
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
+        rsFavoritenID = New ADODB.Recordset
         Dim AnzahlDatensätze As Integer
         Dim Schleife, GeschäftsID, FavoritenID As Integer
 
@@ -475,9 +476,10 @@ Public Class FormMain
         buttonShopHinzufuegen.Hide()
         buttonShopBearbeiten.Show()
         buttonShopAenderungenSpeichern.Hide()
+        PictureBoxFavorit.Hide()
 
         Try
-            rsGeschaefte.MoveFirst()
+            'rsGeschaefte.MoveFirst()
             rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
 
 
@@ -506,21 +508,74 @@ Public Class FormMain
         End Try
 
         AnzahlDatensätze = rsFavoritenID.RecordCount
+        'MsgBox(rsGeschaefte.Fields("Geschäfts_ID").Value)
 
-        For Schleife = 0 To AnzahlDatensätze
-            rsGeschaefte.MoveFirst()
-            rsFavoritenID.MoveFirst()
-            GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
-            FavoritenID = rsFavoritenID("Geschäfts_ID").Value
+        'For Schleife = 0 To AnzahlDatensätze
+        '    GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
+        '    FavoritenID = rsFavoritenID("Geschäfts_ID").Value
 
-            If GeschäftsID = FavoritenID Then
-                MsgBox("Ein Lieblingsgeschäft")
+        '    If GeschäftsID = FavoritenID Then
+        '        PictureBoxFavorit.Show()
+        '        MsgBox("Ein Lieblingsgeschäft")
+        '        rsFavoritenID.MoveNext()
+        '        Schleife = AnzahlDatensätze
+        '    Else
+        '        rsFavoriten.MoveNext()
+        '    End If
+        'Next
 
-            Else
-                rsFavoriten.MoveNext()
-            End If
-        Next
 
+    End Sub
+
+    Private Sub ButtonFavoritenHinzufügen_Click(sender As Object, e As EventArgs) Handles ButtonFavoritenHinzufügen.Click
+        Dim rsFavoritAdd As ADODB.Recordset
+        Dim rsFavorit As ADODB.Recordset
+        rsFavorit = New ADODB.Recordset
+        rsFavoritAdd = New ADODB.Recordset
+        Dim LID As Integer
+        Dim GeschäftsID As Integer
+        Dim KundenID As Integer
+        Dim fieldsArray(2) As Object
+        Dim valuesArray(2) As Object
+
+
+        rsFavoritAdd.Open("SELECT MAX(LID) AS L FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        rsFavorit.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
+
+        KundenID = Übergabe.LoggedUserID
+        LID = rsFavoritAdd.Fields("L").Value + 1
+
+        If KundenID = 0 Then
+            MsgBox("Bitte melden Sie sich an, um auf die Favoriten zugreifen zu können")
+        Else
+            With rsFavorit
+                .MoveLast()
+                .AddNew()
+                .Fields("LID").Value = LID
+                .Fields("Geschäfts_ID").Value = GeschäftsID
+                .Fields("Kunden_ID").Value = KundenID
+                .Update()
+                MsgBox("Favorit hinzugefügt")
+            End With
+        End If
+
+
+
+
+
+        'fieldsArray(0) = "LID"
+        'fieldsArray(1) = "Geschäfts_ID"
+        'fieldsArray(2) = "Kunden_ID"
+
+        'valuesArray(0) = LID
+        'valuesArray(1) = GeschäftsID
+        'valuesArray(2) = KundenID
+
+        'rsFavoritAdd.AddNew(fieldsArray, valuesArray)
+        'rsFavoritAdd.Update()
+        '.Fields("Benutzername").Value = textBoxBenutzername.Text
+        '.Fields("Passwort").Value = textBoxNeuesPasswort.Text
 
     End Sub
 

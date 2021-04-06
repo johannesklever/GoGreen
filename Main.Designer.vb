@@ -22,6 +22,7 @@ Partial Class FormMain
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain))
         Me.panelSideMenu = New System.Windows.Forms.Panel()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnAbout = New System.Windows.Forms.Button()
@@ -93,6 +94,8 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.PictureBoxFavorit = New System.Windows.Forms.PictureBox()
+        Me.ButtonFavoritenHinzufügen = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -107,6 +110,7 @@ Partial Class FormMain
         Me.TabPageUser.SuspendLayout()
         Me.TabPageFavorit.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBoxFavorit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -473,6 +477,8 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.ButtonFavoritenHinzufügen)
+        Me.TabPage3.Controls.Add(Me.PictureBoxFavorit)
         Me.TabPage3.Controls.Add(Me.labelShopImageErrorBildNachricht)
         Me.TabPage3.Controls.Add(Me.buttonShopAenderungenSpeichern)
         Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtStadtteil)
@@ -903,6 +909,25 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
+        'PictureBoxFavorit
+        '
+        Me.PictureBoxFavorit.Image = CType(resources.GetObject("PictureBoxFavorit.Image"), System.Drawing.Image)
+        Me.PictureBoxFavorit.Location = New System.Drawing.Point(512, 373)
+        Me.PictureBoxFavorit.Name = "PictureBoxFavorit"
+        Me.PictureBoxFavorit.Size = New System.Drawing.Size(75, 74)
+        Me.PictureBoxFavorit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBoxFavorit.TabIndex = 22
+        Me.PictureBoxFavorit.TabStop = False
+        '
+        'ButtonFavoritenHinzufügen
+        '
+        Me.ButtonFavoritenHinzufügen.Location = New System.Drawing.Point(396, 227)
+        Me.ButtonFavoritenHinzufügen.Name = "ButtonFavoritenHinzufügen"
+        Me.ButtonFavoritenHinzufügen.Size = New System.Drawing.Size(191, 113)
+        Me.ButtonFavoritenHinzufügen.TabIndex = 23
+        Me.ButtonFavoritenHinzufügen.Text = "Zu Favoriten hinzufügen"
+        Me.ButtonFavoritenHinzufügen.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(16.0!, 31.0!)
@@ -935,6 +960,7 @@ Partial Class FormMain
         Me.TabPageFavorit.ResumeLayout(False)
         Me.TabPageFavorit.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBoxFavorit, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1012,4 +1038,6 @@ Partial Class FormMain
     Friend WithEvents TabPageFavorit As TabPage
     Friend WithEvents Label4 As Label
     Friend WithEvents ListBoxFavoriten As ListBox
+    Friend WithEvents PictureBoxFavorit As PictureBox
+    Friend WithEvents ButtonFavoritenHinzufügen As Button
 End Class
