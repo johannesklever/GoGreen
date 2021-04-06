@@ -63,7 +63,17 @@ Public Class FormMain
 
     Private Sub btnMeinBereich_Click(sender As Object, e As EventArgs) Handles btnMeinBereich.Click
 
-        Toggle(panelMeinBereichSubMenu)
+        Dim UserIDCONV As String
+        UserIDCONV = CStr(Übergabe.LoggedUserID)
+        rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
+
+        If UserIDCONV = 0 Then
+            Me.Close()
+            FormKeinBenutzer.ShowDialog()
+        Else
+            Toggle(panelMeinBereichSubMenu)
+        End If
+
 
     End Sub
 
@@ -426,7 +436,6 @@ Public Class FormMain
         TabControl1.SelectedTab = TabPageFavorit
         Do While Not rsFavoriten.EOF
             ListBoxFavoriten.Items.Add(rsFavoriten.Fields("Bezeichnung").Value)
-            'ListBoxFavoriten
             rsFavoriten.MoveNext()
         Loop
     End Sub
@@ -436,8 +445,6 @@ Public Class FormMain
         TabControl1.SelectedTab = TabPage3
         geschaeftsBezeichnung = ListBoxFavoriten.SelectedItem
         Call GeschäfteLaden(geschaeftsBezeichnung)
-
-
 
     End Sub
 
