@@ -423,15 +423,18 @@ Public Class FormMain
     End Sub
 
     Private Sub ListBoxFavoriten_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxFavoriten.Click
-        Dim 
+        Dim geschaeftsBezeichnung As String
         TabControl1.SelectedTab = TabPage3
-        Call TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
+        geschaeftsBezeichnung = ListBoxFavoriten.SelectedItem
+        Call GeschäfteLaden(geschaeftsBezeichnung)
+
+
 
     End Sub
 
 
-    Private Sub GeschäfteLaden()
-        Dim geschaeftsBezeichnung As String
+    Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung)
+        'Dim geschaeftsBezeichnung As String
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
 
