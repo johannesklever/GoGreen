@@ -1,4 +1,9 @@
-﻿
+﻿Imports GMap.NET
+Imports GMap.NET.MapProviders
+Imports GMap.NET.WindowsForms
+Imports GMap.Net.WindowsForms.Markers
+
+
 Public Class FormMain
 
 
@@ -37,6 +42,12 @@ Public Class FormMain
             MsgBox(ex.Message)
 
         End Try
+
+
+
+
+
+
 
     End Sub
 
