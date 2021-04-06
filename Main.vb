@@ -451,6 +451,8 @@ Public Class FormMain
     Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung)
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
+        Dim AnzahlDatensätze As Integer
+        Dim Schleife, GeschäftsID, FavoritenID As Integer
 
         textBoxShopEinzelansichtBezeichnung.ReadOnly = True
         textBoxShopEinzelansichtAdresse.ReadOnly = True
@@ -496,7 +498,22 @@ Public Class FormMain
             MsgBox(ex.Message)
         End Try
 
+        AnzahlDatensätze = rsFavoriten.RecordCount
+
+        For Schleife = 0 To AnzahlDatensätze
+            GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
+            FavoritenID = rsFavoriten("Geschäfts_ID").Value
+
+            If GeschäftsID = FavoritenID Then
+                MsgBox("Ein Lieblingsgeschäft")
+            Else
+                rsFavoriten.MoveNext()
+            End If
+        Next
+
+
     End Sub
+
 
     'bla
 
