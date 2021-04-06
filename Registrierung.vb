@@ -56,7 +56,7 @@ Public Class Registrierung
                     .Close()
                 End With
                 Me.Hide()
-                Landingpage.ShowDialog()
+                Landingpage.Show()
             ElseIf textBoxNeuesPasswort.Text = textBoxPasswortBestätigen.Text And ValidatePassword() = False Then
                 MsgBox("Mindestens 5 Zeichen, 1 Kleinbuchstabe, 1 Großbuchstabe, 1 Zahl und ein Sonderzeichen")
                 textBoxNeuesPasswort.Clear()

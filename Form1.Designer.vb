@@ -22,53 +22,53 @@ Partial Class FormKeinBenutzer
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.RichTextBoxNoUser = New System.Windows.Forms.RichTextBox()
+        Me.ButtonYes = New System.Windows.Forms.Button()
+        Me.ButtonNo = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'RichTextBox1
+        'RichTextBoxNoUser
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(209, 117)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(339, 117)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = "Es ist kein Benutzer angemeldet, wollen sie sich anmelden, um auf Ihre Daten zugr" &
+        Me.RichTextBoxNoUser.Location = New System.Drawing.Point(209, 117)
+        Me.RichTextBoxNoUser.Name = "RichTextBoxNoUser"
+        Me.RichTextBoxNoUser.Size = New System.Drawing.Size(339, 117)
+        Me.RichTextBoxNoUser.TabIndex = 0
+        Me.RichTextBoxNoUser.Text = "Es ist kein Benutzer angemeldet, wollen sie sich anmelden, um auf Ihre Daten zugr" &
     "eifen zu können?"
         '
-        'Button1
+        'ButtonYes
         '
-        Me.Button1.Location = New System.Drawing.Point(209, 321)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(110, 54)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Ja"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ButtonYes.Location = New System.Drawing.Point(209, 321)
+        Me.ButtonYes.Name = "ButtonYes"
+        Me.ButtonYes.Size = New System.Drawing.Size(110, 54)
+        Me.ButtonYes.TabIndex = 1
+        Me.ButtonYes.Text = "Ja"
+        Me.ButtonYes.UseVisualStyleBackColor = True
         '
-        'Button2
+        'ButtonNo
         '
-        Me.Button2.Location = New System.Drawing.Point(433, 321)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(115, 54)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Nein"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.ButtonNo.Location = New System.Drawing.Point(433, 321)
+        Me.ButtonNo.Name = "ButtonNo"
+        Me.ButtonNo.Size = New System.Drawing.Size(115, 54)
+        Me.ButtonNo.TabIndex = 2
+        Me.ButtonNo.Text = "Nein"
+        Me.ButtonNo.UseVisualStyleBackColor = True
         '
         'FormKeinBenutzer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.ButtonNo)
+        Me.Controls.Add(Me.ButtonYes)
+        Me.Controls.Add(Me.RichTextBoxNoUser)
         Me.Name = "FormKeinBenutzer"
         Me.Text = "Kein Benutzer angemeldet"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents RichTextBox1 As RichTextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents RichTextBoxNoUser As RichTextBox
+    Friend WithEvents ButtonYes As Button
+    Friend WithEvents ButtonNo As Button
 End Class

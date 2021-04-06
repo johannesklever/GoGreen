@@ -55,7 +55,7 @@ Public Class Landingpage
                 Me.Hide()
                 Übergabe.LoggedUserID = rsKunde.Fields("Kunden_ID").Value
 
-                FormMain.ShowDialog()
+                FormMain.Show()
             Else
                 MsgBox("Falsches Passwort!")
                 textBoxPasswort.Clear()
@@ -73,7 +73,7 @@ Public Class Landingpage
         textBoxPasswort.Clear()
 
         Me.Hide()
-        Registrierung.ShowDialog()
+        Registrierung.Show()
 
     End Sub
 
@@ -83,7 +83,7 @@ Public Class Landingpage
 
     Private Sub buttonOhneAnmelden_Click(sender As Object, e As EventArgs) Handles buttonOhneAnmelden.Click
         Me.Hide()
-        FormMain.ShowDialog()
+        FormMain.Show()
     End Sub
 
 End Class

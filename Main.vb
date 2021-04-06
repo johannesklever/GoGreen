@@ -68,8 +68,7 @@ Public Class FormMain
         rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
 
         If UserIDCONV = 0 Then
-            Me.Close()
-            FormKeinBenutzer.ShowDialog()
+            FormKeinBenutzer.Show()
         Else
             Toggle(panelMeinBereichSubMenu)
         End If
@@ -373,7 +372,7 @@ Public Class FormMain
 
         If UserIDCONV = 0 Then
             Me.Close()
-            FormKeinBenutzer.ShowDialog()
+            FormKeinBenutzer.Show()
         Else
             TabControl1.SelectedTab = TabPageUser
             TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value

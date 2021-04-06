@@ -1,12 +1,16 @@
 ﻿Public Class FormKeinBenutzer
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+    Private Sub ButtonYes_Click(sender As Object, e As EventArgs) Handles ButtonYes.Click
         FormMain.Close()
-        Landingpage.ShowDialog()
+        Me.Close()
+        Landingpage.Show()
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub ButtonNo_Click(sender As Object, e As EventArgs) Handles ButtonNo.Click
+        Me.Close()
+    End Sub
 
+    Private Sub FormKeinBenutzer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RichTextBoxNoUser.ReadOnly = True
     End Sub
 End Class
