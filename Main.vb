@@ -12,6 +12,7 @@ Public Class FormMain
     Dim rsBearbeiten As ADODB.Recordset
     Dim conn As ADODB.Connection
     Dim rsGeschaefte As ADODB.Recordset
+    Dim rsFavoriten As ADODB.Recordset
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -22,6 +23,7 @@ Public Class FormMain
         rsStadtteile = New ADODB.Recordset
         rsGeschaefte = New ADODB.Recordset
         rsBearbeiten = New ADODB.Recordset
+        rsFavoriten = New ADODB.Recordset
 
         Try
 
@@ -36,6 +38,9 @@ Public Class FormMain
                             conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
             rsBearbeiten.Open("SELECT * FROM Kunde",
                             conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            rsFavoriten.Open("SELECT Bezeichnung FROM Geschäfte, Lieblingsgeschäfte WHERE Geschäfte.Geschäfts_ID = Lieblingsgeschäfte.Geschäfts_ID AND Kunden_ID=" & Übergabe.LoggedUserID,
+                           conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
 
 
         Catch ex As Exception
@@ -69,7 +74,17 @@ Public Class FormMain
 
     Private Sub btnMeinBereich_Click(sender As Object, e As EventArgs) Handles btnMeinBereich.Click
 
-        Toggle(panelMeinBereichSubMenu)
+        Dim UserIDCONV As String
+        UserIDCONV = CStr(Übergabe.LoggedUserID)
+        rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
+
+        If UserIDCONV = 0 Then
+            Me.Close()
+            FormKeinBenutzer.ShowDialog()
+        Else
+            Toggle(panelMeinBereichSubMenu)
+        End If
+
 
     End Sub
 
@@ -138,55 +153,64 @@ Public Class FormMain
     End Sub
 
     Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
+
         Dim geschaeftsBezeichnung As String
-        Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
-        Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
-
-        textBoxShopEinzelansichtBezeichnung.ReadOnly = True
-        textBoxShopEinzelansichtAdresse.ReadOnly = True
-        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
-        textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
-        textBoxShopEinzelansichtKategorie.ReadOnly = True
-        textBoxShopEinzelansichtKategorie.Show()
-        textBoxShopEinzelansichtStadtteil.Show()
-        comboBoxEinzelansichtKategorie.Hide()
-        comboBoxEinzelansichtStadtteile.Hide()
-        textBoxShopImageFileName.Hide()
-        buttonShopImageHinzufuegen.Hide()
-        buttonShopHinzufuegen.Hide()
-        buttonShopBearbeiten.Show()
-        buttonShopAenderungenSpeichern.Hide()
-
-        Try
-
-            geschaeftsBezeichnung = treeView.SelectedNode.Text
-            rsGeschaefte.MoveFirst()
-            rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+        TabControl1.SelectedTab = TabPage3
+        geschaeftsBezeichnung = treeView.SelectedNode.Text
+        Call GeschäfteLaden(geschaeftsBezeichnung)
 
 
-            If Not rsGeschaefte.EOF Then
-                TabControl1.SelectedIndex = 2
-                textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
 
-                'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
-                rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
-                                                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-                rsAktuellerGeschaeftsStadtteil.Open("SELECT Bezeichnung FROM Stadtteile WHERE ID = " & rsGeschaefte.Fields("Stadtteil_ID").Value,
-                                                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-                textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
-                textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
-                textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
-                textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
-                textBoxShopEinzelansichtStadtteil.Text = rsAktuellerGeschaeftsStadtteil.Fields("Bezeichnung").Value
 
-                pictureBoxGeschaefteEinzelansichtsseite.Show()
-                pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value
-            Else
-            End If
+        'Dim geschaeftsBezeichnung As String
+        'Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
+        'Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        'textBoxShopEinzelansichtBezeichnung.ReadOnly = True
+        'textBoxShopEinzelansichtAdresse.ReadOnly = True
+        'textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
+        'textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
+        'textBoxShopEinzelansichtKategorie.ReadOnly = True
+        'textBoxShopEinzelansichtKategorie.Show()
+        'textBoxShopEinzelansichtStadtteil.Show()
+        'comboBoxEinzelansichtKategorie.Hide()
+        'comboBoxEinzelansichtStadtteile.Hide()
+        'textBoxShopImageFileName.Hide()
+        'buttonShopImageHinzufuegen.Hide()
+        'buttonShopHinzufuegen.Hide()
+        'buttonShopBearbeiten.Show()
+        'buttonShopAenderungenSpeichern.Hide()
+
+        'Try
+
+        '    geschaeftsBezeichnung = treeView.SelectedNode.Text
+        '    rsGeschaefte.MoveFirst()
+        '    rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+
+
+        '    If Not rsGeschaefte.EOF Then
+        '        TabControl1.SelectedIndex = 2
+        '        textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+
+        '        'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
+        '        rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
+        '                                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        '        rsAktuellerGeschaeftsStadtteil.Open("SELECT Bezeichnung FROM Stadtteile WHERE ID = " & rsGeschaefte.Fields("Stadtteil_ID").Value,
+        '                                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        '        textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
+        '        textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
+        '        textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
+        '        textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
+        '        textBoxShopEinzelansichtStadtteil.Text = rsAktuellerGeschaeftsStadtteil.Fields("Bezeichnung").Value
+
+        '        pictureBoxGeschaefteEinzelansichtsseite.Show()
+        '        pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value
+        '    Else
+        '    End If
+
+        'Catch ex As Exception
+        'MsgBox(ex.Message)
+        'End Try
 
     End Sub
 
@@ -421,20 +445,75 @@ Public Class FormMain
     Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
 
         TabControl1.SelectedTab = TabPageFavorit
-        Do While Not rsGeschaefte.EOF
-            ListBoxFavoriten.Items.Add(rsGeschaefte.Fields("Bezeichnung").Value)
-            rsGeschaefte.MoveNext()
+        Do While Not rsFavoriten.EOF
+            ListBoxFavoriten.Items.Add(rsFavoriten.Fields("Bezeichnung").Value)
+            rsFavoriten.MoveNext()
         Loop
     End Sub
 
+    Private Sub ListBoxFavoriten_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxFavoriten.Click
+        Dim geschaeftsBezeichnung As String
+        TabControl1.SelectedTab = TabPage3
+        geschaeftsBezeichnung = ListBoxFavoriten.SelectedItem
+        Call GeschäfteLaden(geschaeftsBezeichnung)
+
+    End Sub
 
 
+    Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung)
+        Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
+        Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
+
+        textBoxShopEinzelansichtBezeichnung.ReadOnly = True
+        textBoxShopEinzelansichtAdresse.ReadOnly = True
+        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
+        textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.ReadOnly = True
+        textBoxShopEinzelansichtKategorie.Show()
+        textBoxShopEinzelansichtStadtteil.Show()
+        comboBoxEinzelansichtKategorie.Hide()
+        comboBoxEinzelansichtStadtteile.Hide()
+        textBoxShopImageFileName.Hide()
+        buttonShopImageHinzufuegen.Hide()
+        buttonShopHinzufuegen.Hide()
+        buttonShopBearbeiten.Show()
+        buttonShopAenderungenSpeichern.Hide()
+
+        Try
+            rsGeschaefte.MoveFirst()
+            rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
+
+
+            If Not rsGeschaefte.EOF Then
+                TabControl1.SelectedIndex = 2
+                textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
+
+                'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
+                rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
+                                                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+                rsAktuellerGeschaeftsStadtteil.Open("SELECT Bezeichnung FROM Stadtteile WHERE ID = " & rsGeschaefte.Fields("Stadtteil_ID").Value,
+                                                    conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+                textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
+                textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
+                textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
+                textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
+                textBoxShopEinzelansichtStadtteil.Text = rsAktuellerGeschaeftsStadtteil.Fields("Bezeichnung").Value
+
+                pictureBoxGeschaefteEinzelansichtsseite.Show()
+                pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value
+            Else
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub
 
     'bla
 
 
     'Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
-
     '    btnbla.Visible = False
 
     'End Sub
@@ -446,14 +525,10 @@ Public Class FormMain
     '    Dim z As Integer
     '    Dim actualHeight As Integer
 
-
-
     '    x = PictureBoxMap.ClientSize.Width
     '    y = PictureBoxMap.ClientSize.Width * 467 / 987
     '    btnbla.Visible = True
     '    z = btnbla.Location.Y
-
-
 
     '    MsgBox(x & " " & y & " " & z)
 
