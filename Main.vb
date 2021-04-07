@@ -530,18 +530,20 @@ Public Class FormMain
     Private Sub ButtonFavoritenHinzufügen_Click(sender As Object, e As EventArgs) Handles ButtonFavoritenHinzufügen.Click
         Dim rsFavoritAdd As ADODB.Recordset
         Dim rsFavorit As ADODB.Recordset
+        Dim rsGeschaeftID As ADODB.Recordset
         rsFavorit = New ADODB.Recordset
         rsFavoritAdd = New ADODB.Recordset
+        rsGeschaeftID = New ADODB.Recordset
         Dim LID As Integer
         Dim GeschäftsID As Integer
         Dim KundenID As Integer
-        Dim fieldsArray(2) As Object
-        Dim valuesArray(2) As Object
 
 
         rsFavoritAdd.Open("SELECT MAX(LID) AS L FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         rsFavorit.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        'rsGeschaeftID.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
+        'GeschäftsIDVergleich = rsFavorit.Find("Geschäfts_ID =" & "'" & GeschäftsID & "'")
 
         KundenID = Übergabe.LoggedUserID
         LID = rsFavoritAdd.Fields("L").Value + 1
@@ -549,18 +551,24 @@ Public Class FormMain
         If KundenID = 0 Then
             MsgBox("Bitte melden Sie sich an, um auf die Favoriten zugreifen zu können")
         Else
-            With rsFavorit
-                .MoveLast()
-                .AddNew()
-                .Fields("LID").Value = LID
-                .Fields("Geschäfts_ID").Value = GeschäftsID
-                .Fields("Kunden_ID").Value = KundenID
-                .Update()
-                MsgBox("Favorit hinzugefügt")
-            End With
+            If FindeFavoriten(GeschäftsID) = False Then
+                With rsFavorit
+                    .MoveLast()
+                    .AddNew()
+                    .Fields("LID").Value = LID
+                    .Fields("Geschäfts_ID").Value = GeschäftsID
+                    .Fields("Kunden_ID").Value = KundenID
+                    .Update()
+                    MsgBox("Favorit hinzugefügt")
+                End With
+            Else
+                MsgBox("Dieser Laden ist schon auf Ihrer Favoritenliste")
+            End If
+
+
         End If
 
-
+        'rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
 
 
 
@@ -578,6 +586,25 @@ Public Class FormMain
         '.Fields("Passwort").Value = textBoxNeuesPasswort.Text
 
     End Sub
+
+    Public Function FindeFavoriten(ByVal GeschäftsID) As Boolean
+        Dim rsFavorit As ADODB.Recordset
+        Dim rsFavoritAdd As ADODB.Recordset
+        rsFavorit = New ADODB.Recordset
+        rsFavoritAdd = New ADODB.Recordset
+        rsFavorit.Open("SELECT Geschäfts_ID FROM Lieblingsgeschäfte WHERE Kunden_ID =" & Übergabe.LoggedUserID, conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        'rsFavoritAdd.Open("SELECT Kunden_ID FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        ' rsFavoritAdd.MoveFirst()
+        rsFavorit.MoveFirst()
+
+        rsFavorit.Find("Geschäfts_ID =" & "'" & GeschäftsID & "'")
+        'rsFavoritAdd.Find("Kunden_ID =" & "'" & Übergabe.LoggedUserID & "'")
+        If rsFavorit.EOF Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
 
     'bla
