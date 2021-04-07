@@ -1,4 +1,9 @@
 ﻿
+Imports GMap.NET
+Imports GMap.NET.MapProviders
+Imports GMap.NET.WindowsForms
+Imports GMap.Net.WindowsForms.Markers
+
 Public Class FormMain
 
 
@@ -42,6 +47,26 @@ Public Class FormMain
             MsgBox(ex.Message)
 
         End Try
+
+        GMap1.MaxZoom = 18
+        GMap1.MinZoom = 0
+        GMap1.Zoom = 13
+
+
+
+        GMap1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance
+        GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly
+        GMap1.SetPositionByKeywords("Friedrichsafen, Deutschland")
+        GMap1.ShowCenter = False
+        Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
+        Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(47.6618, 9.48), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
+        markers.Markers.Add(marker)
+        GMap1.Overlays.Add(markers)
+        GMap1.Position = New GMap.NET.PointLatLng(47.6618, 9.48)
+
+        GMap1.MaxZoom = 18
+        GMap1.MinZoom = 0
+        GMap1.Zoom = 12
 
     End Sub
 
