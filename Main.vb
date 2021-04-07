@@ -67,6 +67,7 @@ Public Class FormMain
         GMap1.MaxZoom = 18
         GMap1.MinZoom = 0
         GMap1.Zoom = 12
+        'bla
 
     End Sub
 
