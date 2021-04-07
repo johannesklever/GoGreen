@@ -43,6 +43,7 @@ Partial Class FormMain
         Me.panelContent = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GMap1 = New GMap.NET.WindowsForms.GMapControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
@@ -94,7 +95,7 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.GMap1 = New GMap.NET.WindowsForms.GMapControl()
+        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -126,7 +127,7 @@ Partial Class FormMain
         Me.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left
         Me.panelSideMenu.Location = New System.Drawing.Point(35, 0)
         Me.panelSideMenu.Name = "panelSideMenu"
-        Me.panelSideMenu.Size = New System.Drawing.Size(250, 553)
+        Me.panelSideMenu.Size = New System.Drawing.Size(250, 703)
         Me.panelSideMenu.TabIndex = 0
         '
         'btnHelp
@@ -140,7 +141,7 @@ Partial Class FormMain
         Me.btnHelp.Location = New System.Drawing.Point(0, 608)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnHelp.Size = New System.Drawing.Size(229, 45)
+        Me.btnHelp.Size = New System.Drawing.Size(250, 45)
         Me.btnHelp.TabIndex = 8
         Me.btnHelp.Text = "Help"
         Me.btnHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -157,7 +158,7 @@ Partial Class FormMain
         Me.btnAbout.Location = New System.Drawing.Point(0, 563)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnAbout.Size = New System.Drawing.Size(229, 45)
+        Me.btnAbout.Size = New System.Drawing.Size(250, 45)
         Me.btnAbout.TabIndex = 6
         Me.btnAbout.Text = "About"
         Me.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -175,7 +176,7 @@ Partial Class FormMain
         Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
         Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
         Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(229, 45)
+        Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(250, 45)
         Me.btnProgrammeinstellungen.TabIndex = 5
         Me.btnProgrammeinstellungen.Text = "Einstellungen"
         Me.btnProgrammeinstellungen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -192,7 +193,7 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelMeinBereichSubMenu.Location = New System.Drawing.Point(0, 354)
         Me.panelMeinBereichSubMenu.Name = "panelMeinBereichSubMenu"
-        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(250, 164)
         Me.panelMeinBereichSubMenu.TabIndex = 4
         '
         'Button6
@@ -204,7 +205,7 @@ Partial Class FormMain
         Me.Button6.Location = New System.Drawing.Point(0, 120)
         Me.Button6.Name = "Button6"
         Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(229, 40)
+        Me.Button6.Size = New System.Drawing.Size(250, 40)
         Me.Button6.TabIndex = 3
         Me.Button6.Text = "Button6"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -219,7 +220,7 @@ Partial Class FormMain
         Me.Button7.Location = New System.Drawing.Point(0, 80)
         Me.Button7.Name = "Button7"
         Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(229, 40)
+        Me.Button7.Size = New System.Drawing.Size(250, 40)
         Me.Button7.TabIndex = 2
         Me.Button7.Text = "Button7"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -234,7 +235,7 @@ Partial Class FormMain
         Me.btnUserSettings.Location = New System.Drawing.Point(0, 40)
         Me.btnUserSettings.Name = "btnUserSettings"
         Me.btnUserSettings.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnUserSettings.Size = New System.Drawing.Size(229, 40)
+        Me.btnUserSettings.Size = New System.Drawing.Size(250, 40)
         Me.btnUserSettings.TabIndex = 1
         Me.btnUserSettings.Text = "User Settings"
         Me.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -249,7 +250,7 @@ Partial Class FormMain
         Me.btnFavorit.Location = New System.Drawing.Point(0, 0)
         Me.btnFavorit.Name = "btnFavorit"
         Me.btnFavorit.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnFavorit.Size = New System.Drawing.Size(229, 40)
+        Me.btnFavorit.Size = New System.Drawing.Size(250, 40)
         Me.btnFavorit.TabIndex = 0
         Me.btnFavorit.Text = "Favoriten"
         Me.btnFavorit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -266,7 +267,7 @@ Partial Class FormMain
         Me.btnMeinBereich.Location = New System.Drawing.Point(0, 309)
         Me.btnMeinBereich.Name = "btnMeinBereich"
         Me.btnMeinBereich.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.btnMeinBereich.Size = New System.Drawing.Size(229, 45)
+        Me.btnMeinBereich.Size = New System.Drawing.Size(250, 45)
         Me.btnMeinBereich.TabIndex = 3
         Me.btnMeinBereich.Text = "Mein Bereich"
         Me.btnMeinBereich.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -283,7 +284,7 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelGeschaefteSubmenu.Location = New System.Drawing.Point(0, 145)
         Me.panelGeschaefteSubmenu.Name = "panelGeschaefteSubmenu"
-        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(229, 164)
+        Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(250, 164)
         Me.panelGeschaefteSubmenu.TabIndex = 2
         '
         'btnBekleidungslaeden
@@ -295,7 +296,7 @@ Partial Class FormMain
         Me.btnBekleidungslaeden.Location = New System.Drawing.Point(0, 120)
         Me.btnBekleidungslaeden.Name = "btnBekleidungslaeden"
         Me.btnBekleidungslaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(229, 40)
+        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(250, 40)
         Me.btnBekleidungslaeden.TabIndex = 3
         Me.btnBekleidungslaeden.Text = "Bekleidungsläden"
         Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -310,7 +311,7 @@ Partial Class FormMain
         Me.buttonSideMenuHinzufuegen.Location = New System.Drawing.Point(0, 80)
         Me.buttonSideMenuHinzufuegen.Name = "buttonSideMenuHinzufuegen"
         Me.buttonSideMenuHinzufuegen.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuHinzufuegen.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuHinzufuegen.Size = New System.Drawing.Size(250, 40)
         Me.buttonSideMenuHinzufuegen.TabIndex = 2
         Me.buttonSideMenuHinzufuegen.Text = "Hinzufügen"
         Me.buttonSideMenuHinzufuegen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -325,7 +326,7 @@ Partial Class FormMain
         Me.buttonSideMenuStadtteile.Location = New System.Drawing.Point(0, 40)
         Me.buttonSideMenuStadtteile.Name = "buttonSideMenuStadtteile"
         Me.buttonSideMenuStadtteile.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuStadtteile.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuStadtteile.Size = New System.Drawing.Size(250, 40)
         Me.buttonSideMenuStadtteile.TabIndex = 1
         Me.buttonSideMenuStadtteile.Text = "Stadtteile"
         Me.buttonSideMenuStadtteile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -340,7 +341,7 @@ Partial Class FormMain
         Me.buttonSideMenuKategorien.Location = New System.Drawing.Point(0, 0)
         Me.buttonSideMenuKategorien.Name = "buttonSideMenuKategorien"
         Me.buttonSideMenuKategorien.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.buttonSideMenuKategorien.Size = New System.Drawing.Size(229, 40)
+        Me.buttonSideMenuKategorien.Size = New System.Drawing.Size(250, 40)
         Me.buttonSideMenuKategorien.TabIndex = 0
         Me.buttonSideMenuKategorien.Text = "Kategorien"
         Me.buttonSideMenuKategorien.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -358,7 +359,7 @@ Partial Class FormMain
         Me.buttonSideMenuGeschaefte.Location = New System.Drawing.Point(0, 100)
         Me.buttonSideMenuGeschaefte.Name = "buttonSideMenuGeschaefte"
         Me.buttonSideMenuGeschaefte.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.buttonSideMenuGeschaefte.Size = New System.Drawing.Size(229, 45)
+        Me.buttonSideMenuGeschaefte.Size = New System.Drawing.Size(250, 45)
         Me.buttonSideMenuGeschaefte.TabIndex = 1
         Me.buttonSideMenuGeschaefte.Text = "Geschäfte"
         Me.buttonSideMenuGeschaefte.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -369,7 +370,7 @@ Partial Class FormMain
         Me.panelLogo.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelLogo.Location = New System.Drawing.Point(0, 0)
         Me.panelLogo.Name = "panelLogo"
-        Me.panelLogo.Size = New System.Drawing.Size(229, 100)
+        Me.panelLogo.Size = New System.Drawing.Size(250, 100)
         Me.panelLogo.TabIndex = 0
         '
         'panelContent
@@ -380,7 +381,7 @@ Partial Class FormMain
         Me.panelContent.Location = New System.Drawing.Point(285, 0)
         Me.panelContent.Margin = New System.Windows.Forms.Padding(0)
         Me.panelContent.Name = "panelContent"
-        Me.panelContent.Size = New System.Drawing.Size(647, 553)
+        Me.panelContent.Size = New System.Drawing.Size(797, 703)
         Me.panelContent.TabIndex = 9
         '
         'TabControl1
@@ -397,7 +398,7 @@ Partial Class FormMain
         Me.TabControl1.Location = New System.Drawing.Point(0, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(647, 550)
+        Me.TabControl1.Size = New System.Drawing.Size(797, 700)
         Me.TabControl1.TabIndex = 5
         '
         'TabPage1
@@ -410,6 +411,32 @@ Partial Class FormMain
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GMap1
+        '
+        Me.GMap1.Bearing = 0!
+        Me.GMap1.CanDragMap = True
+        Me.GMap1.EmptyTileColor = System.Drawing.Color.Navy
+        Me.GMap1.GrayScaleMode = False
+        Me.GMap1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
+        Me.GMap1.LevelsKeepInMemory = 5
+        Me.GMap1.Location = New System.Drawing.Point(17, 68)
+        Me.GMap1.MarkersEnabled = True
+        Me.GMap1.MaxZoom = 2
+        Me.GMap1.MinZoom = 2
+        Me.GMap1.MouseWheelZoomEnabled = True
+        Me.GMap1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter
+        Me.GMap1.Name = "GMap1"
+        Me.GMap1.NegativeMode = False
+        Me.GMap1.PolygonsEnabled = True
+        Me.GMap1.RetryLoadTile = 0
+        Me.GMap1.RoutesEnabled = True
+        Me.GMap1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
+        Me.GMap1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
+        Me.GMap1.ShowTileGridLines = False
+        Me.GMap1.Size = New System.Drawing.Size(602, 446)
+        Me.GMap1.TabIndex = 6
+        Me.GMap1.Zoom = 0R
         '
         'TabPage2
         '
@@ -451,6 +478,7 @@ Partial Class FormMain
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.WebBrowser1)
         Me.TabPage3.Controls.Add(Me.ButtonFavoritenHinzufügen)
         Me.TabPage3.Controls.Add(Me.PictureBoxFavorit)
         Me.TabPage3.Controls.Add(Me.labelShopImageErrorBildNachricht)
@@ -477,16 +505,17 @@ Partial Class FormMain
         Me.TabPage3.Location = New System.Drawing.Point(4, 29)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage3.Size = New System.Drawing.Size(789, 667)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
         'ButtonFavoritenHinzufügen
         '
-        Me.ButtonFavoritenHinzufügen.Location = New System.Drawing.Point(396, 227)
+        Me.ButtonFavoritenHinzufügen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonFavoritenHinzufügen.Location = New System.Drawing.Point(385, 624)
         Me.ButtonFavoritenHinzufügen.Name = "ButtonFavoritenHinzufügen"
-        Me.ButtonFavoritenHinzufügen.Size = New System.Drawing.Size(191, 113)
+        Me.ButtonFavoritenHinzufügen.Size = New System.Drawing.Size(199, 37)
         Me.ButtonFavoritenHinzufügen.TabIndex = 23
         Me.ButtonFavoritenHinzufügen.Text = "Zu Favoriten hinzufügen"
         Me.ButtonFavoritenHinzufügen.UseVisualStyleBackColor = True
@@ -494,9 +523,9 @@ Partial Class FormMain
         'PictureBoxFavorit
         '
         Me.PictureBoxFavorit.Image = CType(resources.GetObject("PictureBoxFavorit.Image"), System.Drawing.Image)
-        Me.PictureBoxFavorit.Location = New System.Drawing.Point(512, 373)
+        Me.PictureBoxFavorit.Location = New System.Drawing.Point(573, 5)
         Me.PictureBoxFavorit.Name = "PictureBoxFavorit"
-        Me.PictureBoxFavorit.Size = New System.Drawing.Size(75, 74)
+        Me.PictureBoxFavorit.Size = New System.Drawing.Size(60, 57)
         Me.PictureBoxFavorit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBoxFavorit.TabIndex = 22
         Me.PictureBoxFavorit.TabStop = False
@@ -513,7 +542,7 @@ Partial Class FormMain
         'buttonShopAenderungenSpeichern
         '
         Me.buttonShopAenderungenSpeichern.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.buttonShopAenderungenSpeichern.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopAenderungenSpeichern.Location = New System.Drawing.Point(593, 624)
         Me.buttonShopAenderungenSpeichern.Name = "buttonShopAenderungenSpeichern"
         Me.buttonShopAenderungenSpeichern.Size = New System.Drawing.Size(193, 37)
         Me.buttonShopAenderungenSpeichern.TabIndex = 20
@@ -524,7 +553,7 @@ Partial Class FormMain
         'labelShopEinzelansichtStadtteil
         '
         Me.labelShopEinzelansichtStadtteil.AutoSize = True
-        Me.labelShopEinzelansichtStadtteil.Location = New System.Drawing.Point(245, 353)
+        Me.labelShopEinzelansichtStadtteil.Location = New System.Drawing.Point(36, 511)
         Me.labelShopEinzelansichtStadtteil.Name = "labelShopEinzelansichtStadtteil"
         Me.labelShopEinzelansichtStadtteil.Size = New System.Drawing.Size(70, 20)
         Me.labelShopEinzelansichtStadtteil.TabIndex = 19
@@ -532,7 +561,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtStadtteil
         '
-        Me.textBoxShopEinzelansichtStadtteil.Location = New System.Drawing.Point(249, 376)
+        Me.textBoxShopEinzelansichtStadtteil.Location = New System.Drawing.Point(39, 531)
         Me.textBoxShopEinzelansichtStadtteil.Name = "textBoxShopEinzelansichtStadtteil"
         Me.textBoxShopEinzelansichtStadtteil.ReadOnly = True
         Me.textBoxShopEinzelansichtStadtteil.Size = New System.Drawing.Size(193, 26)
@@ -540,7 +569,8 @@ Partial Class FormMain
         '
         'buttonShopBearbeiten
         '
-        Me.buttonShopBearbeiten.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopBearbeiten.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonShopBearbeiten.Location = New System.Drawing.Point(593, 624)
         Me.buttonShopBearbeiten.Name = "buttonShopBearbeiten"
         Me.buttonShopBearbeiten.Size = New System.Drawing.Size(193, 37)
         Me.buttonShopBearbeiten.TabIndex = 17
@@ -558,7 +588,7 @@ Partial Class FormMain
         'comboBoxEinzelansichtStadtteile
         '
         Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
-        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(249, 408)
+        Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(39, 563)
         Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
         Me.comboBoxEinzelansichtStadtteile.Size = New System.Drawing.Size(193, 28)
         Me.comboBoxEinzelansichtStadtteile.TabIndex = 14
@@ -610,7 +640,8 @@ Partial Class FormMain
         '
         'buttonShopHinzufuegen
         '
-        Me.buttonShopHinzufuegen.Location = New System.Drawing.Point(443, 474)
+        Me.buttonShopHinzufuegen.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.buttonShopHinzufuegen.Location = New System.Drawing.Point(590, 624)
         Me.buttonShopHinzufuegen.Name = "buttonShopHinzufuegen"
         Me.buttonShopHinzufuegen.Size = New System.Drawing.Size(193, 37)
         Me.buttonShopHinzufuegen.TabIndex = 7
@@ -897,42 +928,25 @@ Partial Class FormMain
         Me.PictureBoxMap.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBoxMap.Location = New System.Drawing.Point(0, 0)
         Me.PictureBoxMap.Name = "PictureBoxMap"
-        Me.PictureBoxMap.Size = New System.Drawing.Size(647, 553)
+        Me.PictureBoxMap.Size = New System.Drawing.Size(797, 703)
         Me.PictureBoxMap.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'GMap1
+        'WebBrowser1
         '
-        Me.GMap1.Bearing = 0!
-        Me.GMap1.CanDragMap = True
-        Me.GMap1.EmptyTileColor = System.Drawing.Color.Navy
-        Me.GMap1.GrayScaleMode = False
-        Me.GMap1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
-        Me.GMap1.LevelsKeepInMemory = 5
-        Me.GMap1.Location = New System.Drawing.Point(17, 68)
-        Me.GMap1.MarkersEnabled = True
-        Me.GMap1.MaxZoom = 2
-        Me.GMap1.MinZoom = 2
-        Me.GMap1.MouseWheelZoomEnabled = True
-        Me.GMap1.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter
-        Me.GMap1.Name = "GMap1"
-        Me.GMap1.NegativeMode = False
-        Me.GMap1.PolygonsEnabled = True
-        Me.GMap1.RetryLoadTile = 0
-        Me.GMap1.RoutesEnabled = True
-        Me.GMap1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
-        Me.GMap1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
-        Me.GMap1.ShowTileGridLines = False
-        Me.GMap1.Size = New System.Drawing.Size(602, 446)
-        Me.GMap1.TabIndex = 6
-        Me.GMap1.Zoom = 0R
+        Me.WebBrowser1.Location = New System.Drawing.Point(261, 376)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Name = "WebBrowser1"
+        Me.WebBrowser1.Size = New System.Drawing.Size(512, 200)
+        Me.WebBrowser1.TabIndex = 24
+        Me.WebBrowser1.Url = New System.Uri("https://www.laengengrad-breitengrad.de/", System.UriKind.Absolute)
         '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(932, 553)
+        Me.ClientSize = New System.Drawing.Size(1082, 703)
         Me.Controls.Add(Me.panelContent)
         Me.Controls.Add(Me.panelSideMenu)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
@@ -1038,4 +1052,5 @@ Partial Class FormMain
     Friend WithEvents PictureBoxFavorit As PictureBox
     Friend WithEvents ButtonFavoritenHinzufügen As Button
     Friend WithEvents GMap1 As GMap.NET.WindowsForms.GMapControl
+    Friend WithEvents WebBrowser1 As WebBrowser
 End Class
