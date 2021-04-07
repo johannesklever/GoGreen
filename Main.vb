@@ -375,13 +375,17 @@ Public Class FormMain
             Me.Close()
             FormKeinBenutzer.ShowDialog()
         Else
-            TabControl1.SelectedTab = TabPageUser
-            TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value
-            TextBoxUserPhone.Text = rsBearbeiten.Fields("Telefon").Value
-            TextBoxUserBirthdate.Text = rsBearbeiten.Fields("Geburtsdatum").Value
-            TextBoxUserName.Text = rsBearbeiten.Fields("Name").Value
-            TextBoxUserUsername.Text = rsBearbeiten.Fields("Benutzername").Value
-            TextBoxUserPassword.Text = rsBearbeiten.Fields("Passwort").Value
+            Try
+                TabControl1.SelectedTab = TabPageUser
+                TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value 'Fehler, wenn keine Anschrift vorhanden
+                TextBoxUserPhone.Text = rsBearbeiten.Fields("Telefon").Value
+                TextBoxUserBirthdate.Text = rsBearbeiten.Fields("Geburtsdatum").Value
+                TextBoxUserName.Text = rsBearbeiten.Fields("Name").Value
+                TextBoxUserUsername.Text = rsBearbeiten.Fields("Benutzername").Value
+                TextBoxUserPassword.Text = rsBearbeiten.Fields("Passwort").Value
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
 
             TextBoxUserPhone.ReadOnly = True
             TextBoxUserAdress.ReadOnly = True
