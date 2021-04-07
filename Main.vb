@@ -176,58 +176,6 @@ Public Class FormMain
         Call GeschäfteLaden(geschaeftsBezeichnung)
 
 
-
-
-        'Dim geschaeftsBezeichnung As String
-        'Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
-        'Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
-
-        'textBoxShopEinzelansichtBezeichnung.ReadOnly = True
-        'textBoxShopEinzelansichtAdresse.ReadOnly = True
-        'textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
-        'textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
-        'textBoxShopEinzelansichtKategorie.ReadOnly = True
-        'textBoxShopEinzelansichtKategorie.Show()
-        'textBoxShopEinzelansichtStadtteil.Show()
-        'comboBoxEinzelansichtKategorie.Hide()
-        'comboBoxEinzelansichtStadtteile.Hide()
-        'textBoxShopImageFileName.Hide()
-        'buttonShopImageHinzufuegen.Hide()
-        'buttonShopHinzufuegen.Hide()
-        'buttonShopBearbeiten.Show()
-        'buttonShopAenderungenSpeichern.Hide()
-
-        'Try
-
-        '    geschaeftsBezeichnung = treeView.SelectedNode.Text
-        '    rsGeschaefte.MoveFirst()
-        '    rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
-
-
-        '    If Not rsGeschaefte.EOF Then
-        '        TabControl1.SelectedIndex = 2
-        '        textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
-
-        '        'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
-        '        rsAktuelleGeschaeftskategorie.Open("SELECT Kat_Bezeichnung FROM Kategorien WHERE Kategorie_ID = " & rsGeschaefte.Fields("Kategorie_ID").Value,
-        '                                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        '        rsAktuellerGeschaeftsStadtteil.Open("SELECT Bezeichnung FROM Stadtteile WHERE ID = " & rsGeschaefte.Fields("Stadtteil_ID").Value,
-        '                                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        '        textBoxShopEinzelansichtKategorie.Text = rsAktuelleGeschaeftskategorie.Fields("Kat_Bezeichnung").Value
-        '        textBoxShopEinzelansichtAdresse.Text = rsGeschaefte.Fields("Adresse").Value
-        '        textBoxShopEinzelansichtOeffnungszeit.Text = rsGeschaefte.Fields("Öffnungszeiten").Value
-        '        textBoxShopEinzelansichtTelefonnummer.Text = rsGeschaefte.Fields("Telefon").Value
-        '        textBoxShopEinzelansichtStadtteil.Text = rsAktuellerGeschaeftsStadtteil.Fields("Bezeichnung").Value
-
-        '        pictureBoxGeschaefteEinzelansichtsseite.Show()
-        '        pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\" & rsGeschaefte.Fields("Geschäftsbild").Value
-        '    Else
-        '    End If
-
-        'Catch ex As Exception
-        'MsgBox(ex.Message)
-        'End Try
-
     End Sub
 
     Private Sub btnSideMenuHinzufuegenClick(sender As Object, e As EventArgs) Handles buttonSideMenuHinzufuegen.Click
@@ -254,11 +202,18 @@ Public Class FormMain
         textBoxShopEinzelansichtStadtteil.Hide()
         comboBoxEinzelansichtKategorie.Items.Clear()
         comboBoxEinzelansichtStadtteile.Items.Clear()
+        WebView2.Show()
+        labelShopEinzelansichtBreitengrad.Show()
+        labelShopEinzelansichtLängengrad.Show()
+        textBoxShopEinzelansichtLängengrad.Show()
+        textBoxShopEinzelansichtBreitengrad.Show()
         'Textfelder beschreibbar machen
         textBoxShopEinzelansichtBezeichnung.ReadOnly = False
         textBoxShopEinzelansichtAdresse.ReadOnly = False
         textBoxShopEinzelansichtOeffnungszeit.ReadOnly = False
         textBoxShopEinzelansichtTelefonnummer.ReadOnly = False
+        textBoxShopEinzelansichtLängengrad.ReadOnly = False
+        textBoxShopEinzelansichtBreitengrad.ReadOnly = False
         'pictureBoxGeschaefteEinzelansichtsseite.ImageLocation = "GeschäfteBilder\BildHinzufügen.png"
 
         comboBoxEinzelansichtKategorie.Show()
@@ -340,10 +295,19 @@ Public Class FormMain
             rsGeschaefte.Fields("Kategorie_ID").Value = rsAktuelleKategorieID.Fields("Kategorie_ID").Value
             rsGeschaefte.Fields("Stadtteil_ID").Value = rsAktuellerStadtteilID.Fields("ID").Value
             rsGeschaefte.Fields("Geschäftsbild").Value = textBoxShopImageFileName.Text
+            rsGeschaefte.Fields("Längengrad").Value = textBoxShopEinzelansichtLängengrad.Text
+            rsGeschaefte.Fields("Breitengrad").Value = textBoxShopEinzelansichtBreitengrad.Text
+
             rsGeschaefte.Update()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        textBoxShopEinzelansichtBreitengrad.Hide()
+        textBoxShopEinzelansichtLängengrad.Hide()
+        labelShopEinzelansichtLängengrad.Hide()
+        labelShopEinzelansichtBreitengrad.Hide()
+        WebView2.Hide()
 
     End Sub
 
@@ -491,6 +455,11 @@ Public Class FormMain
         textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
         textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
         textBoxShopEinzelansichtKategorie.ReadOnly = True
+        labelShopEinzelansichtLängengrad.Hide()
+        labelShopEinzelansichtBreitengrad.Hide()
+        textBoxShopEinzelansichtLängengrad.Hide()
+        textBoxShopEinzelansichtBreitengrad.Hide()
+        WebView2.Hide()
         textBoxShopEinzelansichtKategorie.Show()
         textBoxShopEinzelansichtStadtteil.Show()
         comboBoxEinzelansichtKategorie.Hide()

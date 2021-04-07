@@ -95,7 +95,11 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
-        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.WebView2 = New Microsoft.Web.WebView2.WinForms.WebView2()
+        Me.labelShopEinzelansichtLängengrad = New System.Windows.Forms.Label()
+        Me.labelShopEinzelansichtBreitengrad = New System.Windows.Forms.Label()
+        Me.textBoxShopEinzelansichtBreitengrad = New System.Windows.Forms.TextBox()
+        Me.textBoxShopEinzelansichtLängengrad = New System.Windows.Forms.TextBox()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
@@ -110,6 +114,7 @@ Partial Class FormMain
         Me.TabPageUser.SuspendLayout()
         Me.TabPageFavorit.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.WebView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -407,7 +412,7 @@ Partial Class FormMain
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage1.Size = New System.Drawing.Size(789, 667)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "TabPage1"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -446,7 +451,7 @@ Partial Class FormMain
         Me.TabPage2.Location = New System.Drawing.Point(4, 29)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage2.Size = New System.Drawing.Size(789, 667)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "TabPage2"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -478,7 +483,11 @@ Partial Class FormMain
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.WebBrowser1)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtLängengrad)
+        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBreitengrad)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtBreitengrad)
+        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtLängengrad)
+        Me.TabPage3.Controls.Add(Me.WebView2)
         Me.TabPage3.Controls.Add(Me.ButtonFavoritenHinzufügen)
         Me.TabPage3.Controls.Add(Me.PictureBoxFavorit)
         Me.TabPage3.Controls.Add(Me.labelShopImageErrorBildNachricht)
@@ -726,7 +735,7 @@ Partial Class FormMain
         Me.TabPage4.Location = New System.Drawing.Point(4, 29)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(639, 517)
+        Me.TabPage4.Size = New System.Drawing.Size(789, 667)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "TabPage4"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -766,7 +775,7 @@ Partial Class FormMain
         Me.TabPageUser.Controls.Add(Me.ButtonUserSavePhone)
         Me.TabPageUser.Location = New System.Drawing.Point(4, 29)
         Me.TabPageUser.Name = "TabPageUser"
-        Me.TabPageUser.Size = New System.Drawing.Size(639, 517)
+        Me.TabPageUser.Size = New System.Drawing.Size(789, 667)
         Me.TabPageUser.TabIndex = 4
         Me.TabPageUser.Text = "User"
         Me.TabPageUser.UseVisualStyleBackColor = True
@@ -900,7 +909,7 @@ Partial Class FormMain
         Me.TabPageFavorit.Controls.Add(Me.ListBoxFavoriten)
         Me.TabPageFavorit.Location = New System.Drawing.Point(4, 29)
         Me.TabPageFavorit.Name = "TabPageFavorit"
-        Me.TabPageFavorit.Size = New System.Drawing.Size(639, 517)
+        Me.TabPageFavorit.Size = New System.Drawing.Size(789, 667)
         Me.TabPageFavorit.TabIndex = 5
         Me.TabPageFavorit.Text = "Favoriten"
         Me.TabPageFavorit.UseVisualStyleBackColor = True
@@ -933,14 +942,50 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
-        'WebBrowser1
+        'WebView2
         '
-        Me.WebBrowser1.Location = New System.Drawing.Point(261, 376)
-        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
-        Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(512, 200)
-        Me.WebBrowser1.TabIndex = 24
-        Me.WebBrowser1.Url = New System.Uri("https://www.laengengrad-breitengrad.de/", System.UriKind.Absolute)
+        Me.WebView2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.WebView2.CreationProperties = Nothing
+        Me.WebView2.Location = New System.Drawing.Point(273, 353)
+        Me.WebView2.Name = "WebView2"
+        Me.WebView2.Size = New System.Drawing.Size(510, 204)
+        Me.WebView2.Source = New System.Uri("https://www.laengengrad-breitengrad.de/", System.UriKind.Absolute)
+        Me.WebView2.TabIndex = 24
+        Me.WebView2.ZoomFactor = 1.0R
+        '
+        'labelShopEinzelansichtLängengrad
+        '
+        Me.labelShopEinzelansichtLängengrad.AutoSize = True
+        Me.labelShopEinzelansichtLängengrad.Location = New System.Drawing.Point(279, 563)
+        Me.labelShopEinzelansichtLängengrad.Name = "labelShopEinzelansichtLängengrad"
+        Me.labelShopEinzelansichtLängengrad.Size = New System.Drawing.Size(97, 20)
+        Me.labelShopEinzelansichtLängengrad.TabIndex = 25
+        Me.labelShopEinzelansichtLängengrad.Text = "Längengrad"
+        '
+        'labelShopEinzelansichtBreitengrad
+        '
+        Me.labelShopEinzelansichtBreitengrad.AutoSize = True
+        Me.labelShopEinzelansichtBreitengrad.Location = New System.Drawing.Point(545, 563)
+        Me.labelShopEinzelansichtBreitengrad.Name = "labelShopEinzelansichtBreitengrad"
+        Me.labelShopEinzelansichtBreitengrad.Size = New System.Drawing.Size(96, 20)
+        Me.labelShopEinzelansichtBreitengrad.TabIndex = 26
+        Me.labelShopEinzelansichtBreitengrad.Text = "Breitengrad"
+        '
+        'textBoxShopEinzelansichtBreitengrad
+        '
+        Me.textBoxShopEinzelansichtBreitengrad.Location = New System.Drawing.Point(549, 585)
+        Me.textBoxShopEinzelansichtBreitengrad.Name = "textBoxShopEinzelansichtBreitengrad"
+        Me.textBoxShopEinzelansichtBreitengrad.ReadOnly = True
+        Me.textBoxShopEinzelansichtBreitengrad.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtBreitengrad.TabIndex = 27
+        '
+        'textBoxShopEinzelansichtLängengrad
+        '
+        Me.textBoxShopEinzelansichtLängengrad.Location = New System.Drawing.Point(283, 585)
+        Me.textBoxShopEinzelansichtLängengrad.Name = "textBoxShopEinzelansichtLängengrad"
+        Me.textBoxShopEinzelansichtLängengrad.ReadOnly = True
+        Me.textBoxShopEinzelansichtLängengrad.Size = New System.Drawing.Size(193, 26)
+        Me.textBoxShopEinzelansichtLängengrad.TabIndex = 28
         '
         'FormMain
         '
@@ -974,6 +1019,7 @@ Partial Class FormMain
         Me.TabPageFavorit.ResumeLayout(False)
         Me.TabPageFavorit.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.WebView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1052,5 +1098,9 @@ Partial Class FormMain
     Friend WithEvents PictureBoxFavorit As PictureBox
     Friend WithEvents ButtonFavoritenHinzufügen As Button
     Friend WithEvents GMap1 As GMap.NET.WindowsForms.GMapControl
-    Friend WithEvents WebBrowser1 As WebBrowser
+    Friend WithEvents WebView2 As Microsoft.Web.WebView2.WinForms.WebView2
+    Friend WithEvents textBoxShopEinzelansichtLängengrad As TextBox
+    Friend WithEvents textBoxShopEinzelansichtBreitengrad As TextBox
+    Friend WithEvents labelShopEinzelansichtBreitengrad As Label
+    Friend WithEvents labelShopEinzelansichtLängengrad As Label
 End Class
