@@ -13,6 +13,7 @@ Public Class FormMain
     Dim rsGeschaefte As ADODB.Recordset
     Dim rsFavoriten As ADODB.Recordset
     Dim rsFavoritenID As ADODB.Recordset
+    Dim TestID As String
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -62,16 +63,43 @@ Public Class FormMain
         GMap1.SetPositionByKeywords("Friedrichsafen, Deutschland")
         GMap1.ShowCenter = False
         Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
-        Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(47.6618, 9.48), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
-        markers.Markers.Add(marker)
+        For i = 1 To rsGeschaefte.RecordCount
+            If ISDBNull(rsGeschaefte.Fields("Längengrad").Value) And ISDBNull(rsGeschaefte.Fields("Breitengrad").Value) Then
+
+            Else
+                Dim laengengrad As Double = CDbl(Val(rsGeschaefte.Fields("Längengrad").Value))
+                Dim breitengrad As Double = CDbl(Val(rsGeschaefte.Fields("Breitengrad").Value))
+
+                Try
+                    Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(laengengrad, breitengrad), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
+                    marker.ToolTipText = rsGeschaefte.Fields("Bezeichnung").Value
+                    marker.Tag = rsGeschaefte.Fields("Geschäfts_ID").Value
+                    markers.Markers.Add(marker)
+                Catch
+                End Try
+            End If
+            rsGeschaefte.MoveNext()
+        Next
         GMap1.Overlays.Add(markers)
+
+
         GMap1.Position = New GMap.NET.PointLatLng(47.6618, 9.48)
 
         GMap1.MaxZoom = 18
         GMap1.MinZoom = 0
         GMap1.Zoom = 12
 
+
+
     End Sub
+
+
+    Private Sub GMap1_OnMarkerClick(sender As Object, e As EventArgs) Handles GMap1.OnMarkerClick
+
+    End Sub
+
+
+
 
     Private Sub Toggle(ByVal panel As Panel) 'Übergabe des Panels
         With panel
@@ -174,6 +202,7 @@ Public Class FormMain
         TabControl1.SelectedTab = TabPage3
         geschaeftsBezeichnung = treeView.SelectedNode.Text
         Call GeschäfteLaden(geschaeftsBezeichnung)
+        TestID = geschaeftsBezeichnung
 
 
     End Sub
@@ -308,6 +337,11 @@ Public Class FormMain
         labelShopEinzelansichtLängengrad.Hide()
         labelShopEinzelansichtBreitengrad.Hide()
         WebView2.Hide()
+        WebView2.Reload()
+        textBoxShopEinzelansichtAdresse.ReadOnly = True
+        textBoxShopEinzelansichtBezeichnung.ReadOnly = True
+        textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
+        textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
 
     End Sub
 
@@ -332,8 +366,16 @@ Public Class FormMain
     Private Sub buttonShopBearbeiten_Click(sender As Object, e As EventArgs) Handles buttonShopBearbeiten.Click
 
         ShopBearbeitenundHinzufügen()
+        Try
+            textBoxShopEinzelansichtLängengrad.Text = rsGeschaefte.Fields("Längengrad").Value
+            textBoxShopEinzelansichtBreitengrad.Text = rsGeschaefte.Fields("Breitengrad").Value
+        Catch
+        End Try
         buttonShopAenderungenSpeichern.Show()
-        textBoxShopImageFileName.Text = rsGeschaefte.Fields("Geschäftsbild").Value
+        Try
+            textBoxShopImageFileName.Text = rsGeschaefte.Fields("Geschäftsbild").Value
+        Catch
+        End Try
         comboBoxEinzelansichtKategorie.SelectedItem = textBoxShopEinzelansichtKategorie.Text
         comboBoxEinzelansichtStadtteile.SelectedItem = textBoxShopEinzelansichtStadtteil.Text
 
@@ -424,7 +466,9 @@ Public Class FormMain
 
     Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
 
+        ListBoxFavoriten.Items.Clear()
         TabControl1.SelectedTab = TabPageFavorit
+        rsFavoriten.MoveFirst()
         Do While Not rsFavoriten.EOF
             ListBoxFavoriten.Items.Add(rsFavoriten.Fields("Bezeichnung").Value)
             rsFavoriten.MoveNext()
@@ -444,8 +488,7 @@ Public Class FormMain
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
         rsFavoritenID = New ADODB.Recordset
-        Dim AnzahlDatensätze As Integer
-        Dim Schleife, GeschäftsID, FavoritenID As Integer
+
 
         rsFavoritenID.Open("SELECT Geschäfte.Geschäfts_ID FROM Geschäfte, Lieblingsgeschäfte WHERE Geschäfte.Geschäfts_ID = Lieblingsgeschäfte.Geschäfts_ID AND Kunden_ID=" & Übergabe.LoggedUserID,
                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
@@ -470,8 +513,11 @@ Public Class FormMain
         buttonShopBearbeiten.Show()
         buttonShopAenderungenSpeichern.Hide()
         PictureBoxFavorit.Hide()
+        textBoxShopEinzelansichtLängengrad.Clear()
+        textBoxShopEinzelansichtBreitengrad.Clear()
 
         Try
+            rsGeschaefte.MoveFirst()
             'rsGeschaefte.MoveFirst()
             rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
 
@@ -500,7 +546,7 @@ Public Class FormMain
             MsgBox(ex.Message)
         End Try
 
-        AnzahlDatensätze = rsFavoritenID.RecordCount
+
         'MsgBox(rsGeschaefte.Fields("Geschäfts_ID").Value)
 
         'For Schleife = 0 To AnzahlDatensätze
@@ -521,6 +567,7 @@ Public Class FormMain
     End Sub
 
     Private Sub ButtonFavoritenHinzufügen_Click(sender As Object, e As EventArgs) Handles ButtonFavoritenHinzufügen.Click
+
         Dim rsFavoritAdd As ADODB.Recordset
         Dim rsFavorit As ADODB.Recordset
         Dim rsGeschaeftID As ADODB.Recordset
@@ -531,12 +578,14 @@ Public Class FormMain
         Dim GeschäftsID As Integer
         Dim KundenID As Integer
 
-
+        rsGeschaefte.MoveFirst()
+        rsGeschaefte.Find("Bezeichnung = " & "'" & TestID & "'")
+        GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
         rsFavoritAdd.Open("SELECT MAX(LID) AS L FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         rsFavorit.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        'rsGeschaeftID.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-        GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
-        'GeschäftsIDVergleich = rsFavorit.Find("Geschäfts_ID =" & "'" & GeschäftsID & "'")
+
+
+
 
         KundenID = Übergabe.LoggedUserID
         LID = rsFavoritAdd.Fields("L").Value + 1
@@ -545,6 +594,9 @@ Public Class FormMain
             MsgBox("Bitte melden Sie sich an, um auf die Favoriten zugreifen zu können")
         Else
             If FindeFavoriten(GeschäftsID) = False Then
+                rsGeschaefte.MoveFirst()
+                rsGeschaefte.Find("Bezeichnung = " & "'" & TestID & "'")
+                GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
                 With rsFavorit
                     .MoveLast()
                     .AddNew()
@@ -560,44 +612,27 @@ Public Class FormMain
 
 
         End If
-
-        'rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
-
-
-
-        'fieldsArray(0) = "LID"
-        'fieldsArray(1) = "Geschäfts_ID"
-        'fieldsArray(2) = "Kunden_ID"
-
-        'valuesArray(0) = LID
-        'valuesArray(1) = GeschäftsID
-        'valuesArray(2) = KundenID
-
-        'rsFavoritAdd.AddNew(fieldsArray, valuesArray)
-        'rsFavoritAdd.Update()
-        '.Fields("Benutzername").Value = textBoxBenutzername.Text
-        '.Fields("Passwort").Value = textBoxNeuesPasswort.Text
-
     End Sub
 
     Public Function FindeFavoriten(ByVal GeschäftsID) As Boolean
         Dim rsFavorit As ADODB.Recordset
-        Dim rsFavoritAdd As ADODB.Recordset
         rsFavorit = New ADODB.Recordset
-        rsFavoritAdd = New ADODB.Recordset
         rsFavorit.Open("SELECT Geschäfts_ID FROM Lieblingsgeschäfte WHERE Kunden_ID =" & Übergabe.LoggedUserID, conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         'rsFavoritAdd.Open("SELECT Kunden_ID FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         ' rsFavoritAdd.MoveFirst()
         rsFavorit.MoveFirst()
 
         rsFavorit.Find("Geschäfts_ID =" & "'" & GeschäftsID & "'")
-        'rsFavoritAdd.Find("Kunden_ID =" & "'" & Übergabe.LoggedUserID & "'")
         If rsFavorit.EOF Then
             Return False
         Else
             Return True
         End If
     End Function
+
+
+
+
 
 
     'bla

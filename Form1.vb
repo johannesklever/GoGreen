@@ -1,5 +1,6 @@
 ﻿Public Class FormKeinBenutzer
     Private Sub ButtonYes_Click(sender As Object, e As EventArgs) Handles ButtonYes.Click
+
         FormMain.Close()
         Me.Close()
         Landingpage.Show()
