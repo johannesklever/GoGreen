@@ -44,44 +44,10 @@ Public Class FormMain
                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
 
 
-
-
-
         Catch ex As Exception
             MsgBox(ex.Message)
 
         End Try
-
-        GMap1.MaxZoom = 18
-        GMap1.MinZoom = 0
-        GMap1.Zoom = 13
-
-
-
-        GMap1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance
-        GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly
-        GMap1.SetPositionByKeywords("Friedrichsafen, Deutschland")
-        GMap1.ShowCenter = False
-        Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
-        For i = 1 To rsGeschaefte.RecordCount
-            If ISDBNull(rsGeschaefte.Fields("Längengrad").Value) And ISDBNull(rsGeschaefte.Fields("Breitengrad").Value) Then
-
-            Else
-                Dim laengengrad As Double = CDbl(Val(rsGeschaefte.Fields("Längengrad").Value))
-                Dim breitengrad As Double = CDbl(Val(rsGeschaefte.Fields("Breitengrad").Value))
-
-                Try
-                    Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(laengengrad, breitengrad), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
-                    marker.ToolTipText = rsGeschaefte.Fields("Bezeichnung").Value
-                    marker.Tag = rsGeschaefte.Fields("Geschäfts_ID").Value
-                    markers.Markers.Add(marker)
-                Catch
-                End Try
-            End If
-            rsGeschaefte.MoveNext()
-        Next
-        GMap1.Overlays.Add(markers)
-
 
         GMap1.Position = New GMap.NET.PointLatLng(47.6618, 9.48)
 
@@ -89,12 +55,71 @@ Public Class FormMain
         GMap1.MinZoom = 0
         GMap1.Zoom = 12
 
+        comboBoxMapSeiteKategorien.DropDownStyle = ComboBoxStyle.DropDownList
+        comboBoxMapSeiteStadtteile.DropDownStyle = ComboBoxStyle.DropDownList
+        comboBoxMapSeiteGeschäfte.DropDownStyle = ComboBoxStyle.DropDownList
 
+        rsKategorien.MoveFirst()
+        rsStadtteile.MoveFirst()
+        rsGeschaefte.MoveFirst()
+        comboBoxMapSeiteKategorien.Items.Add("")
+        Do While Not rsKategorien.EOF
+            comboBoxMapSeiteKategorien.Items.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
+            rsKategorien.MoveNext()
+        Loop
+
+        comboBoxMapSeiteStadtteile.Items.Add("")
+        Do While Not rsStadtteile.EOF
+            comboBoxMapSeiteStadtteile.Items.Add(rsStadtteile.Fields("Bezeichnung").Value)
+            rsStadtteile.MoveNext()
+        Loop
+
+        Do While Not rsGeschaefte.EOF
+            comboBoxMapSeiteGeschäfte.Items.Add(rsGeschaefte.Fields("Bezeichnung").Value)
+            rsGeschaefte.MoveNext()
+        Loop
+
+        LadeMap(rsGeschaefte)
 
     End Sub
 
 
-    Private Sub GMap1_OnMarkerClick(sender As Object, e As EventArgs) Handles GMap1.OnMarkerClick
+    Sub LadeMap(ByVal rsGeschäfte As ADODB.Recordset)
+
+
+        GMap1.ReloadMap()
+
+        GMap1.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance
+        GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.CacheOnly
+        'GMap1.SetPositionByKeywords("Friedrichsafen, Deutschland")
+        GMap1.ShowCenter = False
+        Dim markers As GMap.NET.WindowsForms.GMapOverlay = New GMap.NET.WindowsForms.GMapOverlay("markers")
+        Try
+            rsGeschäfte.MoveFirst()
+
+
+            For i = 1 To rsGeschäfte.RecordCount
+                If IsDBNull(rsGeschäfte.Fields("Längengrad").Value) And IsDBNull(rsGeschäfte.Fields("Breitengrad").Value) Then 'wenn Längen und Breitengrad vorhanden, dann Marker erzeugen
+
+                Else
+                    Dim laengengrad As Double = CDbl(Val(rsGeschäfte.Fields("Längengrad").Value))
+                    Dim breitengrad As Double = CDbl(Val(rsGeschäfte.Fields("Breitengrad").Value))
+
+                    Dim marker As GMap.NET.WindowsForms.GMapMarker = New GMap.NET.WindowsForms.Markers.GMarkerGoogle(New GMap.NET.PointLatLng(laengengrad, breitengrad), GMap.NET.WindowsForms.Markers.GMarkerGoogleType.blue_pushpin)
+                    marker.ToolTipText = rsGeschäfte.Fields("Bezeichnung").Value
+                    marker.Tag = rsGeschäfte.Fields("Geschäfts_ID").Value
+                    markers.Markers.Add(marker)
+                End If
+                rsGeschäfte.MoveNext()
+            Next
+            GMap1.Overlays.Add(markers)
+            GMap1.Zoom = 13
+
+        Catch
+
+        End Try
+
+
 
     End Sub
 
@@ -134,7 +159,7 @@ Public Class FormMain
 
     Private Sub buttonSideMenuKategorien_Click(sender As Object, e As EventArgs) Handles buttonSideMenuKategorien.Click
 
-        TabControl1.SelectedIndex = 1
+        TabControl.SelectedIndex = 1
 
         Dim rsGeschaefteNachKategorie = New ADODB.Recordset
         'Dim rsGeschaefte As New ADODB.Recordset
@@ -162,7 +187,7 @@ Public Class FormMain
 
         Dim rsGeschaefteNachStadtteilen = New ADODB.Recordset
 
-        TabControl1.SelectedIndex = 3
+        TabControl.SelectedIndex = 3
 
         'Treeview Geschäfte nach Stadtteilen
         TreeViewGeschäfteStadtteile.Nodes.Clear() 'verhindert, dass sich TreeView nach jedem Click verlängert
@@ -199,8 +224,8 @@ Public Class FormMain
     Private Sub TreeViewZuGeschaeftseinzelansichtsseite(ByVal treeView As TreeView)
 
         Dim geschaeftsBezeichnung As String
-        TabControl1.SelectedTab = TabPage3
-        geschaeftsBezeichnung = treeView.SelectedNode.Text
+        TabControl.SelectedTab = TabPageShopEinzelansicht
+        geschaeftsBezeichnung = treeView.SelectedNode.Text 'der angeklickte Shop wird an die Einzelansichtsseite übergeben
         Call GeschäfteLaden(geschaeftsBezeichnung)
         TestID = geschaeftsBezeichnung
 
@@ -225,7 +250,7 @@ Public Class FormMain
 
     Private Sub ShopBearbeitenundHinzufügen() 'Diese Sub wird angewendet um die Einzelansichtsseite zum Bearbeiten oder Hinzufügen eines Shops vorzubereiten
 
-        TabControl1.SelectedIndex = 2
+        TabControl.SelectedIndex = 2
 
         textBoxShopEinzelansichtKategorie.Hide()
         textBoxShopEinzelansichtStadtteil.Hide()
@@ -260,10 +285,8 @@ Public Class FormMain
         rsKategorien.MoveFirst()
         rsStadtteile.MoveFirst()
         Do While Not rsKategorien.EOF
-
             comboBoxEinzelansichtKategorie.Items.Add(rsKategorien.Fields("Kat_Bezeichnung").Value)
             rsKategorien.MoveNext()
-
         Loop
 
         Do While Not rsStadtteile.EOF
@@ -277,7 +300,7 @@ Public Class FormMain
 
         rsGeschaefte.MoveFirst()
         rsGeschaefte.AddNew()
-        ShopInformationenDatenbankHochladen()
+        ShopInformationenDatenbankHochladen() 'wird beim Ändern und Hinzufügen eines Shops ausgeführt
         MsgBox("Geschäft hinzugefügt")
 
 
@@ -347,10 +370,10 @@ Public Class FormMain
 
     Private Sub buttonShopImageHinzufuegen_Click(sender As Object, e As EventArgs) Handles buttonShopImageHinzufuegen.Click
 
-        Dim openFileDialogShopImage As New OpenFileDialog()
+        Dim openFileDialogShopImage As New OpenFileDialog() 'öffnet Dateiexplorer
 
-        openFileDialogShopImage.InitialDirectory = "c:\"
-        openFileDialogShopImage.Filter = "jpg files (*.jpg)|*.jpg|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|All files (*.*)|*.*" 'zugelassene File Typen
+        openFileDialogShopImage.InitialDirectory = "c\"
+        openFileDialogShopImage.Filter = "All files (*.*)|*.*|jpeg files (*.jpeg)|*.jpeg|png files (*.png)|*.png|jpg files (*.jpg)|*.jpg" 'zugelassene File Typen
         openFileDialogShopImage.FilterIndex = 2
         openFileDialogShopImage.RestoreDirectory = True
         openFileDialogShopImage.Title = "Bild auswählen"
@@ -399,7 +422,7 @@ Public Class FormMain
 
     End Sub
 
-    Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click
+    Private Sub btnUserSettings_Click(sender As Object, e As EventArgs) Handles btnUserSettings.Click 'Lädt die Daten des eingeloggten Users
         Dim UserIDCONV As String
         UserIDCONV = CStr(Übergabe.LoggedUserID)
         rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
@@ -408,7 +431,7 @@ Public Class FormMain
             Me.Close()
             FormKeinBenutzer.Show()
         Else
-            TabControl1.SelectedTab = TabPageUser
+            TabControl.SelectedTab = TabPageUser
             TextBoxUserAdress.Text = rsBearbeiten.Fields("Anschrift").Value
             TextBoxUserPhone.Text = rsBearbeiten.Fields("Telefon").Value
             TextBoxUserBirthdate.Text = rsBearbeiten.Fields("Geburtsdatum").Value
@@ -440,7 +463,7 @@ Public Class FormMain
         labelShopImageErrorBildNachricht.Hide()
     End Sub
 
-    Private Sub ButtonUserSavePhone_Click(sender As Object, e As EventArgs) Handles ButtonUserSavePhone.Click
+    Private Sub ButtonUserSavePhone_Click(sender As Object, e As EventArgs) Handles ButtonUserSavePhone.Click 'wenn Daten des eingeloggten Users bearbeitet wurden
         Dim UserIDCONV As String
         UserIDCONV = CStr(Übergabe.LoggedUserID)
         rsBearbeiten.Find("Kunden_ID =" & "'" & UserIDCONV & "'")
@@ -467,7 +490,7 @@ Public Class FormMain
     Private Sub btnFavorit_Click(sender As Object, e As EventArgs) Handles btnFavorit.Click
 
         ListBoxFavoriten.Items.Clear()
-        TabControl1.SelectedTab = TabPageFavorit
+        TabControl.SelectedTab = TabPageFavorit
         rsFavoriten.MoveFirst()
         Do While Not rsFavoriten.EOF
             ListBoxFavoriten.Items.Add(rsFavoriten.Fields("Bezeichnung").Value)
@@ -475,16 +498,16 @@ Public Class FormMain
         Loop
     End Sub
 
-    Private Sub ListBoxFavoriten_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxFavoriten.Click
+    Private Sub ListBoxFavoriten_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBoxFavoriten.Click 'leitet zur Einzelansicht, nachdem ein Favorit angeklickt wurde
         Dim geschaeftsBezeichnung As String
-        TabControl1.SelectedTab = TabPage3
+        TabControl.SelectedTab = TabPageShopEinzelansicht
         geschaeftsBezeichnung = ListBoxFavoriten.SelectedItem
         Call GeschäfteLaden(geschaeftsBezeichnung)
 
     End Sub
 
 
-    Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung)
+    Private Sub GeschäfteLaden(ByVal geschaeftsBezeichnung) 'wird immer ausgeführt, wenn man zur Einzelansicht eines Shops geleitet wird
         Dim rsAktuelleGeschaeftskategorie As New ADODB.Recordset 'Recordset mit allen Geschäftsnamen (Geschäftsbezeichnung) und deren dazugehörigen Geschäfts-IDs
         Dim rsAktuellerGeschaeftsStadtteil As New ADODB.Recordset
         rsFavoritenID = New ADODB.Recordset
@@ -492,6 +515,8 @@ Public Class FormMain
 
         rsFavoritenID.Open("SELECT Geschäfte.Geschäfts_ID FROM Geschäfte, Lieblingsgeschäfte WHERE Geschäfte.Geschäfts_ID = Lieblingsgeschäfte.Geschäfts_ID AND Kunden_ID=" & Übergabe.LoggedUserID,
                            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+        'Anzeige des Sterns
 
         textBoxShopEinzelansichtBezeichnung.ReadOnly = True
         textBoxShopEinzelansichtAdresse.ReadOnly = True
@@ -512,18 +537,17 @@ Public Class FormMain
         buttonShopHinzufuegen.Hide()
         buttonShopBearbeiten.Show()
         buttonShopAenderungenSpeichern.Hide()
-        PictureBoxFavorit.Hide()
+        ImageFavoritStern.Hide()
         textBoxShopEinzelansichtLängengrad.Clear()
         textBoxShopEinzelansichtBreitengrad.Clear()
 
         Try
             rsGeschaefte.MoveFirst()
-            'rsGeschaefte.MoveFirst()
             rsGeschaefte.Find("Bezeichnung = " & "'" & geschaeftsBezeichnung & "'")
 
 
             If Not rsGeschaefte.EOF Then
-                TabControl1.SelectedIndex = 2
+                TabControl.SelectedIndex = 2
                 textBoxShopEinzelansichtBezeichnung.Text = geschaeftsBezeichnung
 
                 'Ausgabe der Geschäftskategorie auf der Einzelansichtsseite
@@ -546,24 +570,6 @@ Public Class FormMain
             MsgBox(ex.Message)
         End Try
 
-
-        'MsgBox(rsGeschaefte.Fields("Geschäfts_ID").Value)
-
-        'For Schleife = 0 To AnzahlDatensätze
-        '    GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
-        '    FavoritenID = rsFavoritenID("Geschäfts_ID").Value
-
-        '    If GeschäftsID = FavoritenID Then
-        '        PictureBoxFavorit.Show()
-        '        MsgBox("Ein Lieblingsgeschäft")
-        '        rsFavoritenID.MoveNext()
-        '        Schleife = AnzahlDatensätze
-        '    Else
-        '        rsFavoriten.MoveNext()
-        '    End If
-        'Next
-
-
     End Sub
 
     Private Sub ButtonFavoritenHinzufügen_Click(sender As Object, e As EventArgs) Handles ButtonFavoritenHinzufügen.Click
@@ -583,9 +589,6 @@ Public Class FormMain
         GeschäftsID = rsGeschaefte.Fields("Geschäfts_ID").Value
         rsFavoritAdd.Open("SELECT MAX(LID) AS L FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
         rsFavorit.Open("SELECT * FROM Lieblingsgeschäfte", conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
-
-
-
 
         KundenID = Übergabe.LoggedUserID
         LID = rsFavoritAdd.Fields("L").Value + 1
@@ -630,34 +633,79 @@ Public Class FormMain
         End If
     End Function
 
+    Private Sub btnMap_Click(sender As Object, e As EventArgs) Handles btnMap.Click
+        TabControl.SelectedIndex = 0
+        GMap1.Refresh()
+        LadeMap(rsGeschaefte)
+    End Sub
+
+    Private Sub comboBoxMapSeiteKategorien_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboBoxMapSeiteKategorien.SelectedIndexChanged
+        GeschäftefilternComboBox()
+    End Sub
+
+    Private Sub comboBoxMapSeiteStadtteile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboBoxMapSeiteStadtteile.SelectedIndexChanged
+        GeschäftefilternComboBox()
+    End Sub
+
+    Private Sub buttonMapSeiteFiltern_Click(sender As Object, e As EventArgs) Handles buttonMapSeiteZumShop.Click
+        If comboBoxMapSeiteGeschäfte.SelectedItem IsNot "" Then
+            GeschäfteLaden(comboBoxMapSeiteGeschäfte.SelectedItem)
+        End If
+    End Sub
+
+    Sub GeschäftefilternComboBox()
+        Dim rsaktuelleGeschaefte As ADODB.Recordset
+        rsaktuelleGeschaefte = New ADODB.Recordset
+        Dim rsaktuelleKategorieID As ADODB.Recordset
+        rsaktuelleKategorieID = New ADODB.Recordset
+        Dim rsaktuelleStadtteilID As ADODB.Recordset
+        rsaktuelleStadtteilID = New ADODB.Recordset
+        Dim aktuelleKategorieID As Integer
+        Dim aktuelleStadtteilID As Integer
 
 
 
+        If comboBoxMapSeiteStadtteile.SelectedItem = "" And comboBoxMapSeiteKategorien.SelectedItem = "" Then
+            rsaktuelleGeschaefte.Open("SELECT * FROM Geschäfte",
+                      conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+
+        ElseIf comboBoxMapSeiteStadtteile.SelectedItem = "" And comboBoxMapSeiteKategorien.SelectedItem IsNot "" Then
+            rsaktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung =" & "'" & comboBoxMapSeiteKategorien.SelectedItem & "'",
+                                   conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            aktuelleKategorieID = rsaktuelleKategorieID.Fields("Kategorie_ID").Value
+            rsaktuelleGeschaefte.Open("SELECT DISTINCT * FROM Geschäfte, Kategorien WHERE Geschäfte.Kategorie_ID=" & aktuelleKategorieID,
+            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        ElseIf comboBoxMapSeiteStadtteile.SelectedItem IsNot "" And comboBoxMapSeiteKategorien.SelectedItem = "" Then
+            rsaktuelleStadtteilID.Open("SELECT ID FROM Stadtteile WHERE Bezeichnung =" & "'" & comboBoxMapSeiteStadtteile.SelectedItem & "'",
+                                   conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            aktuelleStadtteilID = rsaktuelleStadtteilID.Fields("ID").Value
+            rsaktuelleGeschaefte.Open("SELECT DISTINCT * FROM Geschäfte WHERE Geschäfte.Stadtteil_ID = " & aktuelleStadtteilID,
+            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        Else
+            rsaktuelleKategorieID.Open("SELECT Kategorie_ID FROM Kategorien WHERE Kat_Bezeichnung =" & "'" & comboBoxMapSeiteKategorien.SelectedItem & "'",
+                                   conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            aktuelleKategorieID = rsaktuelleKategorieID.Fields("Kategorie_ID").Value
+            rsaktuelleStadtteilID.Open("SELECT ID FROM Stadtteile WHERE Bezeichnung =" & "'" & comboBoxMapSeiteStadtteile.SelectedItem & "'",
+                                   conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+            aktuelleStadtteilID = rsaktuelleStadtteilID.Fields("ID").Value
+            rsaktuelleGeschaefte.Open("SELECT DISTINCT * FROM Geschäfte WHERE Geschäfte.Stadtteil_ID =" & aktuelleStadtteilID & "AND Geschäfte.Kategorie_ID =" & aktuelleKategorieID,
+            conn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockPessimistic)
+        End If
+
+        comboBoxMapSeiteGeschäfte.Items.Clear()
+        Try
+            rsaktuelleGeschaefte.MoveFirst()
 
 
-    'bla
+            Do While Not rsaktuelleGeschaefte.EOF
+                comboBoxMapSeiteGeschäfte.Items.Add(rsaktuelleGeschaefte.Fields("Bezeichnung").Value)
+                rsaktuelleGeschaefte.MoveNext()
+            Loop
+        Catch
 
+        End Try
 
-    'Private Sub Form1_ResizeBegin(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeBegin
-    '    btnbla.Visible = False
+        'LadeMap(rsaktuelleGeschaefte)
 
-    'End Sub
-
-    'Private Sub Form1_ResizeEnd(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.ResizeEnd
-
-    '    Dim x As Integer
-    '    Dim y As Integer
-    '    Dim z As Integer
-    '    Dim actualHeight As Integer
-
-    '    x = PictureBoxMap.ClientSize.Width
-    '    y = PictureBoxMap.ClientSize.Width * 467 / 987
-    '    btnbla.Visible = True
-    '    z = btnbla.Location.Y
-
-    '    MsgBox(x & " " & y & " " & z)
-
-    'End Sub
-
-
+    End Sub
 End Class

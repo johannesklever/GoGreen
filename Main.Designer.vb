@@ -28,34 +28,32 @@ Partial Class FormMain
         Me.btnAbout = New System.Windows.Forms.Button()
         Me.btnProgrammeinstellungen = New System.Windows.Forms.Button()
         Me.panelMeinBereichSubMenu = New System.Windows.Forms.Panel()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.btnUserSettings = New System.Windows.Forms.Button()
         Me.btnFavorit = New System.Windows.Forms.Button()
         Me.btnMeinBereich = New System.Windows.Forms.Button()
         Me.panelGeschaefteSubmenu = New System.Windows.Forms.Panel()
-        Me.btnBekleidungslaeden = New System.Windows.Forms.Button()
+        Me.btnMap = New System.Windows.Forms.Button()
         Me.buttonSideMenuHinzufuegen = New System.Windows.Forms.Button()
         Me.buttonSideMenuStadtteile = New System.Windows.Forms.Button()
         Me.buttonSideMenuKategorien = New System.Windows.Forms.Button()
         Me.buttonSideMenuGeschaefte = New System.Windows.Forms.Button()
         Me.panelLogo = New System.Windows.Forms.Panel()
         Me.panelContent = New System.Windows.Forms.Panel()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabControl = New System.Windows.Forms.TabControl()
+        Me.TabPageMap = New System.Windows.Forms.TabPage()
         Me.GMap1 = New GMap.NET.WindowsForms.GMapControl()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachKategorien = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteKategorien = New System.Windows.Forms.TreeView()
         Me.btnbla = New System.Windows.Forms.Button()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TabPageShopEinzelansicht = New System.Windows.Forms.TabPage()
         Me.textBoxShopEinzelansichtLängengrad = New System.Windows.Forms.TextBox()
         Me.textBoxShopEinzelansichtBreitengrad = New System.Windows.Forms.TextBox()
         Me.labelShopEinzelansichtBreitengrad = New System.Windows.Forms.Label()
         Me.labelShopEinzelansichtLängengrad = New System.Windows.Forms.Label()
         Me.WebView2 = New Microsoft.Web.WebView2.WinForms.WebView2()
         Me.ButtonFavoritenHinzufügen = New System.Windows.Forms.Button()
-        Me.PictureBoxFavorit = New System.Windows.Forms.PictureBox()
+        Me.ImageFavoritStern = New System.Windows.Forms.PictureBox()
         Me.labelShopImageErrorBildNachricht = New System.Windows.Forms.Label()
         Me.buttonShopAenderungenSpeichern = New System.Windows.Forms.Button()
         Me.labelShopEinzelansichtStadtteil = New System.Windows.Forms.Label()
@@ -77,7 +75,7 @@ Partial Class FormMain
         Me.textBoxShopEinzelansichtBezeichnung = New System.Windows.Forms.TextBox()
         Me.buttonShopImageHinzufuegen = New System.Windows.Forms.Button()
         Me.pictureBoxGeschaefteEinzelansichtsseite = New System.Windows.Forms.PictureBox()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.TabPageStadtteile = New System.Windows.Forms.TabPage()
         Me.LabelGeschäfteNachStadtteilen = New System.Windows.Forms.Label()
         Me.TreeViewGeschäfteStadtteile = New System.Windows.Forms.TreeView()
         Me.TabPageUser = New System.Windows.Forms.TabPage()
@@ -99,21 +97,27 @@ Partial Class FormMain
         Me.Label4 = New System.Windows.Forms.Label()
         Me.ListBoxFavoriten = New System.Windows.Forms.ListBox()
         Me.PictureBoxMap = New System.Windows.Forms.PictureBox()
+        Me.comboBoxMapSeiteKategorien = New System.Windows.Forms.ComboBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.comboBoxMapSeiteStadtteile = New System.Windows.Forms.ComboBox()
+        Me.comboBoxMapSeiteGeschäfte = New System.Windows.Forms.ComboBox()
+        Me.buttonMapSeiteZumShop = New System.Windows.Forms.Button()
         Me.panelSideMenu.SuspendLayout()
         Me.panelMeinBereichSubMenu.SuspendLayout()
         Me.panelGeschaefteSubmenu.SuspendLayout()
         Me.panelContent.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
+        Me.TabControl.SuspendLayout()
+        Me.TabPageMap.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
+        Me.TabPageShopEinzelansicht.SuspendLayout()
         CType(Me.WebView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBoxFavorit, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ImageFavoritStern, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage4.SuspendLayout()
+        Me.TabPageStadtteile.SuspendLayout()
         Me.TabPageUser.SuspendLayout()
         Me.TabPageFavorit.SuspendLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelSideMenu
@@ -142,7 +146,7 @@ Partial Class FormMain
         Me.btnHelp.ForeColor = System.Drawing.Color.LightGray
         Me.btnHelp.Image = Global.GoGreen.My.Resources.Resources.outline_help_center_white_18dp
         Me.btnHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnHelp.Location = New System.Drawing.Point(0, 608)
+        Me.btnHelp.Location = New System.Drawing.Point(0, 534)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnHelp.Size = New System.Drawing.Size(250, 45)
@@ -159,7 +163,7 @@ Partial Class FormMain
         Me.btnAbout.ForeColor = System.Drawing.Color.LightGray
         Me.btnAbout.Image = Global.GoGreen.My.Resources.Resources.outline_info_white_18dp
         Me.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAbout.Location = New System.Drawing.Point(0, 563)
+        Me.btnAbout.Location = New System.Drawing.Point(0, 489)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnAbout.Size = New System.Drawing.Size(250, 45)
@@ -177,7 +181,7 @@ Partial Class FormMain
         Me.btnProgrammeinstellungen.ForeColor = System.Drawing.Color.LightGray
         Me.btnProgrammeinstellungen.Image = Global.GoGreen.My.Resources.Resources.outline_settings_suggest_white_18dp
         Me.btnProgrammeinstellungen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 518)
+        Me.btnProgrammeinstellungen.Location = New System.Drawing.Point(0, 444)
         Me.btnProgrammeinstellungen.Name = "btnProgrammeinstellungen"
         Me.btnProgrammeinstellungen.Padding = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.btnProgrammeinstellungen.Size = New System.Drawing.Size(250, 45)
@@ -190,45 +194,13 @@ Partial Class FormMain
         'panelMeinBereichSubMenu
         '
         Me.panelMeinBereichSubMenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.panelMeinBereichSubMenu.Controls.Add(Me.Button6)
-        Me.panelMeinBereichSubMenu.Controls.Add(Me.Button7)
         Me.panelMeinBereichSubMenu.Controls.Add(Me.btnUserSettings)
         Me.panelMeinBereichSubMenu.Controls.Add(Me.btnFavorit)
         Me.panelMeinBereichSubMenu.Dock = System.Windows.Forms.DockStyle.Top
         Me.panelMeinBereichSubMenu.Location = New System.Drawing.Point(0, 354)
         Me.panelMeinBereichSubMenu.Name = "panelMeinBereichSubMenu"
-        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(250, 164)
+        Me.panelMeinBereichSubMenu.Size = New System.Drawing.Size(250, 90)
         Me.panelMeinBereichSubMenu.TabIndex = 4
-        '
-        'Button6
-        '
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button6.FlatAppearance.BorderSize = 0
-        Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.ForeColor = System.Drawing.Color.LightGray
-        Me.Button6.Location = New System.Drawing.Point(0, 120)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button6.Size = New System.Drawing.Size(250, 40)
-        Me.Button6.TabIndex = 3
-        Me.Button6.Text = "Button6"
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Button7.FlatAppearance.BorderSize = 0
-        Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.ForeColor = System.Drawing.Color.LightGray
-        Me.Button7.Location = New System.Drawing.Point(0, 80)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.Button7.Size = New System.Drawing.Size(250, 40)
-        Me.Button7.TabIndex = 2
-        Me.Button7.Text = "Button7"
-        Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.UseVisualStyleBackColor = True
         '
         'btnUserSettings
         '
@@ -281,7 +253,7 @@ Partial Class FormMain
         'panelGeschaefteSubmenu
         '
         Me.panelGeschaefteSubmenu.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(39, Byte), Integer))
-        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnBekleidungslaeden)
+        Me.panelGeschaefteSubmenu.Controls.Add(Me.btnMap)
         Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuHinzufuegen)
         Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuStadtteile)
         Me.panelGeschaefteSubmenu.Controls.Add(Me.buttonSideMenuKategorien)
@@ -291,20 +263,20 @@ Partial Class FormMain
         Me.panelGeschaefteSubmenu.Size = New System.Drawing.Size(250, 164)
         Me.panelGeschaefteSubmenu.TabIndex = 2
         '
-        'btnBekleidungslaeden
+        'btnMap
         '
-        Me.btnBekleidungslaeden.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnBekleidungslaeden.FlatAppearance.BorderSize = 0
-        Me.btnBekleidungslaeden.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBekleidungslaeden.ForeColor = System.Drawing.Color.LightGray
-        Me.btnBekleidungslaeden.Location = New System.Drawing.Point(0, 120)
-        Me.btnBekleidungslaeden.Name = "btnBekleidungslaeden"
-        Me.btnBekleidungslaeden.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
-        Me.btnBekleidungslaeden.Size = New System.Drawing.Size(250, 40)
-        Me.btnBekleidungslaeden.TabIndex = 3
-        Me.btnBekleidungslaeden.Text = "Bekleidungsläden"
-        Me.btnBekleidungslaeden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBekleidungslaeden.UseVisualStyleBackColor = True
+        Me.btnMap.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnMap.FlatAppearance.BorderSize = 0
+        Me.btnMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMap.ForeColor = System.Drawing.Color.LightGray
+        Me.btnMap.Location = New System.Drawing.Point(0, 120)
+        Me.btnMap.Name = "btnMap"
+        Me.btnMap.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
+        Me.btnMap.Size = New System.Drawing.Size(250, 40)
+        Me.btnMap.TabIndex = 3
+        Me.btnMap.Text = "Map"
+        Me.btnMap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnMap.UseVisualStyleBackColor = True
         '
         'buttonSideMenuHinzufuegen
         '
@@ -379,7 +351,7 @@ Partial Class FormMain
         '
         'panelContent
         '
-        Me.panelContent.Controls.Add(Me.TabControl1)
+        Me.panelContent.Controls.Add(Me.TabControl)
         Me.panelContent.Controls.Add(Me.PictureBoxMap)
         Me.panelContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.panelContent.Location = New System.Drawing.Point(285, 0)
@@ -388,43 +360,50 @@ Partial Class FormMain
         Me.panelContent.Size = New System.Drawing.Size(797, 703)
         Me.panelContent.TabIndex = 9
         '
-        'TabControl1
+        'TabControl
         '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.TabControl.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Controls.Add(Me.TabPageUser)
-        Me.TabControl1.Controls.Add(Me.TabPageFavorit)
-        Me.TabControl1.Location = New System.Drawing.Point(0, 3)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(797, 700)
-        Me.TabControl1.TabIndex = 5
+        Me.TabControl.Controls.Add(Me.TabPageMap)
+        Me.TabControl.Controls.Add(Me.TabPage2)
+        Me.TabControl.Controls.Add(Me.TabPageShopEinzelansicht)
+        Me.TabControl.Controls.Add(Me.TabPageStadtteile)
+        Me.TabControl.Controls.Add(Me.TabPageUser)
+        Me.TabControl.Controls.Add(Me.TabPageFavorit)
+        Me.TabControl.Location = New System.Drawing.Point(0, 3)
+        Me.TabControl.Name = "TabControl"
+        Me.TabControl.SelectedIndex = 0
+        Me.TabControl.Size = New System.Drawing.Size(797, 700)
+        Me.TabControl.TabIndex = 5
+        Me.TabControl.TabStop = False
         '
-        'TabPage1
+        'TabPageMap
         '
-        Me.TabPage1.Controls.Add(Me.GMap1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage1.Margin = New System.Windows.Forms.Padding(0)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(789, 667)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "TabPage1"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TabPageMap.Controls.Add(Me.buttonMapSeiteZumShop)
+        Me.TabPageMap.Controls.Add(Me.comboBoxMapSeiteGeschäfte)
+        Me.TabPageMap.Controls.Add(Me.Panel1)
+        Me.TabPageMap.Controls.Add(Me.GMap1)
+        Me.TabPageMap.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageMap.Margin = New System.Windows.Forms.Padding(0)
+        Me.TabPageMap.Name = "TabPageMap"
+        Me.TabPageMap.Size = New System.Drawing.Size(789, 667)
+        Me.TabPageMap.TabIndex = 0
+        Me.TabPageMap.Text = "Map"
+        Me.TabPageMap.UseVisualStyleBackColor = True
         '
         'GMap1
         '
+        Me.GMap1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GMap1.Bearing = 0!
         Me.GMap1.CanDragMap = True
         Me.GMap1.EmptyTileColor = System.Drawing.Color.Navy
         Me.GMap1.GrayScaleMode = False
         Me.GMap1.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow
         Me.GMap1.LevelsKeepInMemory = 5
-        Me.GMap1.Location = New System.Drawing.Point(17, 68)
+        Me.GMap1.Location = New System.Drawing.Point(17, 113)
         Me.GMap1.MarkersEnabled = True
         Me.GMap1.MaxZoom = 2
         Me.GMap1.MinZoom = 2
@@ -438,7 +417,7 @@ Partial Class FormMain
         Me.GMap1.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
         Me.GMap1.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.GMap1.ShowTileGridLines = False
-        Me.GMap1.Size = New System.Drawing.Size(602, 446)
+        Me.GMap1.Size = New System.Drawing.Size(746, 533)
         Me.GMap1.TabIndex = 6
         Me.GMap1.Zoom = 0R
         '
@@ -452,7 +431,7 @@ Partial Class FormMain
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(789, 667)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.Text = "Kategorien"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'LabelGeschäfteNachKategorien
@@ -480,46 +459,47 @@ Partial Class FormMain
         Me.btnbla.Text = "Button1"
         Me.btnbla.UseVisualStyleBackColor = True
         '
-        'TabPage3
+        'TabPageShopEinzelansicht
         '
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtLängengrad)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBreitengrad)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtBreitengrad)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtLängengrad)
-        Me.TabPage3.Controls.Add(Me.WebView2)
-        Me.TabPage3.Controls.Add(Me.ButtonFavoritenHinzufügen)
-        Me.TabPage3.Controls.Add(Me.PictureBoxFavorit)
-        Me.TabPage3.Controls.Add(Me.labelShopImageErrorBildNachricht)
-        Me.TabPage3.Controls.Add(Me.buttonShopAenderungenSpeichern)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtStadtteil)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtStadtteil)
-        Me.TabPage3.Controls.Add(Me.buttonShopBearbeiten)
-        Me.TabPage3.Controls.Add(Me.textBoxShopImageFileName)
-        Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtAdresse)
-        Me.TabPage3.Controls.Add(Me.Label1)
-        Me.TabPage3.Controls.Add(Me.labelShopEinzelansichtKategorie)
-        Me.TabPage3.Controls.Add(Me.buttonShopHinzufuegen)
-        Me.TabPage3.Controls.Add(Me.comboBoxEinzelansichtKategorie)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
-        Me.TabPage3.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
-        Me.TabPage3.Controls.Add(Me.buttonShopImageHinzufuegen)
-        Me.TabPage3.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(789, 667)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "TabPage3"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtLängengrad)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtBreitengrad)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtBreitengrad)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtLängengrad)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.WebView2)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.ButtonFavoritenHinzufügen)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.ImageFavoritStern)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopImageErrorBildNachricht)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.buttonShopAenderungenSpeichern)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtStadtteil)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtStadtteil)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.buttonShopBearbeiten)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopImageFileName)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.comboBoxEinzelansichtStadtteile)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtOeffnungszeit)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtTelefonnummer)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtAdresse)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.Label1)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.labelShopEinzelansichtKategorie)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.buttonShopHinzufuegen)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.comboBoxEinzelansichtKategorie)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtOeffnungszeit)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtAdresse)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtTelefonnummer)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtKategorie)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.textBoxShopEinzelansichtBezeichnung)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.buttonShopImageHinzufuegen)
+        Me.TabPageShopEinzelansicht.Controls.Add(Me.pictureBoxGeschaefteEinzelansichtsseite)
+        Me.TabPageShopEinzelansicht.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageShopEinzelansicht.Name = "TabPageShopEinzelansicht"
+        Me.TabPageShopEinzelansicht.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageShopEinzelansicht.Size = New System.Drawing.Size(789, 667)
+        Me.TabPageShopEinzelansicht.TabIndex = 2
+        Me.TabPageShopEinzelansicht.Text = "Shop Einzelansicht"
+        Me.TabPageShopEinzelansicht.UseVisualStyleBackColor = True
         '
         'textBoxShopEinzelansichtLängengrad
         '
+        Me.textBoxShopEinzelansichtLängengrad.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtLängengrad.Location = New System.Drawing.Point(283, 585)
         Me.textBoxShopEinzelansichtLängengrad.Name = "textBoxShopEinzelansichtLängengrad"
         Me.textBoxShopEinzelansichtLängengrad.ReadOnly = True
@@ -528,6 +508,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtBreitengrad
         '
+        Me.textBoxShopEinzelansichtBreitengrad.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtBreitengrad.Location = New System.Drawing.Point(549, 585)
         Me.textBoxShopEinzelansichtBreitengrad.Name = "textBoxShopEinzelansichtBreitengrad"
         Me.textBoxShopEinzelansichtBreitengrad.ReadOnly = True
@@ -536,6 +517,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtBreitengrad
         '
+        Me.labelShopEinzelansichtBreitengrad.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtBreitengrad.AutoSize = True
         Me.labelShopEinzelansichtBreitengrad.Location = New System.Drawing.Point(545, 563)
         Me.labelShopEinzelansichtBreitengrad.Name = "labelShopEinzelansichtBreitengrad"
@@ -545,6 +527,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtLängengrad
         '
+        Me.labelShopEinzelansichtLängengrad.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtLängengrad.AutoSize = True
         Me.labelShopEinzelansichtLängengrad.Location = New System.Drawing.Point(279, 563)
         Me.labelShopEinzelansichtLängengrad.Name = "labelShopEinzelansichtLängengrad"
@@ -573,15 +556,15 @@ Partial Class FormMain
         Me.ButtonFavoritenHinzufügen.Text = "Zu Favoriten hinzufügen"
         Me.ButtonFavoritenHinzufügen.UseVisualStyleBackColor = True
         '
-        'PictureBoxFavorit
+        'ImageFavoritStern
         '
-        Me.PictureBoxFavorit.Image = CType(resources.GetObject("PictureBoxFavorit.Image"), System.Drawing.Image)
-        Me.PictureBoxFavorit.Location = New System.Drawing.Point(573, 5)
-        Me.PictureBoxFavorit.Name = "PictureBoxFavorit"
-        Me.PictureBoxFavorit.Size = New System.Drawing.Size(60, 57)
-        Me.PictureBoxFavorit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBoxFavorit.TabIndex = 22
-        Me.PictureBoxFavorit.TabStop = False
+        Me.ImageFavoritStern.Image = CType(resources.GetObject("ImageFavoritStern.Image"), System.Drawing.Image)
+        Me.ImageFavoritStern.Location = New System.Drawing.Point(573, 5)
+        Me.ImageFavoritStern.Name = "ImageFavoritStern"
+        Me.ImageFavoritStern.Size = New System.Drawing.Size(60, 57)
+        Me.ImageFavoritStern.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.ImageFavoritStern.TabIndex = 22
+        Me.ImageFavoritStern.TabStop = False
         '
         'labelShopImageErrorBildNachricht
         '
@@ -605,6 +588,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtStadtteil
         '
+        Me.labelShopEinzelansichtStadtteil.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtStadtteil.AutoSize = True
         Me.labelShopEinzelansichtStadtteil.Location = New System.Drawing.Point(36, 511)
         Me.labelShopEinzelansichtStadtteil.Name = "labelShopEinzelansichtStadtteil"
@@ -614,6 +598,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtStadtteil
         '
+        Me.textBoxShopEinzelansichtStadtteil.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtStadtteil.Location = New System.Drawing.Point(39, 531)
         Me.textBoxShopEinzelansichtStadtteil.Name = "textBoxShopEinzelansichtStadtteil"
         Me.textBoxShopEinzelansichtStadtteil.ReadOnly = True
@@ -640,6 +625,7 @@ Partial Class FormMain
         '
         'comboBoxEinzelansichtStadtteile
         '
+        Me.comboBoxEinzelansichtStadtteile.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.comboBoxEinzelansichtStadtteile.FormattingEnabled = True
         Me.comboBoxEinzelansichtStadtteile.Location = New System.Drawing.Point(39, 563)
         Me.comboBoxEinzelansichtStadtteile.Name = "comboBoxEinzelansichtStadtteile"
@@ -648,6 +634,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtOeffnungszeit
         '
+        Me.labelShopEinzelansichtOeffnungszeit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtOeffnungszeit.AutoSize = True
         Me.labelShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(35, 405)
         Me.labelShopEinzelansichtOeffnungszeit.Name = "labelShopEinzelansichtOeffnungszeit"
@@ -657,6 +644,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtTelefonnummer
         '
+        Me.labelShopEinzelansichtTelefonnummer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtTelefonnummer.AutoSize = True
         Me.labelShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(35, 456)
         Me.labelShopEinzelansichtTelefonnummer.Name = "labelShopEinzelansichtTelefonnummer"
@@ -666,6 +654,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtAdresse
         '
+        Me.labelShopEinzelansichtAdresse.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtAdresse.AutoSize = True
         Me.labelShopEinzelansichtAdresse.Location = New System.Drawing.Point(35, 353)
         Me.labelShopEinzelansichtAdresse.Name = "labelShopEinzelansichtAdresse"
@@ -675,6 +664,7 @@ Partial Class FormMain
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(390, 35)
         Me.Label1.Name = "Label1"
@@ -684,6 +674,7 @@ Partial Class FormMain
         '
         'labelShopEinzelansichtKategorie
         '
+        Me.labelShopEinzelansichtKategorie.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.labelShopEinzelansichtKategorie.AutoSize = True
         Me.labelShopEinzelansichtKategorie.Location = New System.Drawing.Point(390, 113)
         Me.labelShopEinzelansichtKategorie.Name = "labelShopEinzelansichtKategorie"
@@ -703,6 +694,7 @@ Partial Class FormMain
         '
         'comboBoxEinzelansichtKategorie
         '
+        Me.comboBoxEinzelansichtKategorie.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.comboBoxEinzelansichtKategorie.FormattingEnabled = True
         Me.comboBoxEinzelansichtKategorie.Location = New System.Drawing.Point(394, 175)
         Me.comboBoxEinzelansichtKategorie.Name = "comboBoxEinzelansichtKategorie"
@@ -711,6 +703,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtOeffnungszeit
         '
+        Me.textBoxShopEinzelansichtOeffnungszeit.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtOeffnungszeit.Location = New System.Drawing.Point(39, 427)
         Me.textBoxShopEinzelansichtOeffnungszeit.Name = "textBoxShopEinzelansichtOeffnungszeit"
         Me.textBoxShopEinzelansichtOeffnungszeit.ReadOnly = True
@@ -719,6 +712,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtAdresse
         '
+        Me.textBoxShopEinzelansichtAdresse.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtAdresse.Location = New System.Drawing.Point(39, 376)
         Me.textBoxShopEinzelansichtAdresse.Name = "textBoxShopEinzelansichtAdresse"
         Me.textBoxShopEinzelansichtAdresse.ReadOnly = True
@@ -727,6 +721,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtTelefonnummer
         '
+        Me.textBoxShopEinzelansichtTelefonnummer.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtTelefonnummer.Location = New System.Drawing.Point(39, 479)
         Me.textBoxShopEinzelansichtTelefonnummer.Name = "textBoxShopEinzelansichtTelefonnummer"
         Me.textBoxShopEinzelansichtTelefonnummer.ReadOnly = True
@@ -735,6 +730,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtKategorie
         '
+        Me.textBoxShopEinzelansichtKategorie.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtKategorie.Location = New System.Drawing.Point(394, 143)
         Me.textBoxShopEinzelansichtKategorie.Name = "textBoxShopEinzelansichtKategorie"
         Me.textBoxShopEinzelansichtKategorie.ReadOnly = True
@@ -743,6 +739,7 @@ Partial Class FormMain
         '
         'textBoxShopEinzelansichtBezeichnung
         '
+        Me.textBoxShopEinzelansichtBezeichnung.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.textBoxShopEinzelansichtBezeichnung.Location = New System.Drawing.Point(394, 68)
         Me.textBoxShopEinzelansichtBezeichnung.Name = "textBoxShopEinzelansichtBezeichnung"
         Me.textBoxShopEinzelansichtBezeichnung.ReadOnly = True
@@ -764,6 +761,9 @@ Partial Class FormMain
         '
         'pictureBoxGeschaefteEinzelansichtsseite
         '
+        Me.pictureBoxGeschaefteEinzelansichtsseite.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pictureBoxGeschaefteEinzelansichtsseite.ErrorImage = Global.GoGreen.My.Resources.Resources.Fehlerbild
         Me.pictureBoxGeschaefteEinzelansichtsseite.Location = New System.Drawing.Point(39, 68)
         Me.pictureBoxGeschaefteEinzelansichtsseite.Name = "pictureBoxGeschaefteEinzelansichtsseite"
@@ -772,17 +772,17 @@ Partial Class FormMain
         Me.pictureBoxGeschaefteEinzelansichtsseite.TabIndex = 5
         Me.pictureBoxGeschaefteEinzelansichtsseite.TabStop = False
         '
-        'TabPage4
+        'TabPageStadtteile
         '
-        Me.TabPage4.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
-        Me.TabPage4.Controls.Add(Me.TreeViewGeschäfteStadtteile)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(789, 667)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "TabPage4"
-        Me.TabPage4.UseVisualStyleBackColor = True
+        Me.TabPageStadtteile.Controls.Add(Me.LabelGeschäfteNachStadtteilen)
+        Me.TabPageStadtteile.Controls.Add(Me.TreeViewGeschäfteStadtteile)
+        Me.TabPageStadtteile.Location = New System.Drawing.Point(4, 29)
+        Me.TabPageStadtteile.Name = "TabPageStadtteile"
+        Me.TabPageStadtteile.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPageStadtteile.Size = New System.Drawing.Size(789, 667)
+        Me.TabPageStadtteile.TabIndex = 3
+        Me.TabPageStadtteile.Text = "Stadtteile"
+        Me.TabPageStadtteile.UseVisualStyleBackColor = True
         '
         'LabelGeschäfteNachStadtteilen
         '
@@ -976,6 +976,48 @@ Partial Class FormMain
         Me.PictureBoxMap.TabIndex = 0
         Me.PictureBoxMap.TabStop = False
         '
+        'comboBoxMapSeiteKategorien
+        '
+        Me.comboBoxMapSeiteKategorien.FormattingEnabled = True
+        Me.comboBoxMapSeiteKategorien.Location = New System.Drawing.Point(3, 3)
+        Me.comboBoxMapSeiteKategorien.Name = "comboBoxMapSeiteKategorien"
+        Me.comboBoxMapSeiteKategorien.Size = New System.Drawing.Size(208, 28)
+        Me.comboBoxMapSeiteKategorien.TabIndex = 7
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.comboBoxMapSeiteStadtteile)
+        Me.Panel1.Controls.Add(Me.comboBoxMapSeiteKategorien)
+        Me.Panel1.Location = New System.Drawing.Point(30, 24)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(652, 63)
+        Me.Panel1.TabIndex = 8
+        '
+        'comboBoxMapSeiteStadtteile
+        '
+        Me.comboBoxMapSeiteStadtteile.FormattingEnabled = True
+        Me.comboBoxMapSeiteStadtteile.Location = New System.Drawing.Point(220, 3)
+        Me.comboBoxMapSeiteStadtteile.Name = "comboBoxMapSeiteStadtteile"
+        Me.comboBoxMapSeiteStadtteile.Size = New System.Drawing.Size(208, 28)
+        Me.comboBoxMapSeiteStadtteile.TabIndex = 8
+        '
+        'comboBoxMapSeiteGeschäfte
+        '
+        Me.comboBoxMapSeiteGeschäfte.FormattingEnabled = True
+        Me.comboBoxMapSeiteGeschäfte.Location = New System.Drawing.Point(464, 27)
+        Me.comboBoxMapSeiteGeschäfte.Name = "comboBoxMapSeiteGeschäfte"
+        Me.comboBoxMapSeiteGeschäfte.Size = New System.Drawing.Size(208, 28)
+        Me.comboBoxMapSeiteGeschäfte.TabIndex = 9
+        '
+        'buttonMapSeiteZumShop
+        '
+        Me.buttonMapSeiteZumShop.Location = New System.Drawing.Point(700, 24)
+        Me.buttonMapSeiteZumShop.Name = "buttonMapSeiteZumShop"
+        Me.buttonMapSeiteZumShop.Size = New System.Drawing.Size(63, 63)
+        Me.buttonMapSeiteZumShop.TabIndex = 10
+        Me.buttonMapSeiteZumShop.Text = "Zum Shop"
+        Me.buttonMapSeiteZumShop.UseVisualStyleBackColor = True
+        '
         'FormMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
@@ -985,7 +1027,7 @@ Partial Class FormMain
         Me.Controls.Add(Me.panelSideMenu)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MinimumSize = New System.Drawing.Size(950, 600)
+        Me.MinimumSize = New System.Drawing.Size(1100, 750)
         Me.Name = "FormMain"
         Me.Padding = New System.Windows.Forms.Padding(35, 0, 0, 0)
         Me.Text = "FormMain"
@@ -993,22 +1035,23 @@ Partial Class FormMain
         Me.panelMeinBereichSubMenu.ResumeLayout(False)
         Me.panelGeschaefteSubmenu.ResumeLayout(False)
         Me.panelContent.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
+        Me.TabControl.ResumeLayout(False)
+        Me.TabPageMap.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage2.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
+        Me.TabPageShopEinzelansicht.ResumeLayout(False)
+        Me.TabPageShopEinzelansicht.PerformLayout()
         CType(Me.WebView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBoxFavorit, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ImageFavoritStern, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pictureBoxGeschaefteEinzelansichtsseite, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabPage4.PerformLayout()
+        Me.TabPageStadtteile.ResumeLayout(False)
+        Me.TabPageStadtteile.PerformLayout()
         Me.TabPageUser.ResumeLayout(False)
         Me.TabPageUser.PerformLayout()
         Me.TabPageFavorit.ResumeLayout(False)
         Me.TabPageFavorit.PerformLayout()
         CType(Me.PictureBoxMap, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -1018,7 +1061,7 @@ Partial Class FormMain
     Friend WithEvents buttonSideMenuKategorien As Button
     Friend WithEvents buttonSideMenuGeschaefte As Button
     Friend WithEvents panelLogo As Panel
-    Friend WithEvents btnBekleidungslaeden As Button
+    Friend WithEvents btnMap As Button
     Friend WithEvents buttonSideMenuHinzufuegen As Button
     Friend WithEvents buttonSideMenuStadtteile As Button
 
@@ -1026,26 +1069,24 @@ Partial Class FormMain
     Friend WithEvents btnAbout As Button
     Friend WithEvents btnProgrammeinstellungen As Button
     Friend WithEvents panelMeinBereichSubMenu As Panel
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button7 As Button
     Friend WithEvents btnUserSettings As Button
     Friend WithEvents btnFavorit As Button
     Friend WithEvents btnMeinBereich As Button
 
     Friend WithEvents panelContent As Panel
     Friend WithEvents PictureBoxMap As PictureBox
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabControl As TabControl
+    Friend WithEvents TabPageMap As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents btnbla As Button
     Friend WithEvents TreeViewGeschäfteKategorien As TreeView
     Friend WithEvents LabelGeschäfteNachKategorien As Label
-    Friend WithEvents TabPage3 As TabPage
+    Friend WithEvents TabPageShopEinzelansicht As TabPage
     Friend WithEvents textBoxShopEinzelansichtBezeichnung As TextBox
     Friend WithEvents textBoxShopEinzelansichtAdresse As TextBox
     Friend WithEvents textBoxShopEinzelansichtTelefonnummer As TextBox
     Friend WithEvents textBoxShopEinzelansichtKategorie As TextBox
-    Friend WithEvents TabPage4 As TabPage
+    Friend WithEvents TabPageStadtteile As TabPage
     Friend WithEvents LabelGeschäfteNachStadtteilen As Label
     Friend WithEvents TreeViewGeschäfteStadtteile As TreeView
     Friend WithEvents textBoxShopEinzelansichtOeffnungszeit As TextBox
@@ -1083,7 +1124,7 @@ Partial Class FormMain
     Friend WithEvents TabPageFavorit As TabPage
     Friend WithEvents Label4 As Label
     Friend WithEvents ListBoxFavoriten As ListBox
-    Friend WithEvents PictureBoxFavorit As PictureBox
+    Friend WithEvents ImageFavoritStern As PictureBox
     Friend WithEvents ButtonFavoritenHinzufügen As Button
     Friend WithEvents GMap1 As GMap.NET.WindowsForms.GMapControl
     Friend WithEvents WebView2 As Microsoft.Web.WebView2.WinForms.WebView2
@@ -1091,4 +1132,9 @@ Partial Class FormMain
     Friend WithEvents textBoxShopEinzelansichtBreitengrad As TextBox
     Friend WithEvents labelShopEinzelansichtBreitengrad As Label
     Friend WithEvents labelShopEinzelansichtLängengrad As Label
+    Friend WithEvents buttonMapSeiteZumShop As Button
+    Friend WithEvents comboBoxMapSeiteGeschäfte As ComboBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents comboBoxMapSeiteStadtteile As ComboBox
+    Friend WithEvents comboBoxMapSeiteKategorien As ComboBox
 End Class
